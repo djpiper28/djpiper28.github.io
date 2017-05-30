@@ -1,0 +1,149 @@
+<title> Ball Collecter </title>
+<h1>Ball Collecter</h1>
+<h3>Is very retarded and bad.</h3>
+<h3><a href="https://djpiper28.github.io/index.html" target="_blank">Home</a></h3>
+<canvas id='gameCanvas' width="800" height="650">Update your browser</canvas>
+<script>
+var ballx = [100,500,600,800]
+var bally = [0,0,0,0]
+var FPS = 30;
+var tau = Math.PI*2;
+var playerx = 350;
+var score = 0;
+var z = 0;
+var finalscore;
+var x;
+function ballreset(ball){
+	ballx[ball] = Math.floor((Math.random() * 800) + 0);
+	bally[ball] = 0; 
+}
+function circle(x,y,radius,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.beginPath();
+	canvasContext.arc(x,y,radius,0,tau,true)
+	canvasContext.fill();
+}
+function text(textt,sizefont,x,y,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.textAlign  = 'centre';
+	canvasContext.font = sizefont;
+	canvasContext.fillText(textt,x,y);
+}
+function draw(x,y,width,height,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.fillRect(x,y,width,height);
+}
+document.addEventListener('keydown', input);
+document.addEventListener("mousedown", mouse, false);
+function input(){
+	var x = event.keyCode;
+	if(x==32){
+		console.log('space was pressed',x);
+	} if(x==37){
+		console.log('left',x);
+		playerx = playerx - 50;
+	} if(x==39){
+		console.log('right',x);
+		playerx = playerx + 50;
+	}
+}
+function mouse(){
+	console.log('mouse')
+}
+function rrandomcolour(){
+	x = Math.floor((Math.random() * 10) + 0);
+	if(x==0){
+		randomcolour = 'green'
+	} else if(x==1){
+		randomcolour = 'red'
+	} else if(x==3){
+		randomcolour = 'white'
+	} else if(x==4){
+		randomcolour = 'yellow'
+	} else if(x==5){
+		randomcolour = 'pink'
+	} else if(x==6){
+		randomcolour = 'blue'
+	} else if(x==7){
+		randomcolour = 'orange'
+	} else if(x==8){
+		randomcolour = 'purple'
+	} else if(x==9){
+		randomcolour = 'brown'
+	} else if(x==10){
+		randomcolour = 'orange'
+	} 
+}
+function drawEverything(){
+	if(z<900){
+		draw(0,0,800,650,'black')
+		i = 0;
+		console.log('frame')
+		while(i<ballx.length&&i<50){
+			console.log('while loop');
+			rrandomcolour();
+			circle(ballx[i],bally[i],10,randomcolour);
+			if(bally[i]>810){
+				ballreset(i);
+				console.log('ballreset +', i);
+			}
+			bally[i] = bally[i] + 20
+			i = i  + 1
+			if(bally[i]>=640){
+				if(ballx[i]<=playerx+110){
+					if(ballx[i]>=playerx-10){
+						score = score + 1;
+						console.log(ballx[i],bally[i]);
+						ballreset(i);
+					}
+				}
+				ballreset(i)
+			} 
+		}
+		if(playerx<=0){
+			playerx = 0;
+		}
+		if(playerx>=700){
+			playerx = 700;
+		}
+		if(ballx.length<50){
+			ballreset(ballx.length);
+		}
+		if(ballx.length<20){
+			ballreset(ballx.length);
+			ballreset(ballx.length+1);
+			ballreset(ballx.length+2);
+		}
+		if(bally.length!=ballx.length){
+			console.log(ballx);
+			console.log(bally);		
+		}
+		draw(playerx,640,100,10,'white');
+		z = z + 1;
+		if(z>=900){
+			console.log('time up');
+			finalscore = 'Your score was ', score;
+			console.log(finalscore)
+		}
+		text(score, '20px Hobo STD', 400, 50, 'red');
+	} else{
+		draw(0,0,800,650,'black');
+		text(finalscore, '24px Hobo STD',200,325,'red');
+		text (score, '24px Hobo STD', 200, 375, 'white')
+		z = z + 1;
+		if(z>=1200){
+			z = 0;
+			console.log('restarting');
+			score = 0;
+		}
+	}
+}
+window.onload = function(){
+	console.log("Webpage loaded");
+	ballreset();
+	score = 0;
+	canvas = document.getElementById('gameCanvas');
+	canvasContext= canvas.getContext("2d");
+	setInterval(drawEverything,1000/FPS);
+}
+</script>
