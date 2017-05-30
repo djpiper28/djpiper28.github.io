@@ -1,6 +1,7 @@
 <title> Pong </title>
 <h1>Pong</h1>
-<h3>Is very retarded</h3>
+<h3>Is very retarded. Box below is for the ball speed default is 10.</h3>
+<textarea id="textbox">10</textarea>
 <canvas id='gameCanvas' width="800" height="650">Update your browser</canvas>
 <script>
 var FPS = 30;
@@ -91,6 +92,7 @@ function drawEverything(){
 	} if(bally<=-20){
 		bally = 10;
 	}
+	ballspeed = document.getElementById("textbox").value;
 }
 function circle(x,y,radius,colour){
 	canvasContext.fillStyle = colour;
