@@ -16,7 +16,7 @@ var birdy;
 var birdx = 50;
 var FPS = 30;
 var tau = Math.PI*2;
-var fallspeed = 4;
+var fallspeed = 5;
 var bar = 750;
 var d = 0;
 var score = 0;
@@ -27,15 +27,15 @@ document.addEventListener("mousedown", mouse, false);
 function input(){
 	var x = event.keyCode;
 	if(x==32){
-		birdy = birdy - 75
+		birdy = birdy - 100
 		console.log('space was pressed',x)
-		fallspeed = 4;
+		fallspeed = 5;
 	} 
 }
 function mouse(){
-	birdy = birdy - 75
+	birdy = birdy - 100
 	console.log('mouse')
-	fallspeed = 4;
+	fallspeed = 5;
 }
 function draw(x,y,width,height,colour){
 	canvasContext.fillStyle = colour;
@@ -51,10 +51,10 @@ function resetBar(){
 function dead(){
 	birdy = 400;
 	console.log('died', fallspeed);
-	bar = 750;
+	bar = 800;
 	resetBar();
 	finalscore = score;
-	fallspeed = 4;
+	fallspeed = 5;
 	d = 1;
 	score = 0;
 }
@@ -84,15 +84,15 @@ function drawEverything(){
 	draw(birdx,birdy,10,10,'white')
 	console.log('frame')
 	draw(bar,bar1y,50,800,'green')
-	draw(bar,0,50,bar1y-400,'green')
+	draw(bar,0,50,bar1y-300,'green')
 	draw(bar+150,bar2y,50,800,'green')
-	draw(bar+150,0,50,bar2y-400,'green')
+	draw(bar+150,0,50,bar2y-300,'green')
 	draw(bar+300,bar3y,50,800,'green')
-	draw(bar+300,0,50,bar3y-400,'green')
+	draw(bar+300,0,50,bar3y-300,'green')
 	draw(bar+450,bar4y,50,800,'green')
-	draw(bar+450,0,50,bar4y-400,'green')
+	draw(bar+450,0,50,bar4y-300,'green')
 	draw(bar+600,bar5y,50,800,'green')
-	draw(bar+600,0,50,bar5y-400,'green')
+	draw(bar+600,0,50,bar5y-300,'green')
 	if(fallspeed>=4){
 		fallspeed = fallspeed * 1.02;
 	}
@@ -100,7 +100,7 @@ function drawEverything(){
 		draw(0,0,canvas.width,canvas.height,'red')
 		d = d + 1;
 		birdy = 200;
-		fallspeed = 4;
+		fallspeed = 5;
 		text(('your Final Score is:',Math.round(finalscore)),'24px Impact', 50,50,'white');
 		text('YOU  DIED!','96px Hobo STD',104,325,'white');
 		score = 0;
@@ -118,7 +118,7 @@ function drawEverything(){
 				if(bar1y+5<=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
-				} if(bar1y-405>=birdy){
+				} if(bar1y-305>=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
 				}
@@ -128,7 +128,7 @@ function drawEverything(){
 				if(bar2y<=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
-				} if(bar2y-405>=birdy){
+				} if(bar2y-305>=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
 				}
@@ -138,7 +138,7 @@ function drawEverything(){
 				if(bar3y<=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
-				} if(bar3y-405>=birdy){
+				} if(bar3y-305>=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
 				}
@@ -148,7 +148,7 @@ function drawEverything(){
 				if(bar4y<=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
-				} if(bar4y-405>=birdy){
+				} if(bar4y-305>=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
 				}
@@ -158,7 +158,7 @@ function drawEverything(){
 				if(bar5y<=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
-				} if(bar5y-405>=birdy){
+				} if(bar5y-305>=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
 				}
@@ -183,6 +183,12 @@ window.onload = function(){
 }
 console.log("Code started")
 </script>
+<p>On the technical side of this game it runs at 30fps and works by drawing coloured shapes each frame. 
+When the player hits the top the Y-axis is limited so he can't go any higher giving an illusion of an 
+invisible wall, the collisions with the poles are calculated by working out if the X-axis of the poles
+is close enough to colide with the 'bird' and then checks if the bird's Y-axis is within a pole. The 
+poles are in a group of 5 the height is randomly generated to closest 100 and rendered. No collision 
+meshes or boxes are used.</p>
 </body>
 <p>Copyright (C) Danny Piper 2017
 </html>
