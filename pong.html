@@ -1,6 +1,5 @@
 <title> Pong </title>
 <h1>Pong</h1>
-<h3><a href="https://djpiper28.github.io/index.html" target="_blank">Home</a></h3>
 <h3>Is very retarded</h3>
 <canvas id='gameCanvas' width="800" height="650">Update your browser</canvas>
 <script>
@@ -87,6 +86,10 @@ function drawEverything(){
 		playery = 0;
 	} if(playery>800){
 		playery = 800;
+	} if(bally>=660){
+		bally = 640;
+	} if(bally<=-20){
+		bally = 10;
 	}
 }
 function circle(x,y,radius,colour){
