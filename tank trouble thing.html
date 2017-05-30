@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tank Trouble</title>
+</head>
+<body>
+<h1>Retarded Tank Trouble Game</h1>
+<p>Is very retarded and simple</p>
+<canvas id="gameCanvas" width="800" height="650"></canvas>
+<script>
+var canvas;
+var canvasContexts;
+var pox= 1; //player 1 x
+var poy= 1; //player 1 y
+var ptx= 774; //player 2 x
+var pty= 624; //player 2 y
+var FPS= 30;
+var pos;
+var poss=null;
+var ptss=null;
+var pts;
+var a = 0;
+var b = 0;
+var ax = 10;
+var bx = 10;
+var ay = 10;
+var aa = 0;
+var bb = 0;
+var by = 10;
+var z = 'right';
+var az = 'left';
+var ptsx = 999;
+var ptsy = 999;
+var posy = 999;
+var posx = 999;
+var ascore = 0;
+var bscore = 0;
+window.onload = function(){
+	console.log("Webpage loaded");
+	canvas = document.getElementById('gameCanvas');
+	canvasContext= canvas.getContext("2d");
+	setInterval(drawEverything,1000/FPS);
+}
+console.log("Code started")
+function dead(character){
+	death(character);
+}
+function death(character){
+	console.log("Called death")
+	if(character=="one"){
+		pox = 0;
+		poy = 0;
+		pts =null;
+		bscore = bscore + 1;
+	}else{
+		ptx = canvas.width - 25;
+		pty = canvas.height - 25;
+		pos = null;
+		ascore = ascore + 1;
+	}
+	var a = 0;
+	var b = 0;
+	var ax = 10;
+	var bx = 10;
+	var ay = 10;
+	var by = 10;
+	var aa = 0;
+	var bb = 0;
+	console.log('killed');
+}
+function draw(x,y,width,height,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.fillRect(x,y,width,height);
+}
+function getPlayerInput(){
+	var x = event.keyCode;
+	if(x==null){
+		x=0
+	} if(x == 39){
+		move('two',20,0);
+		az = 'right'
+	} if(x == 37){
+		move('two',-20,0);
+		az = 'left'
+	} if(x == 38){
+		move('two',0,-20);
+		az = 'up'
+	} if(x == 40){
+		move('two',0,20);
+		az = 'down';
+	} if(x == 68){
+		move('one',20,0);
+		z = 'right'
+	} if(x == 65){
+		move('one',-20,0);
+		z = 'left'
+	} if(x == 87){
+		move('one',0,-20);
+		z = 'up'
+	} if(x == 83){
+		move('one',0,20);
+		z = 'down'
+	} if(x == 32){
+		console.log('shoot player one')
+		shoot('one',25,az);
+	} if(x == 77){
+		console.log('shoot player two')
+		shoot('two',25,z);
+	}
+	//check for movement off canvas
+	if(pox>canvas.width){
+		pox= canvas.width ;
+		console.log('toobig');
+	}
+	if(ptx>canvas.width){
+		ptx= canvas.width ;
+		console.log('toobig');
+	}
+	if(poy>canvas.height){
+		poy= canvas.height ;
+		console.log('toobig');
+	}
+	if(pty>canvas.height){
+		pty= canvas.height ;
+		console.log('toobig');
+	}
+	if(pox<0){
+		pox= 0;
+		console.log('toosmall');
+	}
+	if(ptx<0){
+		ptx= 0;
+		console.log('toosmall');
+	}
+	if(poy<0){
+		poy= 0;
+		console.log('toosmall');
+	}
+	if(pty<0){
+		pty= 0;
+		console.log('toosmall');
+	}
+}
+function circle(x,y,radius,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.beginPath();
+	canvasContext.arc(x,y,radius,0/*start radian*/,Math.PI*2/*end radian*/,true)
+	canvasContext.fill();
+}
+function text(textt,sizefont,x,y,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.textAlign  = 'centre';
+	canvasContext.font = sizefont;
+	canvasContext.fillText(textt,x,y);
+}
+document.addEventListener('keydown', getPlayerInput);
+function drawEverything(){
+	draw(0,0,canvas.width,canvas.height,'black');//fills canvas from 0,0 to the canvas's height
+	console.log("drawn everything");
+	//draws players
+	draw(pox,poy,25,25,'red');
+	draw(ptx,pty,25,25,'green');
+	text(bscore,'20px Hobo STD', 180, 50, 'green')
+	text(ascore,'20px Hobo STD', 580, 50, 'red')
+	//draws shots
+	if(a==1){
+		posx = posx + ax;
+		posy = posy + ay;
+		if(posx<=0){
+			ax = -ax;
+		} if(posy<=0){
+			ay = -ay;
+		} if(posx>=800){
+			ax = -ax;
+		} if(posy>=650){
+			ay = -ay;
+		} if(posy>801){
+			posy = 799
+		}
+		aa = aa + 1;
+		if(aa>=300){
+			a=0;
+			posx = 999;
+			posy = 999;
+		}
+		circle(posx,posy,10,'white');	
+	} if(b==1){
+		ptsx = ptsx + bx;
+		ptsy = ptsy + by;
+		if(ptsx<=0){
+			bx = -bx;
+		} if(ptsy<=0){
+			by = -by;
+		} if(ptsx>=800){
+			bx = -bx;
+		} if(ptsy>=650){
+			by = -by;
+		} if(ptsy>801){
+			ptsy = 799
+		}
+		bb = bb + 1;
+		if(bb>=300){
+			b=0;
+			ptsx = 999;
+			ptsy = 999;
+		}
+		circle(ptsx,ptsy,10,'white');	
+	}
+	if(posx<=pox+25){
+		if(posx>=pox){
+			if(posy<=poy+25){
+				if(posy>=poy){
+					dead('one');
+				}
+			}
+		}
+	} 
+	if(posx<=ptx+25){
+		if(posx>=ptx){
+			if(posy<=pty+25){
+				if(posy>=pty){
+					dead('two');
+				}
+			}
+		}
+	} 
+	if(ptsx<=pox+25){
+		if(ptsx>=pox){
+			if(ptsy<=poy+25){
+				if(ptsy>=poy){
+					dead('one');
+				}
+			}
+		}
+	} 
+	if(ptsx<=ptx+25){
+		if(ptsx>=ptx){
+			if(ptsy<=pty+25){
+				if(ptsy>=pty){
+					dead('two');
+				}
+			}
+		}
+	} 
+}
+function shoot(player,speed,facing){
+	if(player=='one'){
+		a = 1;
+		aa = 0;
+		posx=pox+50;
+		posy=poy+50;
+		posf=facing;
+		ax = 10;
+		ay = 10;
+	}else{
+		b = 1;
+		bx = 10;
+		by = 10;
+		bb = 0;
+		ptsx=ptx+50;
+		ptsy=pty+50;
+		ptsf=facing;
+	}
+}
+function move(player,deltax,deltay){ //delta = change in
+	console.log(pox,poy,ptx,pty)
+	if(player=="one"){
+		pox = pox + deltax
+		poy = poy + deltay
+	}else if(player=='two'){
+		ptx = ptx + deltax
+		pty = pty + deltay
+	}
+	console.log(pox,poy,ptx,pty)
+}
+</script>
+</body>
+</html>
