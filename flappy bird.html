@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flappy Bird</title>
+</head>
+<body>
+<h1>Retarded Flappy Bird Game</h1>
+<p>Is very retarded and simple. Below is the bar speed box, 10 is the standard if the value is over 800 it will break the game.</p>
+<textarea id="textbox">10</textarea>
+<canvas id="gameCanvas" width="800" height="650"></canvas>
+
+<script>
+var canvas;
+var canvasContexts;
+var birdy;
+var birdx = 50;
+var FPS = 30;
+var tau = Math.PI*2;
+var fallspeed = 4;
+var bar = 750;
+var d = 0;
+var score = 0;
+var barspeed = 10;
+var time = 1/FPS;
+document.addEventListener('keydown', input);
+document.addEventListener("mousedown", mouse, false);
+function input(){
+	var x = event.keyCode;
+	if(x==32){
+		birdy = birdy - 75
+		console.log('space was pressed',x)
+		fallspeed = 4;
+	} 
+}
+function mouse(){
+	birdy = birdy - 75
+	console.log('mouse')
+	fallspeed = 4;
+}
+function draw(x,y,width,height,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.fillRect(x,y,width,height);
+}
+function resetBar(){
+	bar1y = Math.ceil(Math.floor((Math.random() * 500) + 200)/100)*100;
+	bar2y = Math.ceil(Math.floor((Math.random() * 500) + 200)/100)*100;
+	bar3y = Math.ceil(Math.floor((Math.random() * 500) + 200)/100)*100;
+	bar4y = Math.ceil(Math.floor((Math.random() * 500) + 200)/100)*100;
+	bar5y = Math.ceil(Math.floor((Math.random() * 500) + 200)/100)*100;
+}
+function dead(){
+	birdy = 400;
+	console.log('died', fallspeed);
+	bar = 750;
+	resetBar();
+	finalscore = score;
+	fallspeed = 4;
+	d = 1;
+	score = 0;
+}
+function circle(x,y,radius,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.beginPath();
+	canvasContext.arc(x,y,radius,0,tau,true)
+	canvasContext.fill();
+}
+function text(textt,sizefont,x,y,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.textAlign  = 'centre';
+	canvasContext.font = sizefont;
+	canvasContext.fillText(textt,x,y);
+}
+function drawEverything(){
+	birdy = birdy + fallspeed
+	if(birdy>=600){
+		dead()
+	} else if(birdy<=-200){
+		birdy = 0
+	}
+	draw(0,0,canvas.width,canvas.height,'blue')
+	draw(0,600,canvas.width,canvas.height,'green')
+	circle(800,0,150,'yellow')
+	draw(birdx,birdy,10,20,'yellow')
+	draw(birdx,birdy,10,10,'white')
+	console.log('frame')
+	draw(bar,bar1y,50,800,'green')
+	draw(bar,0,50,bar1y-400,'green')
+	draw(bar+150,bar2y,50,800,'green')
+	draw(bar+150,0,50,bar2y-400,'green')
+	draw(bar+300,bar3y,50,800,'green')
+	draw(bar+300,0,50,bar3y-400,'green')
+	draw(bar+450,bar4y,50,800,'green')
+	draw(bar+450,0,50,bar4y-400,'green')
+	draw(bar+600,bar5y,50,800,'green')
+	draw(bar+600,0,50,bar5y-400,'green')
+	if(fallspeed>=4){
+		fallspeed = fallspeed * 1.02;
+	}
+	if(d<100&&d!=0){
+		draw(0,0,canvas.width,canvas.height,'red')
+		d = d + 1;
+		birdy = 200;
+		fallspeed = 4;
+		text(('your Final Score is:',Math.round(finalscore)),'24px Impact', 50,50,'white');
+		text('YOU  DIED!','96px Hobo STD',104,325,'white');
+		score = 0;
+		bar = 700
+	} else{
+		text(Math.round(score), '24px Impact',50,50,'white');
+	}
+	if(d>101){
+		d=0;
+	}
+	score = score + time;
+	if(d=>101||d==0){//check for death by collision
+		if(bar<=60){
+			if(bar>=10){
+				if(bar1y+5<=birdy){
+					dead()
+					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
+				} if(bar1y-405>=birdy){
+					dead()
+					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
+				}
+			}
+		} if(bar+150<=60){
+			if(bar+155>=10){
+				if(bar2y<=birdy){
+					dead()
+					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
+				} if(bar2y-405>=birdy){
+					dead()
+					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
+				}
+			}
+		} if(bar+300<=60){
+			if(bar+305>=10){
+				if(bar3y<=birdy){
+					dead()
+					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
+				} if(bar3y-405>=birdy){
+					dead()
+					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
+				}
+			}
+		} if(bar+450<=60){
+			if(bar+455>=10){
+				if(bar4y<=birdy){
+					dead()
+					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
+				} if(bar4y-405>=birdy){
+					dead()
+					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
+				}
+			}
+		} if(bar+600<=60){
+			if(bar+605>=10){
+				if(bar5y<=birdy){
+					dead()
+					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
+				} if(bar5y-405>=birdy){
+					dead()
+					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
+				}
+			}
+		} 
+		 
+	}
+	bar = bar - barspeed;
+	if(bar<-700){
+		bar = 750;
+		resetBar();
+	}
+	barspeed = document.getElementById("textbox").value;
+}
+window.onload = function(){
+	birdy = 400;
+	resetBar();
+	console.log("Webpage loaded");
+	canvas = document.getElementById('gameCanvas');
+	canvasContext= canvas.getContext("2d");
+	setInterval(drawEverything,1000/FPS);
+}
+console.log("Code started")
+</script>
+</body>
+<p>Copyright (C) Danny Piper 2017
+</html>
