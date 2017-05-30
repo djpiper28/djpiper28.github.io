@@ -5,7 +5,6 @@
 </head>
 <body>
 <h1>Retarded Flappy Bird Game</h1>
-<h3><a href="https://djpiper28.github.io/index.html" target="_blank">Home</a></h3>	
 <p>Is very retarded and simple. Below is the bar speed box, 10 is the standard if the value is over 800 it will break the game.</p>
 <textarea id="textbox">10</textarea>
 <canvas id="gameCanvas" width="800" height="650"></canvas>
@@ -23,6 +22,9 @@ var d = 0;
 var score = 0;
 var barspeed = 10;
 var time = 1/FPS;
+var bbar = bar + 750
+resetBar();
+resetbbar();
 document.addEventListener('keydown', input);
 document.addEventListener("mousedown", mouse, false);
 function input(){
@@ -43,12 +45,62 @@ function draw(x,y,width,height,colour){
 	canvasContext.fillRect(x,y,width,height);
 }
 function resetBar(){
-	bar1y = Math.ceil(Math.floor((Math.random() * 500) + 200)/100)*100;
-	bar2y = Math.ceil(Math.floor((Math.random() * 500) + 200)/100)*100;
-	bar3y = Math.ceil(Math.floor((Math.random() * 500) + 200)/100)*100;
-	bar4y = Math.ceil(Math.floor((Math.random() * 500) + 200)/100)*100;
-	bar5y = Math.ceil(Math.floor((Math.random() * 500) + 200)/100)*100;
+	bar1y = Math.ceil(Math.floor((Math.random() * 400) + 300)/10)*10;
+	bar2y = Math.ceil(Math.floor((Math.random() * 400) + 300)/10)*10;
+	bar3y = Math.ceil(Math.floor((Math.random() * 400) + 300)/10)*10;
+	bar4y = Math.ceil(Math.floor((Math.random() * 400) + 300)/10)*10;
+	bar5y = Math.ceil(Math.floor((Math.random() * 400) + 300)/10)*10;
+	if(bar1y<=300){
+		bar1y = 300;
+	} if(bar2y<=300){
+		bar2y = 350;
+	} if(bar3y<=300){
+		bar3y = 350;
+	} if(bar4y<=300){
+		bar4y = 300;
+	} if(bar5y<=300){
+		bar5y = 350;
+	} if(bar1y>=600){
+		bar1y = 600;
+	} if(bar2y>=600){
+		bar2y = 650;
+	} if(bar3y>=600){
+		bar3y = 600;
+	} if(bar4y>=600){
+		bar4y = 650;
+	} if(bar5y>=600){
+		bar5y = 600;
+	} 
 }
+function resetbbar(){
+	bbar1y = Math.ceil(Math.floor((Math.random() * 400) + 300)/100)*100;
+	bbar2y = Math.ceil(Math.floor((Math.random() * 400) + 300)/100)*100;
+	bbar3y = Math.ceil(Math.floor((Math.random() * 400) + 300)/100)*100;
+	bbar4y = Math.ceil(Math.floor((Math.random() * 400) + 300)/100)*100;
+	bbar5y = Math.ceil(Math.floor((Math.random() * 400) + 300)/100)*100;
+	if(bbar1y<=300){
+		bbar1y = 300;
+	} if(bbar2y<=300){
+		bbar2y = 350;
+	} if(bbar3y<=300){
+		bbar3y = 300;
+	} if(bbar4y<=300){
+		bbar4y = 350;
+	} if(bbar5y<=300){
+		bbar5y = 300;
+	} if(bbar1y>=600){
+		bbar1y = 600;
+	} if(bbar2y>=600){
+		bbar2y = 650;
+	} if(bbar3y>=600){
+		bbar3y = 600;
+	} if(bbar4y>=600){
+		bbar4y = 650;
+	} if(bbar5y>=600){
+		bbar5y = 600;
+	} 
+}
+
 function dead(){
 	birdy = 400;
 	console.log('died', fallspeed);
@@ -72,12 +124,9 @@ function text(textt,sizefont,x,y,colour){
 	canvasContext.fillText(textt,x,y);
 }
 function drawEverything(){
+	
 	birdy = birdy + fallspeed
-	if(birdy>=600){
-		dead()
-	} else if(birdy<=-200){
-		birdy = 0
-	}
+	
 	draw(0,0,canvas.width,canvas.height,'blue')
 	draw(0,600,canvas.width,canvas.height,'green')
 	circle(800,0,150,'yellow')
@@ -94,6 +143,17 @@ function drawEverything(){
 	draw(bar+450,0,50,bar4y-300,'green')
 	draw(bar+600,bar5y,50,800,'green')
 	draw(bar+600,0,50,bar5y-300,'green')
+	
+	draw(bbar,bbar1y,50,800,'green')
+	draw(bbar,0,50,bbar1y-300,'green')
+	draw(bbar+150,bbar2y,50,800,'green')
+	draw(bbar+150,0,50,bbar2y-300,'green')
+	draw(bbar+300,bbar3y,50,800,'green')
+	draw(bbar+300,0,50,bbar3y-300,'green')
+	draw(bbar+450,bbar4y,50,800,'green')
+	draw(bbar+450,0,50,bbar4y-300,'green')
+	draw(bbar+600,bbar5y,50,800,'green')
+	draw(bbar+600,0,50,bbar5y-300,'green')
 	if(fallspeed>=4){
 		fallspeed = fallspeed * 1.02;
 	}
@@ -106,6 +166,7 @@ function drawEverything(){
 		text('YOU  DIED!','96px Hobo STD',104,325,'white');
 		score = 0;
 		bar = 700
+		bbar = bar + 750
 	} else{
 		text(Math.round(score), '24px Impact',50,50,'white');
 	}
@@ -113,7 +174,7 @@ function drawEverything(){
 		d=0;
 	}
 	score = score + time;
-	if(d=>101||d==0){//check for death by collision
+	if(d=>101||d==0){
 		if(bar<=60){
 			if(bar>=10){
 				if(bar1y+5<=birdy){
@@ -164,13 +225,72 @@ function drawEverything(){
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
 				} 
 			}
-		} 
+		}
+		if(bbar<=60){
+			if(bbar>=10){
+				if(bbar1y+5<=birdy){
+					dead()
+					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
+				} if(bbar1y-305>=birdy){
+					dead()
+					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
+				}
+			}
+		} if(bbar+150<=60){
+			if(bbar+155>=10){
+				if(bbar2y<=birdy){
+					dead()
+					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
+				} if(bbar2y-305>=birdy){
+					dead()
+					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
+				} 
+			}
+		} if(bbar+300<=60){
+			if(bbar+305>=10){
+				if(bbar3y<=birdy){
+					dead()
+					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
+				} if(bbar3y-305>=birdy){
+					dead()
+					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
+				} 
+			}
+		} if(bbar+450<=60){
+			if(bbar+455>=10){
+				if(bbar4y<=birdy){
+					dead()
+					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
+				} if(bbar4y-305>=birdy){
+					dead()
+					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
+				} 
+			}
+		} if(bbar+600<=60){
+			if(bbar+605>=10){
+				if(bbar5y<=birdy){
+					dead()
+					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
+				} if(bbar5y-305>=birdy){
+					dead()
+					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
+				} 
+			}
+		}
 		 
 	}
 	bar = bar - barspeed;
+	bbar = bbar -barspeed;
 	if(bar<-700){
 		bar = 750;
 		resetBar();
+	}
+	if(bbar<-700){
+		bbar = 750;
+		resetbbar();
+	}
+	if(birdy>=600){
+		dead();
 	}
 	barspeed = document.getElementById("textbox").value;
 }
