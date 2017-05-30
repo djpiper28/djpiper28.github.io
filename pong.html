@@ -1,0 +1,125 @@
+<title> Pong </title>
+<h1>Pong</h1>
+<h3>Is very retarded</h3>
+<canvas id='gameCanvas' width="800" height="650">Update your browser</canvas>
+<script>
+var FPS = 30;
+var bally;
+var score;
+var ballx;
+var ballspeedx = 10;
+var ballspeedy = 10;
+var tau = Math.PI*2;
+var d = 1000;
+var x = 0;
+var i;
+var playery = 275;
+window.onload = function(){
+	console.log("Webpage loaded");
+	ballreset();
+	score = 0;
+	canvas = document.getElementById('gameCanvas');
+	canvasContext= canvas.getContext("2d");
+	setInterval(drawEverything,1000/FPS);
+}
+function ballreset(){
+	bally = Math.ceil(Math.floor((Math.random() * 500) + 200)/100)*100;
+	ballx = 600;
+}
+function dead(){
+	ballreset();
+	finalscore = score;
+	d = 1
+	score = 0;
+	console.log('dead')
+}
+function drawEverything(){
+	draw(0,0,800,650,'black');
+	draw(397.5,0,5,75,'white');
+	draw(397.5,110,5,75,'white');
+	draw(397.5,220,5,75,'white');
+	draw(397.5,330,5,75,'white');
+	draw(397.5,440,5,75,'white');
+	draw(397.5,550,5,75,'white');
+	
+	circle(ballx,bally,10,'white');//ball
+	draw(790,bally-50,10,100,'white');
+	text(score,'24px Hobo STD',200,50,'white')
+	draw(0,playery,10,100)
+	ballx = ballx + ballspeedx;
+	bally = bally + ballspeedy;
+	console.log('frame');
+	if(ballx <= 10){
+	console.log(ballx,'is less than 10',bally)
+		i = 0;
+		while(i < 100){
+			i = i + 1;
+			if(Math.round(bally)==Math.round(playery+i)){
+				ballspeedx = -ballspeedx;
+				ballspeedy = -ballspeedy;
+				console.log(ballx,bally,playery)
+				score = score + 1;
+			} console.log(ballx,bally,playery)
+		}
+	}
+	if(bally<=10){
+		ballspeedy=-ballspeedy;
+	} if(bally>=640){
+		ballspeedy=-ballspeedy;
+	} if(ballx<=0){
+		ballspeedx=-ballspeedx;
+		dead();
+	} if(ballx>=790){
+		ballspeedx=-ballspeedx;
+	} if(d<=100){
+		ballx = 600;
+		bally = 325;
+		d = d+1;
+		ttt= 'You died with a score of:',finalscore;
+		text(ttt, '32px Hobo STD',50,325,'red');
+		text(finalscore, '34px Hobo STD', 450, 325, 'red')
+		console.log('deaded')
+	} if(d==101){
+		ballreset();
+		d = d + 1;
+	} if(playery<0){
+		playery = 0;
+	} if(playery>800){
+		playery = 800;
+	}
+}
+function circle(x,y,radius,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.beginPath();
+	canvasContext.arc(x,y,radius,0,tau,true)
+	canvasContext.fill();
+}
+function text(textt,sizefont,x,y,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.textAlign  = 'centre';
+	canvasContext.font = sizefont;
+	canvasContext.fillText(textt,x,y);
+}
+function draw(x,y,width,height,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.fillRect(x,y,width,height);
+}
+document.addEventListener('keydown', input);
+document.addEventListener("mousedown", mouse, false);
+function input(){
+	var x = event.keyCode;
+	if(x==32){
+		console.log('space was pressed',x);
+	} if(x==38){
+		console.log('y goes up',x);
+		playery = playery - 50
+	} if(x==40){
+		console.log('y goes down',x);
+		playery = playery + 50
+	}
+}
+function mouse(){
+	console.log('mouse')
+}
+
+</script>
