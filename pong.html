@@ -84,13 +84,17 @@ function drawEverything(){
 	} if(d==101){
 		ballreset();
 		d = d + 1;
-	} if(playery<0){
+	} 
+	if(playery<=0){
 		playery = 0;
-	} if(playery>800){
+	} 
+	if(playery>=800){
 		playery = 800;
-	} if(bally>=660){
+	} 
+	if(bally>=660){
 		bally = 640;
-	} if(bally<=-20){
+	} 
+	if(bally<=-20){
 		bally = 10;
 	}
 	ballspeed = document.getElementById("textbox").value;
