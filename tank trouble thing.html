@@ -6,7 +6,6 @@
 <body>
 <h1>Retarded Tank Trouble Game</h1>
 <p>Is very retarded and simple</p>
-<h3><a href="https://djpiper28.github.io/index.html" target="_blank">Home</a></h3>  	
 <canvas id="gameCanvas" width="800" height="650"></canvas>
 <script>
 var canvas;
@@ -40,6 +39,8 @@ window.onload = function(){
 	console.log("Webpage loaded");
 	canvas = document.getElementById('gameCanvas');
 	canvasContext= canvas.getContext("2d");
+	z = 'right';
+	zx = 'left';
 	setInterval(drawEverything,1000/FPS);
 }
 console.log("Code started")
@@ -103,10 +104,10 @@ function getPlayerInput(){
 		z = 'down'
 	} if(x == 32){
 		console.log('shoot player one')
-		shoot('one',25,az);
+		shoot('one',25,z);
 	} if(x == 77){
 		console.log('shoot player two')
-		shoot('two',25,z);
+		shoot('two',25,az);
 	}
 	//check for movement off canvas
 	if(pox>canvas.width){
@@ -148,6 +149,39 @@ function circle(x,y,radius,colour){
 	canvasContext.arc(x,y,radius,0/*start radian*/,Math.PI*2/*end radian*/,true)
 	canvasContext.fill();
 }
+function drawArrow(fromx, fromy, tox, toy){
+                //variables to be used when creating the arrow
+                var headlen = 10;
+
+                var angle = Math.atan2(toy-fromy,tox-fromx);
+			
+                //starting path of the arrow from the start square to the end square and drawing the stroke
+                canvasContext.beginPath();
+                canvasContext.moveTo(fromx, fromy);
+                canvasContext.lineTo(tox, toy);
+                canvasContext.strokeStyle = "white";
+                canvasContext.lineWidth = 22;
+                canvasContext.stroke();
+
+                //starting a new path from the head of the arrow to one of the sides of the point
+                canvasContext.beginPath();
+                canvasContext.moveTo(tox, toy);
+                canvasContext.lineTo(tox-headlen*Math.cos(angle-Math.PI/7),toy-headlen*Math.sin(angle-Math.PI/7));
+
+                //path from the side point of the arrow, to the other side point
+                canvasContext.lineTo(tox-headlen*Math.cos(angle+Math.PI/7),toy-headlen*Math.sin(angle+Math.PI/7));
+
+                //path from the side point back to the tip of the arrow, and then again to the opposite side point
+                canvasContext.lineTo(tox, toy);
+                canvasContext.lineTo(tox-headlen*Math.cos(angle-Math.PI/7),toy-headlen*Math.sin(angle-Math.PI/7));
+
+                //draws the paths created above
+                canvasContext.strokeStyle = "white";
+                canvasContext.lineWidth = 22;
+                canvasContext.stroke();
+                canvasContext.fillStyle = "white";
+                canvasContext.fill();
+}
 function text(textt,sizefont,x,y,colour){
 	canvasContext.fillStyle = colour;
 	canvasContext.textAlign  = 'centre';
@@ -161,8 +195,38 @@ function drawEverything(){
 	//draws players
 	draw(pox,poy,25,25,'red');
 	draw(ptx,pty,25,25,'green');
-	text(bscore,'20px Hobo STD', 180, 50, 'green')
-	text(ascore,'20px Hobo STD', 580, 50, 'red')
+	text(bscore,'20px Hobo STD', 180, 50, 'green');
+	text(ascore,'20px Hobo STD', 580, 50, 'red');
+	if(z/*player one facing*/=='right'){
+		aox = pox + 50;
+		aoy = poy + 25;
+	} if(z/*player one facing*/=='left'){
+		aox = pox;
+		aoy = poy + 25;
+	} if(z/*player one facing*/=='up'){
+		aox = pox + 25;
+		aoy = poy;
+	} if(z/*player one facing*/=='down'){
+		aox = pox + 25;
+		aoy = poy + 50;
+	}
+	
+	if(az/*player one facing*/=='right'){
+		box = ptx + 50;
+		boy = pty + 25;
+	} if(az/*player one facing*/=='left'){
+		box = ptx;
+		boy = pty + 25;
+	} if(az/*player one facing*/=='up'){
+		box = ptx + 25;
+		boy = pty;
+	} if(az/*player one facing*/=='down'){
+		box = ptx + 25;
+		boy = pty + 50;
+	
+	}
+	drawArrow(pox+25,poy+25,aox,aoy);
+	drawArrow(ptx+25,pty+25,box,boy);
 	//draws shots
 	if(a==1){
 		posx = posx + ax;
@@ -205,7 +269,7 @@ function drawEverything(){
 			ptsx = 999;
 			ptsy = 999;
 		}
-		circle(ptsx,ptsy,10,'white');	
+		circle(ptsx,ptsy,10,'white');		
 	}
 	if(posx<=pox+25){
 		if(posx>=pox){
@@ -248,19 +312,54 @@ function shoot(player,speed,facing){
 	if(player=='one'){
 		a = 1;
 		aa = 0;
-		posx=pox+50;
-		posy=poy+50;
-		posf=facing;
+		facing;
 		ax = 10;
 		ay = 10;
+		if(facing=='down'){
+			posx=pox;
+			posy=poy+50;
+			ax = 4;
+		} if(facing=='up'){
+			posx = pox;
+			posy = poy-50;
+			ax = 4;
+			ay = -ay;
+		} if(facing=='left'){
+			posx = pox-50;
+			posy = poy;
+			ax = -ax;
+			ay = 4;
+		} if(facing=='right'){
+			posx = pox + 50;
+			posy = poy;
+			ay = 4;
+		}
+		
 	}else{
 		b = 1;
 		bx = 10;
 		by = 10;
 		bb = 0;
-		ptsx=ptx+50;
-		ptsy=pty+50;
-		ptsf=facing;
+		facing;
+		if(facing=='down'){
+			ptsx=ptx;
+			ptsy=pty+50;
+			bx = 4;
+		} if(facing=='up'){
+			ptsx = ptx;
+			ptsy = pty-50;
+			by = -by;
+			bx = 4;
+		} if(facing=='left'){
+			ptsx = ptx-50;
+			ptsy = pty;
+			bx = -bx;
+			by = 4;
+		} if(facing=='right'){
+			ptsx = ptx + 50;
+			ptsy = pty;
+			by = 4;
+		}
 	}
 }
 function move(player,deltax,deltay){ //delta = change in
