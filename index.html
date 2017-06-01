@@ -1,9 +1,10 @@
-<title>Danny's Website!</title>
+<title>Danny's Website</title>
 <p>djpiper28.github.io</p>
-<h2>Danny's Website!</h2>
+<img scr='https://djpiper28.github.io/title_image.png' alt='Title Image' style='width:500px;height:100px;'></img>
+<canvas id='gameCanvas' width='1425' height='50'></canvas>
 <h1>My Projects:</h1>
-<td><h3>Here are many of my projects that have some use. I will update or add things at times when I want to.-</h3>
-<h3>Lots of warning boxes - <a href="https://djpiper28.github.io/wow.html" target="_blank">MAY NOT BE GOOD</a></h3>
+<td><h3>Here are many of my projects that have some use. I will update or add things at times when I want to.</h3>
+<p>Lots of warning boxes - <a href="https://djpiper28.github.io/wow.html" target="_blank">Click Here</a></p>
   <h2>Games</h2>
 <h3><a href="https://djpiper28.github.io/flappy%20bird.html" target="_blank">Flappy bird</a></h3>
 <h3><a href="https://djpiper28.github.io/pong.html" target="_blank">Pong</a></h3>  
@@ -13,4 +14,92 @@
  
  
   
-<p><b>Copyright</b> (C) Danny Piper 2017. Danny is the owner of the github account and most content here.</p></td>
+<p><b>Copyright</b> (C) Danny Piper 2017. Danny is the owner of the github account and all content here.</p></td>
+<script>
+var FPS = 60;
+var circlex = [450,250,50,650,850];
+var circley = [25,25,25,25,25];
+var speedx = [7,-5,6,-5,8];
+var speedy = [5,6,7,-8,4];
+var randomcolour;
+var randomcolours = ['white','red','yellow','green','blue'];
+var tau = Math.PI*2;
+window.onload = function(){
+	console.log("Webpage loaded");
+	canvas = document.getElementById('gameCanvas');
+	generateColour();
+	canvasContext= canvas.getContext("2d");
+	setInterval(drawEverything,1000/FPS);
+}
+function generateColour(){
+	i=0;
+	while(i<5){
+		rrandomcolour();
+		randomcolours[i] = randomcolour;
+		i = i + 1;
+	}
+}
+function rrandomcolour(){
+	x = Math.floor((Math.random() * 10) + 0);
+	if(x==0){
+		randomcolour = 'green'
+	} else if(x==1){
+		randomcolour = 'red'
+	} else if(x==3){
+		randomcolour = 'white'
+	} else if(x==4){
+		randomcolour = 'yellow'
+	} else if(x==5){
+		randomcolour = 'pink'
+	} else if(x==6){
+		randomcolour = 'blue'
+	} else if(x==7){
+		randomcolour = 'orange'
+	} else if(x==8){
+		randomcolour = 'purple'
+	} else if(x==9){
+		randomcolour = 'brown'
+	} else if(x==10){
+		randomcolour = 'orange'
+	} 
+}
+function drawEverything(){
+	draw(0,0,canvas.width,canvas.height,'#323232')
+	i = 0;
+	while(i<5){
+		circle(circlex[i], circley[i] , 10 , randomcolours[i]);
+		circlex[i] = circlex[i] + speedx[i];
+		circley[i] = circley[i] + speedy[i];
+		if(circlex[i]<=0){
+			circlex[i] = 0;
+			speedx[i] = -speedx[i];
+		} if(circlex[i]>=canvas.width){
+			circlex[i] = canvas.width;
+			speedx[i] = -speedx[i];
+		} if(circley[i]<=0){
+			circley[i] = 0;
+			speedy[i] = -speedy[i];
+		} if(circley[i]>=canvas.height){
+			circley[i] = canvas.height;
+			speedy[i] = -speedy[i];
+		}
+		i = i + 1;
+	}
+}
+function circle(x,y,radius,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.beginPath();
+	canvasContext.arc(x,y,radius,0,tau,true)
+	canvasContext.fill();
+}
+function text(textt,sizefont,x,y,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.textAlign  = 'centre';
+	canvasContext.font = sizefont;
+	canvasContext.fillText(textt,x,y);
+}
+function draw(x,y,width,height,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.fillRect(x,y,width,height);
+}
+</script>
