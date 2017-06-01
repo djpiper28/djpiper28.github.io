@@ -1,7 +1,7 @@
 <div>
 <p id='copyright'></p>
 <textarea id='ben'>S a m p l e</textarea>
-<textarea id='normc'>black</textarea>
+<textarea id='norm'>black</textarea>
 <textarea id='hl'>yellow</textarea>
 <canvas id='gameCanvas' width='900' height='150'></canvas>
 <script>
@@ -17,7 +17,7 @@ console.log(text[0],text,length);
 function drawEverything(){
 	text = document.getElementById('ben').value;
 	hl = document.getElementById('hl').value;
-	norm = document.getElementById('horm').value;
+	norm = document.getElementById('norm').value;
 	text = text.split(' ');
 	length = text.length;
 	draw(0,0,canvas.width, canvas.height,'white');//CHANGE WHITE TO WHAT EVER YOU WANT THE BACKGROUND COLOUR TO BE
