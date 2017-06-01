@@ -1,3 +1,5 @@
 # djpiper28.github.io
-My github.io Page:
-djpiper28@github.com/index.html
+The Webpage:
+djpiper28.github.com/index.html
+
+This site contains random stuff, and that is it.
