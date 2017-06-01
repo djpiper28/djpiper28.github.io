@@ -58,12 +58,13 @@ function drawEverything(){
 		playery = 550;
 	} 
 	draw(0,0,800,650,'#323232');
-	draw(397.5,0,5,75,'white');
-	draw(397.5,110,5,75,'white');
-	draw(397.5,220,5,75,'white');
-	draw(397.5,330,5,75,'white');
-	draw(397.5,440,5,75,'white');
-	draw(397.5,550,5,75,'white');
+	i = 0;
+	liney = 0;
+	while(i<6){
+		draw(397.5,liney,5,75,'white');
+		liney = liney + 110;
+		i = i + 1;
+	}
 	circle(ballx,bally,10,'white');//ball
 	draw(790,bally-50,10,100,'white');
 	text(score,'24px Hobo STD',200,50,'white')
@@ -72,16 +73,16 @@ function drawEverything(){
 	bally = bally + ballspeedy;
 	console.log('frame');
 	if(ballx <= 10){
-	console.log(ballx,'is less than 10',bally)
+	console.log(ballx,'is less than 10',bally);
 		i = 0;
 		while(i < 100){
 			i = i + 1;
 			if(Math.round(bally)==Math.round(playery+i)){
 				ballspeedx = -ballspeedx;
 				ballspeedy = -ballspeedy;
-				console.log(ballx,bally,playery)
+				console.log(ballx,bally,playery);
 				score = score + 1;
-			} console.log(ballx,bally,playery)
+			} console.log(ballx,bally,playery);
 		}
 	}
 	if(bally<=10){
@@ -99,8 +100,8 @@ function drawEverything(){
 		d = d+1;
 		ttt= 'You died with a score of:',finalscore;
 		text(ttt, '32px Hobo STD',50,325,'red');
-		text(finalscore, '34px Hobo STD', 450, 325, 'red')
-		console.log('deaded')
+		text(finalscore, '34px Hobo STD', 450, 325, 'red');
+		console.log('deaded');
 	} if(d==101){
 		ballreset();
 		d = d + 1;
@@ -111,6 +112,7 @@ function drawEverything(){
 	} 
 }
 function circle(x,y,radius,colour){
+	var tau = Math.PI*2;
 	canvasContext.fillStyle = colour;
 	canvasContext.beginPath();
 	canvasContext.arc(x,y,radius,0,tau,true)
