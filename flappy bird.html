@@ -51,16 +51,16 @@ function resetBar(){
 	bar3y = Math.ceil(Math.floor((Math.random() * 400) + 300)/10)*10;
 	bar4y = Math.ceil(Math.floor((Math.random() * 400) + 300)/10)*10;
 	bar5y = Math.ceil(Math.floor((Math.random() * 400) + 300)/10)*10;
-	if(bar1y<=300){
-		bar1y = 300;
-	} if(bar2y<=300){
-		bar2y = 350;
-	} if(bar3y<=300){
-		bar3y = 350;
-	} if(bar4y<=300){
-		bar4y = 300;
-	} if(bar5y<=300){
-		bar5y = 350;
+	if(bar1y<=400){
+		bar1y = 400;
+	} if(bar2y<=400){
+		bar2y = 450;
+	} if(bar3y<=400){
+		bar3y = 450;
+	} if(bar4y<=400){
+		bar4y = 400;
+	} if(bar5y<=400){
+		bar5y = 450;
 	} if(bar1y>=600){
 		bar1y = 600;
 	} if(bar2y>=600){
@@ -80,15 +80,15 @@ function resetbbar(){
 	bbar4y = Math.ceil(Math.floor((Math.random() * 400) + 300)/100)*100;
 	bbar5y = Math.ceil(Math.floor((Math.random() * 400) + 300)/100)*100;
 	if(bbar1y<=300){
-		bbar1y = 300;
+		bbar1y = 400;
 	} if(bbar2y<=300){
-		bbar2y = 350;
+		bbar2y = 450;
 	} if(bbar3y<=300){
-		bbar3y = 300;
+		bbar3y = 400;
 	} if(bbar4y<=300){
-		bbar4y = 350;
+		bbar4y = 450;
 	} if(bbar5y<=300){
-		bbar5y = 300;
+		bbar5y = 400;
 	} if(bbar1y>=600){
 		bbar1y = 600;
 	} if(bbar2y>=600){
@@ -178,7 +178,7 @@ function drawEverything(){
 				if(bar1y+5<=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
-				} if(bar1y-305>=birdy){
+				} if(bar1y-205>=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
 				}
@@ -188,7 +188,7 @@ function drawEverything(){
 				if(bar2y<=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
-				} if(bar2y-305>=birdy){
+				} if(bar2y-205>=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
 				} 
@@ -198,7 +198,7 @@ function drawEverything(){
 				if(bar3y<=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
-				} if(bar3y-305>=birdy){
+				} if(bar3y-205>=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
 				} 
@@ -208,7 +208,7 @@ function drawEverything(){
 				if(bar4y<=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
-				} if(bar4y-305>=birdy){
+				} if(bar4y-205>=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
 				} 
@@ -218,7 +218,7 @@ function drawEverything(){
 				if(bar5y<=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
-				} if(bar5y-305>=birdy){
+				} if(bar5y-205>=birdy){
 					dead()
 					console.log(bar,bar1y,bar2y,bar3y,bar4y,bar5y,birdy)
 				} 
@@ -229,7 +229,7 @@ function drawEverything(){
 				if(bbar1y+5<=birdy){
 					dead()
 					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
-				} if(bbar1y-305>=birdy){
+				} if(bbar1y-205>=birdy){
 					dead()
 					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
 				}
@@ -239,7 +239,7 @@ function drawEverything(){
 				if(bbar2y<=birdy){
 					dead()
 					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
-				} if(bbar2y-305>=birdy){
+				} if(bbar2y-205>=birdy){
 					dead()
 					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
 				} 
@@ -249,7 +249,7 @@ function drawEverything(){
 				if(bbar3y<=birdy){
 					dead()
 					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
-				} if(bbar3y-305>=birdy){
+				} if(bbar3y-205>=birdy){
 					dead()
 					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
 				} 
@@ -259,7 +259,7 @@ function drawEverything(){
 				if(bbar4y<=birdy){
 					dead()
 					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
-				} if(bbar4y-305>=birdy){
+				} if(bbar4y-205>=birdy){
 					dead()
 					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
 				} 
@@ -269,7 +269,7 @@ function drawEverything(){
 				if(bbar5y<=birdy){
 					dead()
 					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
-				} if(bbar5y-305>=birdy){
+				} if(bbar5y-205>=birdy){
 					dead()
 					console.log(bbar,bbar1y,bbar2y,bbar3y,bbar4y,bbar5y,birdy)
 				} 
