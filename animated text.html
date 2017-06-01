@@ -39,17 +39,21 @@ tr:nth-child(even) {
 	<th><textarea style='auto-style1' id='ben'>S a m p l e</textarea></th>
 	<th><textarea style='auto-style1' id='norm'>black</textarea></th>
 	<th><textarea style='auto-style1' id='hl'>yellow</textarea></th>
+	<th><textarea style='auto-style1' id='fpsbox'>5</textarea></th>
 </tr>
 <tr>
 	<th><p style='auto-style1'>Text to display seperate each letter with a space</p></th>
 	<th><p style='auto-style1'>Normal colour</p></th>
 	<th><p style='auto-style1'>Highlight colour</p></th>
+	<th><p style='auto-style1'>Frames per Second</p></th>
 </tr>
 </table>
-<table><tr><th><canvas id='gameCanvas' width='900' height='150'style='auto-style1'>unsupported browser</canvas></th>
-<th><iframe data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe></th>
-<th><h4 class="auto-style1"><a href="https://djpiper28.github.io/index.html" target="_blank">Home</a></h4></th>
-</tr></table>
+<table><tr>
+	<th><canvas id='gameCanvas' width='900' height='150'style='auto-style1'>unsupported browser</canvas></th>
+	<th><iframe data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe></th>
+	<th><h4 class="auto-style1"><a href="https://djpiper28.github.io/index.html" target="_blank">Home</a></h4></th>
+</tr>
+</table>
 <script>
 var FPS = 5;//CHANGE TO SPEED UP OR SLOW DOWN ANIMATION
 var text = "S A M P L E";//TEXT YOU WANT TO ANIAMTE SEPERATE EACH LETTER WITH A SPACE;
@@ -64,6 +68,7 @@ function drawEverything(){
 	text = document.getElementById('ben').value;
 	hl = document.getElementById('hl').value;
 	normcolour = document.getElementById('norm').value;
+	FPS = document.getElementById('fpsbox').value;
 	text = text.split(' ');
 	length = text.length;
 	draw(0,0,canvas.width, canvas.height,'white');//CHANGE WHITE TO WHAT EVER YOU WANT THE BACKGROUND COLOUR TO BE
