@@ -5,10 +5,48 @@
 <title>Animated Text</title>
 <div>
 <p id='copyright'></p>
-<textarea id='ben'>S a m p l e</textarea><p>text to display seperate each letter with a space</p>
-<textarea id='norm'>black</textarea><p>normal colour</p>
-<textarea id='hl'>yellow</textarea><p>highlight colour</p>
-<canvas id='gameCanvas' width='900' height='150'></canvas>
+<style type="text/css">
+.auto-style1 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.auto-style2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.auto-style3 {
+	margin-top: 3px;
+}
+</style>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<table>
+<tr>
+	<th><textarea style='auto-style1' id='ben'>S a m p l e</textarea></th>
+	<th><textarea style='auto-style1' id='norm'>black</textarea></th>
+	<th><textarea style='auto-style1' id='hl'>yellow</textarea></th>
+</tr>
+<tr>
+	<th><p style='auto-style1'>Text to display seperate each letter with a space</p></th>
+	<th><p style='auto-style1'>Normal colour</p></th>
+	<th><p style='auto-style1'>Highlight colour</p></th>
+</tr>
+</table>
+<canvas id='gameCanvas' width='900' height='150'style='auto-style1'>unsupported browser</canvas>
 <script>
 var FPS = 5;//CHANGE TO SPEED UP OR SLOW DOWN ANIMATION
 var text = "S A M P L E";//TEXT YOU WANT TO ANIAMTE SEPERATE EACH LETTER WITH A SPACE;
