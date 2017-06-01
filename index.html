@@ -10,15 +10,15 @@
 <h3><a href="https://djpiper28.github.io/pong.html" target="_blank">Pong</a></h3>
 <h3><a href="https://djpiper28.github.io/tank%20trouble%20thing.html" target="_blank">Tank Trouble</a></h3>
 <h3><a href="https://djpiper28.github.io/ball%20collecter.html" target="_blank">Ball Collecter</a></h3>
-<p><strong>Copyright</strong> (C) Danny Piper 2017. Danny is the owner of the github account and all content here.</p>
+<p><strong><b>Copyright</b></strong> (C) Danny Piper 2017. Danny is the owner of the github account and all content here.</p>
 <script>// <![CDATA[
 var FPS = 60;
-var circlex = [450,250,50,650,850];
-var circley = [25,25,25,25,25];
-var speedx = [7,-5,6,-5,8];
-var speedy = [5,6,7,-8,4];
+var circlex = [450,250,50,650,850,0,1150];
+var circley = [25,25,25,25,25,25,25];
+var speedx = [7,-5,6,-5,8,-6,-5];
+var speedy = [5,6,7,-8,4,3,5];
 var randomcolour;
-var randomcolours = ['white','red','yellow','green','blue'];
+var randomcolours = ['white','red','yellow','green','blue','orange','pink'];
 var tau = Math.PI*2;
 window.onload = function(){
 	console.log("Webpage loaded");
@@ -29,7 +29,7 @@ window.onload = function(){
 }
 function generateColour(){
 	i=0;
-	while(i<5){
+	while(i<7){
 		rrandomcolour();
 		randomcolours[i] = randomcolour;
 		i = i + 1;
@@ -62,7 +62,7 @@ function rrandomcolour(){
 function drawEverything(){
 	draw(0,0,canvas.width,canvas.height,'#323232')
 	i = 0;
-	while(i<5){
+	while(i<7){
 		circle(circlex[i], circley[i] , 10 , randomcolours[i]);
 		circlex[i] = circlex[i] + speedx[i];
 		circley[i] = circley[i] + speedy[i];
