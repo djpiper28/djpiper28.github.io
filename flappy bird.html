@@ -2,13 +2,20 @@
 <html>
 <head>
 	<title>Flappy Bird</title>
+	<style type="text/css">
+.auto-style1 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
 </head>
 <body>
-<h1>Retarded Flappy Bird Game</h1>
-<p>Is very retarded and simple. Below is the bar speed box, 10 is the standard if the value is over 800 it will break the game.</p>
-<h3><a href="https://djpiper28.github.io/index.html" target="_blank">Home</a></h3>
-<textarea id="textbox">10</textarea>
-<canvas id="gameCanvas" width="800" height="650"></canvas>
+<h1 class="auto-style1">Retarded Flappy Bird Game</h1>
+<p class="auto-style1">Is very retarded and simple. Below is the bar speed box, 10 is the standard if the value is over 800 it will break the game.</p>
+<h4 class="auto-style1"><a href="https://djpiper28.github.io/index.html" target="_blank">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<textarea id="textbox" class="auto-style1" cols="20" name="S1" rows="1">10</textarea></h4>
+&nbsp;<canvas id="gameCanvas" width="800" height="650" class="auto-style1"></canvas>
+
+<span class="auto-style1">
 
 <script>
 var canvas;
@@ -301,12 +308,13 @@ window.onload = function(){
 }
 console.log("Code started")
 </script>
-<p>On the technical side of this game it runs at 30fps and works by drawing coloured shapes each frame. 
+</span>
+<p class="auto-style1">On the technical side of this game it runs at 30fps and works by drawing coloured shapes each frame. 
 When the player hits the top the Y-axis is limited so he can't go any higher giving an illusion of an 
 invisible wall, the collisions with the poles are calculated by working out if the X-axis of the poles
 is close enough to colide with the 'bird' and then checks if the bird's Y-axis is within a pole. The 
 poles are in a group of 5 the height is randomly generated to closest 100 and rendered. No collision 
 meshes or boxes are used.</p>
 </body>
-<p>Copyright (C) Danny Piper 2017
+<p class="auto-style1">Copyright (C) Danny Piper 2017
 </html>

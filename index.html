@@ -1,17 +1,40 @@
-<p>Danny's Website</p>
-<p>djpiper28.github.io</p>
-<p><img src="https://djpiper28.github.io/title_image.png" alt="Danny Piper's Website" width="500" height="150" /></p>
-<canvas id="gameCanvas" width="1425" height="50"></canvas>
-<h1>My Projects:</h1>
-<h3>Here are many of my projects that have some use. I will update or add things at times when I want to.</h3>
-<p>Lots of warning boxes - <a href="https://djpiper28.github.io/wow.html" target="_blank">Click Here</a></p>
-<h2>Games</h2>
-<h3><a href="https://djpiper28.github.io/flappy%20bird.html" target="_blank">Flappy bird</a></h3>
-<h3><a href="https://djpiper28.github.io/pong.html" target="_blank">Pong</a></h3>
-<h3><a href="https://djpiper28.github.io/tank%20trouble%20thing.html" target="_blank">Tank Trouble</a></h3>
-<h3><a href="https://djpiper28.github.io/ball%20collecter.html" target="_blank">Ball Collecter</a></h3>
-<p><strong><b>Copyright</b></strong> (C) Danny Piper 2017. Danny is the owner of the github account and all content here.</p>
-<script>// <![CDATA[
+
+<head>
+<style type="text/css">
+.auto-style1 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.auto-style2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.auto-style3 {
+	margin-top: 3px;
+}
+</style>
+</head>
+
+<form id="form1" runat="server">
+	<h2 class="auto-style1">Danny's Website</h2>
+<h4 class="auto-style1">https://djpiper28.github.io</h4>
+<p>
+<img src="https://djpiper28.github.io/title_image.png" alt="Danny Piper's Website" width="500" height="150" class="auto-style1" /></p>
+<canvas id="gameCanvas" width="1425" height="50" class="auto-style1"></canvas>
+<h1 class="auto-style1">All Projects:</h1>
+<h3 class="auto-style1">Here are many of my projects that have some use. I will update or add things at times when I want to.</h3>
+<p class="auto-style1">Lots of warning boxes - <a href="https://djpiper28.github.io/wow.html" target="_blank">Click Here</a></p>
+<h2 class="auto-style1">Games
+<asp:Table id="Table1" runat="server" Height="60px" Width="900px" CssClass="auto-style3">
+	<asp:TableRow runat="server">
+		<asp:TableCell runat="server"><h3 class="auto-style1"><a href="https://djpiper28.github.io/flappy%20bird.html" target="_blank">Flappy bird</a></h3></asp:TableCell>
+		<asp:TableCell runat="server"><h3 class="auto-style1"><a href="https://djpiper28.github.io/pong.html" target="_blank">Pong</a></h3></asp:TableCell>
+		<asp:TableCell runat="server"><h3 class="auto-style1"><a href="https://djpiper28.github.io/tank%20trouble%20thing.html" target="_blank">Tank Trouble</a></h3></asp:TableCell>
+		<asp:TableCell runat="server"><h3 class="auto-style1"><a href="https://djpiper28.github.io/ball%20collecter.html" target="_blank">Ball Collecter</a></h3></asp:TableCell>
+	</asp:TableRow>
+</asp:Table>
+	</h2>
+<p><span class="auto-style2"><strong>Copyright</strong></span><span class="auto-style1"> (C) Danny Piper 2017. Danny is the owner of the github account and all content here.</span></p>
+<script>
 var FPS = 60;
 var circlex = [450,250,50,650,850,0,1150];
 var circley = [25,25,25,25,25,25,25];
@@ -98,4 +121,5 @@ function draw(x,y,width,height,colour){
 	canvasContext.fillStyle = colour;
 	canvasContext.fillRect(x,y,width,height);
 }
-// ]]></script>
+</script>
+</form>
