@@ -1,0 +1,62 @@
+<div>
+<p id='copyright'></p>
+<textarea id='ben'>S a m p l e</textarea>
+<canvas id='gameCanvas' width='900' height='150'></canvas>
+<script>
+var FPS = 5;//CHANGE TO SPEED UP OR SLOW DOWN ANIMATION
+var text = "S A M P L E";//TEXT YOU WANT TO ANIAMTE SEPERATE EACH LETTER WITH A SPACE;
+var hl = 'yellow';//CHANGE TO YOUR HIGHLIGHT COLOUR
+var normcolour = 'black';//CHANGE TP YOU COLOUR WHEN TEXT ISN'T HIGHLIGHTED
+var text = text.split(' ');
+var length = text.length;
+var a = 0;
+var az = normcolour;
+console.log(text[0],text,length);
+function drawEverything(){
+	text = document.getElementById('ben').value;
+	text = text.split(' ');
+	length = text.length;
+	draw(0,0,canvas.width, canvas.height,'white');//CHANGE WHITE TO WHAT EVER YOU WANT THE BACKGROUND COLOUR TO BE
+	i = 0;
+	//console.log('frame')
+	while(i<length){
+		if(a==i){
+			az = hl;
+			//console.log('special')
+		} else{
+			az = normcolour;
+			//console.log('normal')
+		}
+		textt(text[i],'24px Hobo STD',5+(24*i),75,az);//CHANGE Hobo STD to your font
+		//console.log(i,text[i],a,az)
+		i = i + 1;
+	}
+	a = a + 1;
+	if(a>=length-1){
+		a = 0;
+	}
+}
+function circle(x,y,radius,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.beginPath();
+	canvasContext.arc(x,y,radius,0,tau,true)
+	canvasContext.fill();
+}
+function textt(textt,sizefont,x,y,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.textAlign  = 'centre';
+	canvasContext.font = sizefont;
+	canvasContext.fillText(textt,x,y);
+}
+function draw(x,y,width,height,colour){
+	canvasContext.fillStyle = colour;
+	canvasContext.fillRect(x,y,width,height);
+}
+window.onload = function(){
+	console.log("Webpage loaded");
+	canvas = document.getElementById('gameCanvas');
+	canvasContext= canvas.getContext("2d");
+	setInterval(drawEverything,1000/FPS);
+}
+</script>
+</div>
