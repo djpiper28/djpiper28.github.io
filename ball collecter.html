@@ -76,7 +76,7 @@ function rrandomcolour(){
 }
 function drawEverything(){
 	if(z<900){
-		draw(0,0,800,650,'black')
+		draw(0,0,800,650,'#323232')
 		i = 0;
 		console.log('frame')
 		while(i<ballx.length&&i<50){
@@ -106,10 +106,10 @@ function drawEverything(){
 		if(playerx>=700){
 			playerx = 700;
 		}
-		if(ballx.length<75){
+		if(ballx.length<50){
 			ballreset(ballx.length);
 		}
-		if(ballx.length<30){
+		if(ballx.length<20){
 			ballreset(ballx.length);
 			ballreset(ballx.length+1);
 			ballreset(ballx.length+2);

@@ -35,14 +35,19 @@ function dead(){
 	console.log('dead')
 }
 function drawEverything(){
-	draw(0,0,800,650,'black');
+	if(playery<=0){
+		playery = 0;
+	} 
+	if(playery>=550){
+		playery = 550;
+	} 
+	draw(0,0,800,650,'#323232');
 	draw(397.5,0,5,75,'white');
 	draw(397.5,110,5,75,'white');
 	draw(397.5,220,5,75,'white');
 	draw(397.5,330,5,75,'white');
 	draw(397.5,440,5,75,'white');
 	draw(397.5,550,5,75,'white');
-	
 	circle(ballx,bally,10,'white');//ball
 	draw(790,bally-50,10,100,'white');
 	text(score,'24px Hobo STD',200,50,'white')
@@ -66,7 +71,7 @@ function drawEverything(){
 	if(bally<=10){
 		ballspeedy=-ballspeedy;
 	} if(bally>=640){
-		ballspeedy=-ballspeedy;
+		ballspeedy = -ballspeedy;
 	} if(ballx<=0){
 		ballspeedx=-ballspeedx;
 		dead();
@@ -83,20 +88,11 @@ function drawEverything(){
 	} if(d==101){
 		ballreset();
 		d = d + 1;
-	} 
-	if(playery<=0){
-		playery = 0;
-	} 
-	if(playery>=550){
-		playery = 550;
-	} 
-	if(bally>=660){
+	} if(bally>=640){
 		bally = 640;
-	} 
-	if(bally<=-20){
+	} if(bally<=10){
 		bally = 10;
-	}
-	ballspeed = document.getElementById("textbox").value;
+	} 
 }
 function circle(x,y,radius,colour){
 	canvasContext.fillStyle = colour;

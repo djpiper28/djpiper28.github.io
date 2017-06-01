@@ -4,9 +4,9 @@
 	<title>Tank Trouble</title>
 </head>
 <body>
-<h1>Retarded Tank Trouble Game</h1>
+<h1 id='title'>Retarded Tank Trouble Game</h1>
 <p>Is very retarded and simple</p>
-<canvas id="gameCanvas" width="800" height="650"></canvas>
+<canvas id="gameCanvas" width="800" height="650">Update browser please</canvas>
 <script>
 var canvas;
 var canvasContexts;
@@ -189,8 +189,12 @@ function text(textt,sizefont,x,y,colour){
 	canvasContext.fillText(textt,x,y);
 }
 document.addEventListener('keydown', getPlayerInput);
+document.addEventListener('mousemove', playerThree);
+function playerThree(){
+	
+}
 function drawEverything(){
-	draw(0,0,canvas.width,canvas.height,'black');//fills canvas from 0,0 to the canvas's height
+	draw(0,0,canvas.width,canvas.height,'#323232');//fills canvas from 0,0 to the canvas's height
 	console.log("drawn everything");
 	//draws players
 	draw(pox,poy,25,25,'red');

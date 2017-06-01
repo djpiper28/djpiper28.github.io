@@ -6,6 +6,7 @@
 <body>
 <h1>Retarded Flappy Bird Game</h1>
 <p>Is very retarded and simple. Below is the bar speed box, 10 is the standard if the value is over 800 it will break the game.</p>
+<h3><a href="https://djpiper28.github.io/index.html" target="_blank">Home</a></h3>
 <textarea id="textbox">10</textarea>
 <canvas id="gameCanvas" width="800" height="650"></canvas>
 
@@ -124,9 +125,7 @@ function text(textt,sizefont,x,y,colour){
 	canvasContext.fillText(textt,x,y);
 }
 function drawEverything(){
-	
 	birdy = birdy + fallspeed
-	
 	draw(0,0,canvas.width,canvas.height,'blue')
 	draw(0,600,canvas.width,canvas.height,'green')
 	circle(800,0,150,'yellow')
@@ -143,7 +142,6 @@ function drawEverything(){
 	draw(bar+450,0,50,bar4y-300,'green')
 	draw(bar+600,bar5y,50,800,'green')
 	draw(bar+600,0,50,bar5y-300,'green')
-	
 	draw(bbar,bbar1y,50,800,'green')
 	draw(bbar,0,50,bbar1y-300,'green')
 	draw(bbar+150,bbar2y,50,800,'green')
@@ -277,7 +275,6 @@ function drawEverything(){
 				} 
 			}
 		}
-		 
 	}
 	bar = bar - barspeed;
 	bbar = bbar -barspeed;
@@ -292,7 +289,7 @@ function drawEverything(){
 	if(birdy>=600){
 		dead();
 	}
-	barspeed = document.getElementById("textbox").value;
+	barspeed = document.getElementById('textbox').value;
 }
 window.onload = function(){
 	birdy = 400;
