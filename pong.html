@@ -89,12 +89,31 @@ var i;
 var playery = 275;
 var x;
 var y;
+
+function calculateMousePos(evt) {
+	var rect = canvas.getBoundingClientRect();
+	var root = document.documentElement;
+	var mouseX = evt.clientX - rect.left - root.scrollLeft;
+	var mouseY = evt.clientY - rect.top - root.scrollTop;
+	return {
+		x:mouseX,
+		y:mouseY
+	};
+}
+
+
+
 window.onload = function(){
 	console.log("Webpage loaded");
 	ballreset();
 	score = 0;
 	canvas = document.getElementById('gameCanvas');
 	canvasContext= canvas.getContext("2d");
+	canvas.addEventListener('mousemove',
+	function(evt) {
+				var mousePos = calculateMousePos(evt);
+				playery = mousePos.y - 50;
+		});
 	setInterval(drawEverything,1000/FPS);
 }
 function ballreset(){
