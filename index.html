@@ -51,6 +51,7 @@ tr:nth-child(even) {
   
 }
 </style>
+<script src="jquery-3.2.1.min.js"></script>
 </head>
 
 <form id="form1" runat="server">
@@ -107,7 +108,7 @@ I have several games and things that are free to use, most of them are made for 
     enable_page_level_ads: true
   });
 </script>
-<button onclick="alert('So sad :-(');">An ad below is nasty</button>
+<button onclick="$(iframe).hide();" id='adbuttonnasty'>An ad below is nasty</button>
 <p> 
  </p><table  width="100%"><tr>
 <th><iframe data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe></th>
@@ -204,4 +205,11 @@ function draw(x,y,width,height,colour){
 	canvasContext.fillStyle = colour;
 	canvasContext.fillRect(x,y,width,height);
 }
+</script><script>
+//jquery hide ads
+$(document).ready(function(){
+    $("#adbuttonnasty").click(function(){
+        $(iframe).hide();
+    });
+});
 </script>
