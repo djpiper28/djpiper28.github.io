@@ -1,4 +1,6 @@
 <body><div>
+<title>Proto 1 Dev Page</title>
+<p id='text' name='text'>test</p>
 <canvas id='gameCanvas' width='800' height='650'>Outdated browser</canvas>
 <script>
 var x;
@@ -7,7 +9,8 @@ var rect;
 var root;
 var mouseX;
 var mouseY;
-var FPS = 60;
+var FPS = 30;
+var xx;
 function randomColour(){
 	x = Math.floor((Math.random() * 10) + 0);
 	if(x==0){
@@ -63,14 +66,23 @@ function draw(x,y,width,height,colour){
 	canvasContext.fillRect(x,y,width,height);
 }
 function input(){
-	var x = event.keyCode;
-	console.log('space was pressed',x);
+	var xx = event.keyCode;
+	console.log(xx,' was pressed');
+	document.getElementById('text').value = xx;
+	document.getElementById('text').innerHTML = xx;
 }
 function mouse(){
 	console.log('mouse')
 }
 function drawEverything(){
-	//code here
+	xx = document.getElementById('text').value;
+	draw(0,0,canvas.width,canvas.height,'black');
+	circle(x,y,10,'green');
+	text(xx,'24px Hobo STD',x+50,y);
+	text(y,'24px Hobo STD',x,y+50);
+	text('y','24px Hobo STD',x,y + 100);
+	text(x,'24px Hobo STD',x,y-50);
+	text('x','24px Hobo STD',x,y - 100);
 }
 window.onload = function(){
 	console.log("Webpage loaded");
@@ -81,8 +93,8 @@ window.onload = function(){
 	canvas.addEventListener('mousemove',
 	function(evt) {
 				var mousePos = calculateMousePos(evt);
-				x = mousePos.y;
-				y = mousePos.x;
+				y = mousePos.y;
+				x = mousePos.x;
 		});
 	setInterval(drawEverything,1000/FPS);
 }
