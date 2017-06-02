@@ -7,6 +7,34 @@ var rect;
 var root;
 var mouseX;
 var mouseY;
+var FPS = 30;
+function randomColour(){
+	x = Math.floor((Math.random() * 10) + 0);
+	if(x==0){
+		randomcolour = 'green'
+	} else if(x==1){
+		randomcolour = 'red'
+	} else if(x==3){
+		randomcolour = 'white'
+	} else if(x==4){
+		randomcolour = 'yellow'
+	} else if(x==5){
+		randomcolour = 'pink'
+	} else if(x==6){
+		randomcolour = 'blue'
+	} else if(x==7){
+		randomcolour = 'orange'
+	} else if(x==8){
+		randomcolour = 'purple'
+	} else if(x==9){
+		randomcolour = 'brown'
+	} else if(x==10){
+		randomcolour = 'orange'
+	} 
+	return{
+		colour:randomolour
+	};
+}
 function calculateMousePos(evt) {
 	rect = canvas.getBoundingClientRect();
 	root = document.documentElement;
