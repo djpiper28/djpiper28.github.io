@@ -53,7 +53,6 @@ tr:nth-child(even) {
 </style>
 <script src="jquery-3.2.1.min.js"></script>
 </head>
-
 <form id="form1" runat="server">
 	<h2 class="auto-style1">Danny's Website</h2>
 <h4 class="auto-style1">https://djpiper28.github.io</h4>
@@ -99,8 +98,7 @@ I have several games and things that are free to use, most of them are made for 
      data-ad-format="auto"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div>
-<div width='420' height='500'>
+</script>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
@@ -108,17 +106,95 @@ I have several games and things that are free to use, most of them are made for 
     enable_page_level_ads: true
   });
 </script>
-<button onclick="$(iframe).hide();" id='adbuttonnasty'>An ad below is nasty</button>
+<button onclick="hideIframes" id='adbuttonnasty'>An ad below is nasty</button>
 <p> 
  </p><table  width="100%"><tr>
-<th><iframe data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe></th>
+<th><iframe class='iframe' data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe></th>
 </tr></table>
 </div>
 </body>
-
-
 <script>
-
+var FPS = 60; 
+var circlex = [450,250,50,650,850,0,1150,450,250,50,650,850,0,1150,450,250,50,650,850,0,1150,450,250,50,650,850,0,1150]; 
+var circley = [25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25]; 
+var speedx = [7,-5,6,-5,8,-6,-5,5,6,7,-8,4,3,5,7,-5,6,-5,8,-6,-5,5,6,7,-8,4,3,5]; 
+var speedy = [5,6,7,-8,4,3,5,7,-5,6,-5,8,-6,-5,5,6,7,-8,4,3,5,7,-5,6,-5,8,-6,-5]; 
+var randomcolour; 
+var randomcolours = ['white','red','yellow','green','blue','orange','pink']; 
+var tau = Math.PI*2; 
+window.onload = function(){
+	console.log("Webpage loaded"); 
+	canvas = document.getElementById('gameCanvas'); 
+	generateColour(); canvasContext= canvas.getContext("2d"); 
+	setInterval(drawEverything,1000/FPS); 
+} 
+function generateColour(){
+	i=0; 
+	while(i<10){ 
+	rrandomcolour(); 
+	randomcolours[i] = randomcolour; 
+	i = i + 1; 
+	} 
+} 
+function rrandomcolour(){
+	x = Math.floor((Math.random() * 10) + 0); 
+	if(x==0){ 
+		randomcolour = 'green' 
+	} else if(x==1){ 
+		randomcolour = 'red' 
+	} else if(x==3){ 
+		randomcolour = 'white' 
+	} else if(x==4){ 
+		randomcolour = 'yellow' 
+	} else if(x==5){
+		randomcolour = 'pink' 
+	} else if(x==6){ 
+		randomcolour = 'blue' 
+	} else if(x==7){ 
+		randomcolour = 'orange' 
+	} else if(x==8){ 
+		randomcolour = 'purple' 
+	} else if(x==9){ 
+		randomcolour = 'brown' 
+	} else if(x==10){ 
+		randomcolour = 'orange' 
+	} 
+} 
+function drawEverything(){ 
+draw(0,0,canvas.width,canvas.height,'white');
+i = 0;
+	while(i<10){ 
+		circle(circlex[i], circley[i] , 10 , randomcolours[i]); 
+		circlex[i] = circlex[i] + speedx[i]; 
+		circley[i] = circley[i] + speedy[i]; 
+		if(circlex[i]<=0){ 
+			circlex[i] = 0; 
+			speedx[i] = -speedx[i]; 
+		} if(circlex[i]>=canvas.width){
+			circlex[i] = canvas.width; speedx[i] = -speedx[i];
+		} if(circley[i]<=0){ 
+			circley[i] = 0; speedy[i] = -speedy[i];
+		} if(circley[i]>=canvas.height){
+			circley[i] = canvas.height; speedy[i] = -speedy[i]; 
+		} i = i + 1;
+	} 
+} 
+function circle(x,y,radius,colour){ 
+	canvasContext.fillStyle = colour; 
+	canvasContext.beginPath(); 
+	canvasContext.arc(x,y,radius,0,tau,true);
+	canvasContext.fill(); 
+} 
+function text(textt,sizefont,x,y,colour){
+	canvasContext.fillStyle = colour; 
+	canvasContext.textAlign = 'centre'; 
+	canvasContext.font = sizefont; 
+	canvasContext.fillText(textt,x,y);
+} function draw(x,y,width,height,colour){
+	canvasContext.fillStyle = colour; 
+	canvasContext.fillRect(x,y,width,height); 
+}</script>
+<script> 
 var FPS = 60;
 var circlex = [450,250,50,650,850,0,1150,450,250,50,650,850,0,1150,450,250,50,650,850,0,1150,450,250,50,650,850,0,1150];
 var circley = [25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25];
@@ -212,4 +288,7 @@ $(document).ready(function(){
         $(iframe).hide();
     });
 });
+function hideIframes(){
+	$(".iframe").hide();
+}
 </script>
