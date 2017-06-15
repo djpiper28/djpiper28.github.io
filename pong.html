@@ -141,9 +141,9 @@ function drawEverything(){
 	}//Lines in the centre
 	circle(ballx,bally,10,'white');//ball
 	if(bally<=paddleTwoY){
-		paddleTwoY = paddleTwoY - 15;
+		paddleTwoY = paddleTwoY - 20;
 	} if(bally>=paddleTwoY){
-		paddleTwoY = paddleTwoY + 15;
+		paddleTwoY = paddleTwoY + 20;
 	}
 	draw(790,paddleTwoY+50,10,100,'white');
 	text(score,'24px Hobo STD',200,50,'white')
@@ -172,6 +172,17 @@ function drawEverything(){
 				} if(bally <= playery+40){
 					if(bally >= playery+60){
 						ballspeedy = 0;
+					}
+				} if(ballx >= 640){
+					if(bally>=paddleTwoY){
+						if(bally<=paddleTwoY-100){
+							if(ballspeedy<=15){
+								ballspeedy = ballspeedy + 5;
+							} 
+							if(ballspeedy>=-15){
+								ballspeedy = ballspeedy - 5;
+							}
+						}
 					}
 				}
 			} console.log(ballx,bally,playery);
