@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<img id="1" width="0" height="0" src="image1.jpg" alt="The Scream">
+<img id="2" width="0" height="0" src="image2.jpg" alt="The Scream">
+<img id="3" width="0" height="0" src="image3.jpg" alt="The Scream">
+<img id="4" width="0" height="0" src="image4.jpg" alt="The Scream">
+<img id="5" width="0" height="0" src="image5.jpg" alt="The Scream">
+
+<canvas id="myCanvas" width="800" height="650" >
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script>
+var x = 0;
+var y = 0;
+var img1 = document.getElementById("1");
+var img2 = document.getElementById("2");
+var img3 = document.getElementById("3");
+var img4 = document.getElementById("4");
+var img5 = document.getElementById("5");
+var img = img1;
+var FPS = 30;
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+function drawEverything(){
+    image(img,x,y);
+    x = x + 1;
+    y = y + 1;
+    if(x>=800){
+    	x = 0;
+        changeImage();
+    } if(y>=650){
+    	y = 0;
+        changeImage();
+    }
+}
+function changeImage(){
+    if(img==img1){
+        img = img2;
+    } else{ if(img==img2){
+        img = img3;
+        } else{
+            if(img==img4){
+                img = img5;
+            } else{
+                if(img==img5){
+                    img = img1;
+                }
+            }
+        }
+    }
+}
+function image(id,x,y){
+    ctx.drawImage(id, x, y);
+}
+window.onload = function() {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    setInterval(drawEverything, 1000/FPS);
+}
+</script>
+
+<p><strong>Note:</strong> The canvas tag is not supported in Internet 
+Explorer 8 and earlier versions.</p>
+
+</body>
+</html>
