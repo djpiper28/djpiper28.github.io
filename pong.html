@@ -141,8 +141,9 @@ function drawEverything(){
 	}//Lines in the centre
 	paddleTwoY = bally
 	draw(790,paddleTwoY+50,10,100,'white');
-	text(score,'24px Hobo STD',200,50,'white')
-	draw(0,playery,10,100)
+	text(score,'24px Hobo STD',200,50,'white');
+	draw(0,playery,10,100);
+	circle(ballx,bally,20,'white');
 	ballx = ballx + ballspeedx;
 	bally = bally + ballspeedy;
 	console.log('frame');
