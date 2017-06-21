@@ -90,7 +90,14 @@ var shieldOn = false;
 var True = true;
 var shieldhasbeenon = false;
 var c = 1000;
+var corbrep = 0;
+var mayrep = 0;
+var level = 1;
+var levelTwoTimer = 0;
 var cwin = false;
+var mayclick = false;
+var corbclick = false;
+var q = ["We should privatise the NHS","We should eat Jeremy Hunt","There are too many immigrants - kick them out","Hard brexit","Soft brexit","No brexit","Legalise fox hunter hunting","We should just sit down and ask the French","We should build a wall for Gibralter","Ban github"];//10 questions
 function start(){
 	var corbynX = 0;
 	var corbynY = 0;
@@ -112,9 +119,15 @@ function dead(string){
 		mayY = 630;
 		deadCorbz = true;
 		win = true;
-	} if(string='corbyn'){
-		c = 1;
-		cwin = true;
+		mayrep = mayrep + 10;
+		level = level + 1;
+	}else{ 
+		if(string='corbyn'){
+			c = 1;
+			cwin = true;
+			corbrep = corbrep + 10;
+			level = level + 1;
+		}
 	}
 	start();
 	corbynX = 0;
@@ -155,7 +168,7 @@ function playerWallCollisions(){
 		mayY=mayY-10;
 	}
 }
-function drawEverything(){ 
+function levelOne(){
 	draw(0,0,800,650,'black');
 	draw(corbynX,corbynY,10,10,'red');
 	if(shieldOn==true){
@@ -218,6 +231,74 @@ function drawEverything(){
 	if(checkMC()==true){
 		dead('may');
 		win = true;
+	}
+}
+function levelTwo(){
+	draw(0,0,800,650,'black');
+	if(levelTwoTimer<=FPS*15){
+		levelTwoTimer = levelTwoTimer + 1;
+		text("Corbyn player spam space to get votes","12px Arial",0,50,'red');
+		text("May player spam the mouse to get votes","12px Arial",0,150,'blue');
+	} else{
+		if(corbrep>mayrep){
+			dead('corbyn');
+		} else{
+			dead('may');
+		}
+	}
+}
+function levelThree(){
+	draw(0,0,800,650,'black');
+	text("Corbyn player press space if they like that policy, May player just clicks","24px Arial",400,200,'white');
+	text(q[i],"24px Arial",400,300,'white');
+	if(q>=10){
+		var random = Math.round(Math.random());]
+		if(random>=0.5){
+			random='may';
+		}
+		else{
+			random='corbyn';
+		}
+		dead(random);
+	}
+	if(mayclick==true){
+		q++
+		mayclick==false;
+		mayrep++
+	}
+	if(corbclick==true){
+		q++
+		corbclick=false;
+		corbrep++
+	}
+}
+function levelFour(){
+	draw(0,0,800,650,'black');
+	mayrep = mayrep;
+	corbrep = corbrep;
+	var total = corbrep + mayrep;
+	var corbperc = Math.round((corbrep/total)*100);
+	var mayperc = Math.round((mayrep/total)*100);
+	draw(0,0,corbperc*8,50,'red');
+	draw(corbperc*8,0,mayperc*8,50,'blue');
+	draw(corbperc+mayperc,800,50,'yellow');
+	if(corbperc*8+mayperc*8!=800){
+		console.log("error!");
+	}
+	var maytext = mayperc + "% with " + mayrep + " votes";
+	var corbtext = corbperc + "% with " + corbrep + " votes";
+	text(corbtext, "12px Arial", 50, 50, 'white');
+	text(maytext, "12px Arial", 650, 50, 'white');
+}
+function drawEverything(){ 
+	if(level == 1){
+		levelOne();
+	} if(level == 2){
+		levelTwo();
+	} if(level == 3){
+		levelThree();
+	} if(level == 4){ 
+		levelFour();
 	}
 } 
 function checkCC(){
@@ -335,15 +416,29 @@ function input(){
 		corbynX=corbynX+15;
 	}
 	if(x==32&&shieldOn!=true){
-		if(shieldhasbeenon==false){
+		if(shieldhasbeenon==false&&level==1){
 			console.log('space - corbz shield is active!!!!');
 			shieldOn=true;
 			shieldhasbeenon=true;
 		}
 	}
+	if(x==32&&level==2){
+		corbrep = corbrep + 1;
+		console.log('corb voted for');
+	}
+	if(level==3&&x==32){
+		console.log('corb got a policy');
+		corbclick = true;
+	}
 } 
 function mouse(){ 
  	console.log('mouse') 
+ 	if(level==2){
+ 		mayrep = mayrep + 1;
+ 	}
+ 	if(level==3){
+ 		mayclick = true;
+ 	}
 } 
 window.onload = function(){ 
 	may = document.getElementById("1");//255x255
@@ -365,5 +460,4 @@ window.onload = function(){
 } 
 
 </script>
-<p class="auto-style1">pre-orders: Thomas Gorman, Meiszko, William Samms</p>
-<a href="https://djpiper28.github.io/pre-order.html" class="auto-style1">Testers: Meiszko v0.1.2</a>
+<p class="auto-style1">Backstory: Another Snap Election...</p>
