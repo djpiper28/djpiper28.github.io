@@ -57,14 +57,13 @@ button {
 </div>
 <meta name="djpiper28.github.io" content="CallofCorbyn">
 </th>
-</tr></table>
-<h3 class="auto-style1">A master piece of a game - IGN 2087, 10/10 - Thomas Gorman</h3>
-<table><th>
-<tr><img id="corbyn" width="0" height="0" src="corbyn.png" alt="Left"></img></tr>
-<tr><img id="may" width="0" height="0" scr="may.png" alt="Right jokes"></img></tr>
-<tr><img id="corbynwin" width="0" height="0" scr="corbynwin.png" alt="Lefter than Satlin"></img></tr>
-<tr><img id="maywin" width="0" height="0" scr="maynwin.png" alt="As right as the next right"></img></tr>
+</tr></table><table><th>
+<tr><img id="may" width="0" height="0" scr="https://djpiper28.github.io/CallOfCorbyn/may.png"></img></tr>
+<tr><img id="corbyn" width="0" height="0" src="https://djpiper28.github.io/CallOfCorbyn/corbyn.png"></img></tr>
+<tr><img id="corbynwin" width="0" height="0" scr="https://djpiper28.github.io/CallOfCorbyn/corbynwin.png"></img></tr>
+<tr><img id="maywin" width="0" height="0" scr="https://djpiper28.github.io/CallOfCorbyn/maywin.png"></img></tr>
 </th></table>
+<h3 class="auto-style1">A master piece of a game - IGN 2087, 10/10 - Thomas Gorman</h3>
 <script>
 var x; 
 var y; 
@@ -161,7 +160,7 @@ function drawEverything(){
 	draw(0,0,800,650,'black');
 	draw(corbynX,corbynY,10,10,'red');
 	if(shieldOn==true){
-		circle(corbynX+112.5,corbynY+112.5,125,'blue');
+		circle(corbynX+112.5,corbynY+112.5,126,'blue');
 	}
 	image(corbyn, corbynX,corbynY);
 	draw(mayX,mayY,10,10,'blue');
@@ -203,7 +202,7 @@ function drawEverything(){
 		image(corbynWin, corbynX,corbynY);
 	}
 	playerWallCollisions();
-	if(i>=FPS*100){
+	if(i>=FPS*30){
 		dead(corbyn);
 	}
 	if(mayX>=780){
@@ -364,4 +363,4 @@ window.onload = function(){
 
 </script>
 <p class="auto-style1">pre-orders: Thomas Gorman, Meiszko, William Samms</p>
-<p href="https://djpiper28.github.io/pre-order.html" class="auto-style1">Testers: Meiszko v0.1.2</p>
+<a href="https://djpiper28.github.io/pre-order.html" class="auto-style1">Testers: Meiszko v0.1.2</a>
