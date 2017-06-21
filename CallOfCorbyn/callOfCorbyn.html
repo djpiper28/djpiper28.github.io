@@ -91,6 +91,8 @@ var d = 0;
 var shieldOn = false;
 var True = true;
 var shieldhasbeenon = false;
+var c = 0;
+var cwin = 0;
 function start(){
 	var corbynX = 0;
 	var corbynY = 0;
@@ -103,12 +105,17 @@ function start(){
 	var shieldhasbeenon = false;
 }
 function dead(string){
+	if(string='may'){
+		d = 1;
+		mayX = 700;
+		mayY = 630;
+		deadCorbz = true;
+		win = true;
+	} if(string='corbyn'){
+		c = 1;
+		cwin = true;
+	}
 	start();
-	d = 1;
-	mayX = 700;
-	mayY = 630;
-	deadCorbz = true;
-	win = true;
 	corbynX = 0;
 	corbynY = 0;
 	mayX = 500;
@@ -171,6 +178,23 @@ function drawEverything(){
 		shieldOn = false;
 		shieldhasbeenon = false;
 	}
+	if(c<=100){
+		draw(0,0,800,650,'black');
+		text('Corbyn rekt May - Don\'t turn left', "24px Hobo Std", 350, 325,'white');
+		start();
+		mayY = 630;
+		mayX= 780;
+		c=c+1;
+		corbynX = 0;
+		corbynY = 0;
+		mayX = 500;
+		mayY = 500;
+		i = 0;
+		win = false;
+		deadCorbz = false;
+		shieldOn = false;
+		shieldhasbeenon = false;
+	}
 	playerWallCollisions();
 	if(i>=FPS*100){
 		dead(corbyn);
@@ -183,7 +207,7 @@ function drawEverything(){
 	}
 	i = i + 1;
 	if(checkCC()==true){
-		dead('corbyn');
+		dead('may');
 		deadCorbz = true;
 	}
 	if(checkMC()==true){
