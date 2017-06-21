@@ -87,12 +87,12 @@ var mayY = 500;
 var i = 0;
 var win = false;
 var deadCorbz = false;
-var d = 0;
+var d = 1000;
 var shieldOn = false;
 var True = true;
 var shieldhasbeenon = false;
-var c = 0;
-var cwin = 0;
+var c = 1000;
+var cwin = false;
 function start(){
 	var corbynX = 0;
 	var corbynY = 0;
@@ -100,9 +100,12 @@ function start(){
 	var mayY = 500;
 	var i = 0;
 	var win = false;
+	var cwin = false;
 	var deadCorbz = false;
 	var shieldOn = false;
 	var shieldhasbeenon = false;
+	var c = 1000;
+	var d = 1000;
 }
 function dead(string){
 	if(string='may'){
@@ -125,6 +128,8 @@ function dead(string){
 	deadCorbz = false;
 	shieldOn = false;
 	shieldhasbeenon = false;
+	c = 1000;
+	cwin = false;
 }
 function playerWallCollisions(){
 	if(corbynY>=630){
@@ -156,7 +161,7 @@ function drawEverything(){
 	draw(0,0,800,650,'black');
 	draw(corbynX,corbynY,10,10,'red');
 	if(shieldOn==true){
-		circle(corbynX,corbynY,300,'blue');
+		circle(corbynX-112.5,corbynY-112.5,125,'blue');
 	}
 	image(corbyn, corbynX,corbynY);
 	draw(mayX,mayY,10,10,'blue');
@@ -177,6 +182,7 @@ function drawEverything(){
 		deadCorbz = false;
 		shieldOn = false;
 		shieldhasbeenon = false;
+		image(mayWin, mayX,mayY);
 	}
 	if(c<=100){
 		draw(0,0,800,650,'black');
@@ -194,6 +200,7 @@ function drawEverything(){
 		deadCorbz = false;
 		shieldOn = false;
 		shieldhasbeenon = false;
+		image(corbynWin, corbynX,corbynY);
 	}
 	playerWallCollisions();
 	if(i>=FPS*100){
@@ -357,4 +364,4 @@ window.onload = function(){
 
 </script>
 <p class="auto-style1">pre-orders: Thomas Gorman, Meiszko, William Samms</p>
-<p href="https://djpiper28.github.io/pre-order.html" class="auto-style1">Testers: Meiszko v0.1.1</p>
+<p href="https://djpiper28.github.io/pre-order.html" class="auto-style1">Testers: Meiszko v0.1.2</p>
