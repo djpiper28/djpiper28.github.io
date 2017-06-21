@@ -139,15 +139,20 @@ function drawEverything(){
 		liney = liney + 110;
 		i = i + 1;
 	}//Lines in the centre
+<<<<<<< HEAD
 	circle(ballx,bally,10,'white');//ball
 	if(bally<=paddleTwoY){
 		paddleTwoY = paddleTwoY - 15;
 	} if(bally>=paddleTwoY){
 		paddleTwoY = paddleTwoY + 15;
 	}
+=======
+	paddleTwoY = bally
+>>>>>>> c3e956abe1385ab12419bc8563ea2339d72a45ee
 	draw(790,paddleTwoY+50,10,100,'white');
-	text(score,'24px Hobo STD',200,50,'white')
-	draw(0,playery,10,100)
+	text(score,'24px Hobo STD',200,50,'white');
+	draw(0,playery,10,100);
+	circle(ballx,bally,20,'white');
 	ballx = ballx + ballspeedx;
 	bally = bally + ballspeedy;
 	console.log('frame');

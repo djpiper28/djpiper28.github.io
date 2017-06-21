@@ -2,6 +2,7 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://www.w3schools.com/lib/w3.js"></script>
+<img if="image1" scr="https://djpiper28.github.io/gameOne/image1.png" width="0" height="0"><img/>
 <div><table><tr>
 <th><canvas id='gameCanvas' width='800' height='650'>Outdated browser</canvas></th>
 </tr></table></div>
@@ -14,6 +15,10 @@ var root;
 var mouseX;
 var mouseY;
 var FPS = 60;
+var id; //= document.getElementById("image1");
+function Image(id, x, y){	
+	canvasContext.drawImage(id, x, y);
+}
 function randomColour(){
 	x = Math.floor((Math.random() * 10) + 0);
 	if(x==0){
