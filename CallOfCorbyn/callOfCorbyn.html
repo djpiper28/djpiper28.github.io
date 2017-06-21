@@ -58,11 +58,13 @@ button {
 <meta name="djpiper28.github.io" content="CallofCorbyn">
 </th>
 </tr></table>
-<h2 class="auto-style1">A master piece of a game - IGN 2087, 10/10 - Thomas Gorman</h2>
-<img id="corbyn" width="0" height="0" src="corbyn.png" alt="Left"></img>
-<img id="may" width="0" height="0" scr="may.png" alt="Right jokes"></img>
-<img id="corbynwin" width="0" height="0" scr="corbynwin.png" alt="Lefter than Satlin"></img>
-<img id="maywin" width="0" height="0" scr="maynwin.png" alt="As right as the next right"></img>
+<h3 class="auto-style1">A master piece of a game - IGN 2087, 10/10 - Thomas Gorman</h3>
+<table><th>
+<tr><img id="corbyn" width="0" height="0" src="corbyn.png" alt="Left"></img></tr>
+<tr><img id="may" width="0" height="0" scr="may.png" alt="Right jokes"></img></tr>
+<tr><img id="corbynwin" width="0" height="0" scr="corbynwin.png" alt="Lefter than Satlin"></img></tr>
+<tr><img id="maywin" width="0" height="0" scr="maynwin.png" alt="As right as the next right"></img></tr>
+</th></table>
 <script>
 var x; 
 var y; 
@@ -86,6 +88,9 @@ var i = 0;
 var win = false;
 var deadCorbz = false;
 var d = 0;
+var shieldOn = false;
+var True = true;
+var shieldhasbeenon = false;
 function start(){
 	var corbynX = 0;
 	var corbynY = 0;
@@ -94,6 +99,8 @@ function start(){
 	var i = 0;
 	var win = false;
 	var deadCorbz = false;
+	var shieldOn = false;
+	var shieldhasbeenon = false;
 }
 function dead(string){
 	start();
@@ -117,27 +124,30 @@ function playerWallCollisions(){
 		corbynX=0;
 	}
 	if(mayX<x){
-		mayX=mayX+5;
+		mayX=mayX+10;
 	} 
 	if(mayX>x){
-		mayX=mayX-5;
+		mayX=mayX-10;
 	}
 	if(mayY<y){
-		mayY=mayY+5;
+		mayY=mayY+10;
 	} 
 	if(mayY>y){
-		mayY=mayY-5;
+		mayY=mayY-10;
 	}
 }
 function drawEverything(){ 
 	draw(0,0,800,650,'black');
 	draw(corbynX,corbynY,10,10,'red');
+	if(shieldOn==true){
+		circle(corbynX,corbynY,300,'blue');
+	}
 	image(corbyn, corbynX,corbynY);
 	draw(mayX,mayY,10,10,'blue');
 	image(may, mayX, mayY);
 	if(d<=100){
-		draw(0,0,800,650,'red');
-		text('Corbyn got rekt by May', "24px Hobo Std", 350, 325,randomColour.colour);
+		draw(0,0,800,650,'black');
+		text('Corbyn got rekt by May', "24px Hobo Std", 350, 325,'white');
 		start();
 		mayY = 630;
 		mayX= 780;
@@ -164,17 +174,41 @@ function drawEverything(){
 	}
 } 
 function checkCC(){
-	if(corbynX<=mayX&&corbynX+225>=mayX){
-		if(corbynY<=mayY&&corbynY+225>=mayY){
-			return true;
+	if(shieldOn!=true){
+		if(corbynX<=mayX&&corbynX+225>=mayX){
+			if(corbynY<=mayY&&corbynY+225>=mayY){
+				return true;
+			}
 		}
+	} else{
+		if(corbynX<=mayX&&corbynX+225>=mayX){
+			if(corbynY<=mayY&&corbynY+225>=mayY){
+				shieldOn = false;
+				mayX = mayX + 300;
+				mayY = mayY + 300;
+				return false;
+			}
+		}
+		return false;
 	}
 }
 function checkMC(){
-	if(corbynX<=mayX&&corbynX+225>=mayX){
-		if(corbynY<=mayY&&corbynY+225>=mayY){
-			return true;
+	if(shieldOn!=true){
+		if(corbynX<=mayX&&corbynX+225>=mayX){
+			if(corbynY<=mayY&&corbynY+225>=mayY){
+				return true;
+			}
 		}
+	} else{
+		if(corbynX<=mayX&&corbynX+225>=mayX){
+			if(corbynY<=mayY&&corbynY+225>=mayY){
+				shieldOn = false;
+				mayX = mayX + 300;
+				mayY = mayY + 300;
+				return false;
+			}
+		}
+		return false;
 	}
 }
 function image(id,x,y){ 
@@ -239,19 +273,26 @@ function input(){
  	console.log('space was pressed',x);
 	if(x==38){
 		console.log('up');
-		corbynY=corbynY-10;
+		corbynY=corbynY-15;
 	}
 	if(x==40){
 		console.log('down');
-		corbynY=corbynY+10;
+		corbynY=corbynY+15;
 	}
 	if(x==37){
 		console.log('left');
-		corbynX=corbynX-10;
+		corbynX=corbynX-15;
 	}
 	if(x==39){
 		console.log('right');
-		corbynX=corbynX+10;
+		corbynX=corbynX+15;
+	}
+	if(x==32&&shieldOn!=true){
+		if(shieldhasbeenon==false){
+			console.log('space - corbz shield is active!!!!');
+			shieldOn=true;
+			shieldhasbeenon=true;
+		}
 	}
 } 
 function mouse(){ 
@@ -273,7 +314,5 @@ window.onload = function(){
 } 
 
 </script>
-<h3 class="auto-style1">pre-orders<h3>
-<p class="auto-style1">Thomas Gorman, Meiszko, William Samms</p>
-<h3 href="https://djpiper28.github.io/pre-order.html" class="auto-style1">pre-order</h3>
-<p class="auto-style1">Testers: Meiszko v0.0.3</p>
+<p class="auto-style1">pre-orders: Thomas Gorman, Meiszko, William Samms</p>
+<p href="https://djpiper28.github.io/pre-order.html" class="auto-style1">Testers: Meiszko v0.1.1</p>
