@@ -131,10 +131,11 @@ function drawEverything(){
 	image(corbyn, corbynX,corbynY);
 	draw(mayX,mayY,10,10,'blue');
 	image(may, mayX, mayY);
-	if(d==1){
+	if(d<=100){
 		draw(0,0,800,650,'red');
-		text('Corbyn got rekt by May', "24px Hobo Std", 350, 325);
-		d=d+1
+		text('Corbyn got rekt by May', "24px Hobo Std", 350, 325,'white');
+		start();
+		d=d+1;
 	}
 	playerWallCollisions();
 	if(i>=FPS*100){
@@ -269,4 +270,4 @@ window.onload = function(){
 <h3 class="auto-style1">pre-orders<h3>
 <p class="auto-style1">Thomas Gorman, Meiszko, William Samms</p>
 <h3 href="https://djpiper28.github.io/pre-order.html" class="auto-style1">pre-order</h3>
-<p class="auto-style1">Testers: Meiszko v0.0.1</p>
+<p class="auto-style1">Testers: Meiszko v0.0.2</p>
