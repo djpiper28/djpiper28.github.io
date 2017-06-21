@@ -97,6 +97,7 @@ var levelTwoTimer = 0;
 var cwin = false;
 var mayclick = false;
 var corbclick = false;
+var i = 0;
 var q = ["We should privatise the NHS","We should eat Jeremy Hunt","There are too many immigrants - kick them out","Hard brexit","Soft brexit","No brexit","Legalise fox hunter hunting","We should just sit down and ask the French","We should build a wall for Gibralter","Ban github"];//10 questions
 function start(){
 	var corbynX = 0;
@@ -250,7 +251,7 @@ function levelTwo(){
 function levelThree(){
 	draw(0,0,800,650,'black');
 	text("Corbyn player press space if they like that policy, May player just clicks","24px Arial",400,200,'white');
-	text(q[i],"24px Arial",400,300,'white');
+	text(q[i],"24px Arial",300,300,'white');
 	if(q>=10){
 		var random = Math.round(Math.random());
 		if(random>=0.5){
@@ -262,12 +263,12 @@ function levelThree(){
 		dead(random);
 	}
 	if(mayclick==true){
-		q++
+		i++
 		mayclick==false;
 		mayrep++
 	}
 	if(corbclick==true){
-		q++
+		i++
 		corbclick=false;
 		corbrep++
 	}
