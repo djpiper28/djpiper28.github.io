@@ -58,10 +58,10 @@ button {
 <meta name="djpiper28.github.io" content="CallofCorbyn">
 </th>
 </tr></table><table><th>
-<tr><img id="may" width="0" height="0" scr="https://djpiper28.github.io/CallOfCorbyn/may.png"></img></tr>
-<tr><img id="corbyn" width="0" height="0" src="https://djpiper28.github.io/CallOfCorbyn/corbyn.png"></img></tr>
-<tr><img id="corbynwin" width="0" height="0" scr="https://djpiper28.github.io/CallOfCorbyn/corbynwin.png"></img></tr>
-<tr><img id="maywin" width="0" height="0" scr="https://djpiper28.github.io/CallOfCorbyn/maywin.png"></img></tr>
+<tr><img id="1" width="0" height="0" scr="may.png"></img></tr>
+<tr><img id="2" width="0" height="0" src="corbyn.png"></img></tr>
+<tr><img id="4" width="0" height="0" scr="corbynwin.png"></img></tr>
+<tr><img id="3" width="0" height="0" scr="maywin.png"></img></tr>
 </th></table>
 <h3 class="auto-style1">A master piece of a game - IGN 2087, 10/10 - Thomas Gorman</h3>
 <script>
@@ -74,10 +74,10 @@ var mouseY;
 var x;
 var y; 
 var id; //= document.getElementById("image1"); 
-var may = document.getElementById("may");//255x255
-var corbyn = document.getElementById("corbyn");//255x255
-var mayWin = document.getElementById("maywin");//255x255
-var corbynWin = document.getElementById("corbynwin");//255x255
+var may = document.getElementById("1");//255x255
+var corbyn = document.getElementById("2");//255x255
+var mayWin = document.getElementById("3");//255x255
+var corbynWin = document.getElementById("4");//255x255
 var FPS = 30; 
 var corbynX = 0;
 var corbynY = 0;
@@ -347,6 +347,10 @@ function mouse(){
  	console.log('mouse') 
 } 
 window.onload = function(){ 
+	may = document.getElementById("1");//255x255
+	corbyn = document.getElementById("2");//255x255
+	mayWin = document.getElementById("3");//255x255
+	corbynWin = document.getElementById("4");//255x255
  	console.log("Webpage loaded",may,corbyn,mayWin,corbynWin); 
  	canvas = document.getElementById('gameCanvas'); 
  	document.addEventListener('keydown', input); 
