@@ -266,7 +266,7 @@ function levelThree(){
 	}
 	if(mayclick==true){
 		i = i + 1;
-		mayclick==false;
+		mayclick=false;
 		mayrep++
 	}
 	if(corbclick==true){
@@ -274,6 +274,8 @@ function levelThree(){
 		corbclick=false;
 		corbrep++
 	}
+	mayclick = false;
+	corbclick = false;
 }
 function levelFour(){
 	draw(0,0,800,650,'black');
