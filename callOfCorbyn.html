@@ -1,0 +1,165 @@
+<title>Call of Corbyn</title>
+<h1>Call of Corbyn: Venezuela</h1>
+<h2>A master piece of a game - IGN 2087</h2>
+<h2>10/10 - Thomas Gorman</h2>
+<canvas id="gameCanvas" width="800" height="650">Your browser is bad nooooooooooooooooooob!</canvas>
+<img id="corbyn" width="0" height="0" src="corbyn.png" alt="Left"></img>
+<img id="may" width="0" height="0" scr="may.png" alt="Right jokes"></img>
+<img id="corbynwin" width="0" height="0" scr="corbynwin.png" alt="Lefter than Satlin"></img>
+<img id="maywin" width="0" height="0" scr="corbynwin.png" alt="Lefter than Satlin"></img>
+<script>
+var x; 
+var y; 
+var rect; 
+var root; 
+var mouseX; 
+var mouseY;
+var x;
+var y; 
+var id; //= document.getElementById("image1"); 
+var may = document.getElementById("may");
+var corbyn = document.getElementById("corbyn");
+var mayWin = document.getElementById("maywin");
+var corbynWin = document.getElementById("corbynwin");
+var FPS = 30; 
+var c = document.getElementById("myCanvas"); 
+var ctx = c.getContext("2d"); 
+var corbynX = 0;
+var rorbynY = 0;
+var mayx = 500;
+var mayY = 500;
+var i = 0;
+function dead(string){
+
+}
+function drawEverything(){ 
+	draw(0,0,800,650,'black');
+	img(corbyn, corbynX,corbynY);
+	img(may, mayX, mayY);
+	if(corbynY>=650){
+		corbynY=650;
+	}
+	if(corbynY<=0){
+		corbynY=0;
+	}
+	if(corbynX>=800){
+		corbynX=800;
+	}
+	if(corbynX<=0){
+		corbynX=0;
+	}
+	if(mayX<x){
+		mayX=mayX+10;
+	} 
+	if(mayX>x){
+		mayX=mayX-10;
+	}
+	if(mayY<y){
+		mayY=mayY+10;
+	} 
+	if(mayY>y){
+		mayY=mayY-10;
+	}
+	if(i>=FPS*100){
+		dead(corbyn);
+	}
+	i = i + 1;
+} 
+function image(id,x,y){ 
+	canvasContext.drawImage(id, x, y); 
+} 
+function randomColour(){ 
+ 	x = Math.floor((Math.random() * 10) + 0); 
+ 	if(x==0){ 
+ 		randomcolour = 'green' 
+ 	} else if(x==1){ 
+ 		randomcolour = 'red' 
+ 	} else if(x==3){ 
+ 		randomcolour = 'white' 
+ 	} else if(x==4){ 
+		randomcolour = 'yellow' 
+ 	} else if(x==5){ 
+ 		randomcolour = 'pink' 
+ 	} else if(x==6){ 
+ 		randomcolour = 'blue' 
+ 	} else if(x==7){ 
+ 		randomcolour = 'orange' 
+ 	} else if(x==8){ 
+ 		randomcolour = 'purple' 
+ 	} else if(x==9){ 
+ 		randomcolour = 'brown' 
+ 	} else if(x==10){ 
+		randomcolour = 'orange' 
+ 	}  
+ 	return{ 
+ 		colour:randomcolour 
+	}; 
+} 
+function calculateMousePos(evt) { 
+ 	rect = canvas.getBoundingClientRect(); 
+ 	root = document.documentElement; 
+ 	mouseX = evt.clientX - rect.left - root.scrollLeft; 
+ 	mouseY = evt.clientY - rect.top - root.scrollTop; 
+ 	return { 
+ 		x:mouseX, 
+ 		y:mouseY 
+ 	}; 
+} 
+function circle(x,y,radius,colour){ 
+ 	var tau = Math.PI*2; 
+ 	canvasContext.fillStyle = colour; 
+ 	canvasContext.beginPath(); 
+ 	canvasContext.arc(x,y,radius,0,tau,true) 
+ 	canvasContext.fill(); 
+} 
+function text(textt,sizefont,x,y,colour){ 
+ 	canvasContext.fillStyle = colour; 
+ 	canvasContext.textAlign  = 'centre'; 
+ 	canvasContext.font = sizefont; 
+ 	canvasContext.fillText(textt,x,y); 
+} 
+function draw(x,y,width,height,colour){ 
+ 	canvasContext.fillStyle = colour; 
+ 	canvasContext.fillRect(x,y,width,height); 
+} 
+function input(){ 
+ 	var x = event.keyCode; 
+ 	console.log('space was pressed',x);
+	if(x==38){
+		console.log('up');
+		corbynY=corbynY-10;
+	}
+	if(x==40){
+		console.log('down');
+		corbynY=corbynY+10;
+	}
+	if(x==37){
+		console.log('left');
+		corbynX=corbynX-10;
+	}
+	if(x==39){
+		console.log('right');
+		corbynX=corbynX+10;
+	}
+} 
+function mouse(){ 
+ 	console.log('mouse') 
+} 
+window.onload = function(){ 
+ 	console.log("Webpage loaded"); 
+ 	canvas = document.getElementById('gameCanvas'); 
+ 	document.addEventListener('keydown', input); 
+ 	canvas.addEventListener("mousedown", mouse, false); 
+ 	canvasContext= canvas.getContext("2d"); 
+ 	canvas.addEventListener('mousemove', 
+ 	function(evt) { 
+ 				var mousePos = calculateMousePos(evt); 
+ 				y = mousePos.y; 
+ 				x = mousePos.x; 
+ 		}); 
+ 	setInterval(drawEverything,1000/FPS); 
+} 
+
+</script>
+<h3>pre-order<h3>
+<p>Thomas Gorman, Meiszko</p>
