@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<style type="text/css">
+.auto-style1 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.auto-style2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+.auto-style3 {
+  margin-top: 3px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+p {
+  font-family: Arial, Helvetica, sans-serif;
+}
+button {
+  font-family: Arial, Helvetica, sans-serif;
+}
+tr:nth-child(even) {
+  
+}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  } /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
+</style>
+<html>
+  <head class="auto-style1">
+    <meta charset="UTF-8">
+    <title class="auto-style1">Warhammer 40K List Builder</title>
+  </head>
+  <body class="auto-style1">
+    <div>
+    <table>
+      <tr>
+        <th><p>Unit name</p><textarea id="unitNameInput"></textarea></th>
+        <th><p>Unit composition</p><textarea id="UnitCompositionInput"></textarea></th>
+      </tr>
+      <tr>
+        <th><p>Upgrades</p><textarea id="UpgradesInput"></textarea></th>
+        <th><p>Power level</p><textarea id="PowerInput"></textarea></th>
+        <th><p>Points</p><textarea id="PointsInput"></textarea></th>
+    </tr>
+    </table></div>
+    <table>
+      <tr>
+        <th class="auto-style1"><h3>Unit Name</h3></th>
+        <th class="auto-style1"><h3>Composition</h3></th>
+        <th class="auto-style1"><h3>Upgrades</h3></th>
+        <th class="auto-style1"><h3>Power Level</h3></th>
+        <th class="auto-style1"><h3>Points</h3></th>
+        <th class="auto-style1"><h3><button class="button3" onclick="deleteAll()">Delete All</button></h3></th>
+      </tr>
+    </table>
+    <table id="AddUnitHere">
+      <tr>
+        <th class="auto-style1"><button onclick="addUnit()">Add Unit</button></th>
+        <th class="auto-style1"></th>
+        <th class="auto-style1"></th>
+        <th class="auto-style1"></th>
+        <th class="auto-style1"></th>
+        <th class="auto-style1"></th>
+      </tr>
+    </table>
+    <div class="auto-style1">
+    Version:
+    We are using node <script>document.write(process.versions.node)</script>,
+    Chrome <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+    Total amount of units:
+    </div>
+    <div><iframe data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe></div>
+<script scr="jquery-3.2.1.min"></script>
+<script>
+function addUnit(){
+
+  var unitName = document.getElementById("unitNameInput").value;
+  var UnitComposition = document.getElementById("UnitCompositionInput").value;
+  var Upgrades = document.getElementById("UpgradesInput").value;
+  var Points = document.getElementById("PointsInput").value;
+  var Power = document.getElementById("PowerInput").value;
+
+  var table = document.getElementById("AddUnitHere");
+  var DeleteButton = '<button class="button3" onclick="deleteUnit(myFunction(this))">Delete</button>';
+ 
+  var row = table.insertRow(1);
+
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+  var cell6 = row.insertCell(5);
+
+  cell1.innerHTML = unitName;
+  cell2.innerHTML = UnitComposition;
+  cell3.innerHTML = Upgrades;
+  cell4.innerHTML = Power;
+  cell5.innerHTML = Points;
+  cell6.outerHTML = DeleteButton;
+}
+function deleteUnit(rowNumber){
+  if(rowNumber==null){
+    rowNumber=1;
+  }
+  console.log(rowNumber);
+  var table = document.getElementById("AddUnitHere");
+  var row = table.deleteRow(rowNumber);
+}
+function myFunction(x) {
+  return x.rowIndex;
+}
+function getRow(id){
+  var tableLength = document.getElementById("AddUnitHere").rows.length;
+  return tableLength;
+}
+function deleteAll(){
+  rows = getRow();
+  console.log(rows);
+  i = 1;
+  while(i<=rows){
+    deleteUnit(i);
+    i = i + 1;
+  }
+}
+</script>
+  </body>
+</html>
