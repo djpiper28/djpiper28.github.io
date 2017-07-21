@@ -88,7 +88,7 @@ tr:nth-child(even) {
         <th class="auto-style1"><h3>Power Level</h3></th>
         <th class="auto-style1"><h3>Points</h3></th>
         <th class="auto-style1"><h3><button class="button3" onclick="deleteAll()">Delete All</button></h3></th>
-        <th id="totalPoints" class="auto-style1"><h3>Total points: </h3></th>
+        <th id="totalPoints" class="auto-style1"><h3>Total Power: </h3></th>
       </tr>
       <tr id="noDelete">
         <th class="auto-style1"><button class="button" onclick="addUnit()">Add Unit</button></th>
@@ -170,7 +170,7 @@ function deleteAll(){
   contentsOfTable = "<table id=\"AddUnitHere\"></table>";
   document.getElementById("AddUnitHere").outerHTML = contentsOfTable;
   z = 0
-  totalPoints.innerHTML = "Total Points: " + z; 
+  totalPoints.innerHTML = "Total Power: " + z; 
 }
 </script>
   </body>
