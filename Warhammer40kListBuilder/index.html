@@ -3,6 +3,9 @@
 .auto-style1 {
   font-family: Arial, Helvetica, sans-serif;
 }
+.auto-style4 {
+  font-family: Arial, Helvetica, sans-serif;
+}
 .auto-style2 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -85,10 +88,9 @@ tr:nth-child(even) {
         <th class="auto-style1"><h3>Power Level</h3></th>
         <th class="auto-style1"><h3>Points</h3></th>
         <th class="auto-style1"><h3><button class="button3" onclick="deleteAll()">Delete All</button></h3></th>
+        <th id="totalPoints" class="auto-style1"><h3>Total points: </h3></th>
       </tr>
-    </table>
-    <table id="AddUnitHere">
-      <tr>
+      <tr id="noDelete">
         <th class="auto-style1"><button onclick="addUnit()">Add Unit</button></th>
         <th class="auto-style1"></th>
         <th class="auto-style1"></th>
@@ -97,9 +99,13 @@ tr:nth-child(even) {
         <th class="auto-style1"></th>
       </tr>
     </table>
+    <table id="AddUnitHere">
+      
+    </table>
     <div><iframe data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe></div>
 <script scr="jquery-3.2.1.min"></script>
 <script>
+var z = parseInt(0);
 function addUnit(){
 
   var unitName = document.getElementById("unitNameInput").value;
@@ -111,7 +117,7 @@ function addUnit(){
   var table = document.getElementById("AddUnitHere");
   var DeleteButton = '<button class="button3" onclick="deleteUnit(myFunction(this))">Delete</button>';
  
-  var row = table.insertRow(1);
+  var row = table.insertRow(0);
 
   var cell1 = row.insertCell(0);
   var cell2 = row.insertCell(1);
@@ -123,13 +129,21 @@ function addUnit(){
   cell1.innerHTML = unitName;
   cell2.innerHTML = UnitComposition;
   cell3.innerHTML = Upgrades;
-  cell4.innerHTML = Power;
+  cell4.outerHTML = "<td class=\"auto-style4\">"+Power+"<br></td>";
   cell5.innerHTML = Points;
   cell6.outerHTML = DeleteButton;
+  console.log(z);
+  console.log(Power);
+  z=z+parseInt(Power);
+
+  totalPoints = document.getElementById("totalPoints");
+  allrows = document.getElementsByClassName("auto-style4");
+  allrowslen = allrows.length;//get length of array allrows  i=0;
+  totalPoints.innerHTML = "Total Points: " + z; 
 }
 function deleteUnit(rowNumber){
   if(rowNumber==null){
-    rowNumber=1;
+    rowNumber=0;
   }
   console.log(rowNumber);
   var table = document.getElementById("AddUnitHere");
@@ -143,13 +157,10 @@ function getRow(id){
   return tableLength;
 }
 function deleteAll(){
-  rows = getRow();
-  console.log(rows);
-  i = 1;
-  while(i<=rows){
-    deleteUnit(i);
-    i = i + 1;
-  }
+  contentsOfTable = "<table id=\"AddUnitHere\"></table>";
+  document.getElementById("AddUnitHere").outerHTML = contentsOfTable;
+  z = 0
+  totalPoints.innerHTML = "Total Points: " + z; 
 }
 </script>
   </body>
