@@ -68,11 +68,11 @@ tr:nth-child(even) {
     <title class="auto-style1">Warhammer 40K List Builder</title>
   </head>
   <body class="auto-style1">
-    <div>
-    <table>
+    <div id="divOne"><table>
       <tr>
         <th><p>Unit name</p><textarea id="unitNameInput"></textarea></th>
         <th><p>Unit composition</p><textarea id="UnitCompositionInput"></textarea></th>
+        <th><button class="button" id="toggleme" onclick="printable();">Toggle Printable</button></th>
       </tr>
       <tr>
         <th><p>Upgrades</p><textarea id="UpgradesInput"></textarea></th>
@@ -91,7 +91,7 @@ tr:nth-child(even) {
         <th id="totalPoints" class="auto-style1"><h3>Total points: </h3></th>
       </tr>
       <tr id="noDelete">
-        <th class="auto-style1"><button onclick="addUnit()">Add Unit</button></th>
+        <th class="auto-style1"><button class="button" onclick="addUnit()">Add Unit</button></th>
         <th class="auto-style1"></th>
         <th class="auto-style1"></th>
         <th class="auto-style1"></th>
@@ -102,10 +102,20 @@ tr:nth-child(even) {
     <table id="AddUnitHere">
       
     </table>
-    <div><iframe data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe></div>
+    <div><iframe id="ad" data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe></div>
 <script scr="jquery-3.2.1.min"></script>
 <script>
 var z = parseInt(0);
+var button_toggle_on = "<button class=\"button\" id=\"toggleme\" onclick=\"printable();\">Toggle Printable</button>";
+var button_toggle_off = "<button class=\"button\" id=\"divOne\" onclick=\"unhide();\">Toggle Printable</button>";
+function printable(){
+  document.getElementById("ad").outerHTML="<p id=\"ad\">";//hides the ad
+  document.getElementById("divOne").outerHTML=button_toggle_off;//hides the input area
+}
+function unhide(){
+  document.getElementById("ad").outerHTML="<iframe id=\"ad\" data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>";//unhides the ad
+  document.getElementById("divOne").outerHTML="<div id=\"divOne\"><table>\n      <tr>\n        <th><p>Unit name</p><textarea id=\"unitNameInput\"></textarea></th>\n        <th><p>Unit composition</p><textarea id=\"UnitCompositionInput\"></textarea></th>\n        <th><button class=\"button\" id=\"toggleme\" onclick=\"printable();\">Toggle Printable</button></th>\n      </tr>\n      <tr>\n        <th><p>Upgrades</p><textarea id=\"UpgradesInput\"></textarea></th>\n        <th><p>Power level</p><textarea id=\"PowerInput\"></textarea></th>\n        <th><p>Points</p><textarea id=\"PointsInput\"></textarea></th>\n    </tr>\n    </table></div>";//unhides the input area"  
+}
 function addUnit(){
 
   var unitName = document.getElementById("unitNameInput").value;
