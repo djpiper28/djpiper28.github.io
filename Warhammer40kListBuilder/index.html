@@ -182,7 +182,8 @@ function addUnit(){
   totalPoints.innerHTML = "Total Power: " + z +"\nTotal Points: "+zz; 
 }
 function deleteUnit(x){
-  rowNumber = x.rowIndex;
+  rowNumber = x.parentNode.parentNode.rowIndex;
+  //element.parentNode.cellIndex //gets column number
   if(rowNumber==null){
     console.log("error");
     rowNumber=0;
