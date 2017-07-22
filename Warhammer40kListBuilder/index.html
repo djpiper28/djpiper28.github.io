@@ -6,12 +6,25 @@
 .auto-style4 {
   font-family: Arial, Helvetica, sans-serif;
 }
+.auto-style5{
+  font-family: Arial, Helvetica, sans-serif;
+}
 .auto-style2 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
 .auto-style3 {
   margin-top: 3px;
+}
+.table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+.td, .th {
+    border: 1px solid #dddddd;
+    text-align: right;
+    padding: 8px;
 }
 table {
     font-family: arial, sans-serif;
@@ -44,9 +57,22 @@ tr:nth-child(even) {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    align-self: right;
+    alignment-baseline: right;
 }
 
-.button2 {background-color: #008CBA;} /* Blue */
+.button2 {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  } /* Blue */
 .button3 {
   background-color: #f44336;
   border: none;
@@ -68,11 +94,12 @@ tr:nth-child(even) {
     <title class="auto-style1">Warhammer 40K List Builder</title>
   </head>
   <body class="auto-style1">
-    <div id="divOne"><table>
+    <div id="divOne">
+    <table>
       <tr>
         <th><p>Unit name</p><textarea id="unitNameInput"></textarea></th>
         <th><p>Unit composition</p><textarea id="UnitCompositionInput"></textarea></th>
-        <th><button class="button" id="toggleme" onclick="printable();">Toggle Printable</button></th>
+        <th class="th"><button class="button2" id="toggleme" onclick="printable();">Toggle Printable</button></th>
       </tr>
       <tr>
         <th><p>Upgrades</p><textarea id="UpgradesInput"></textarea></th>
@@ -88,7 +115,8 @@ tr:nth-child(even) {
         <th class="auto-style1"><h3>Power Level</h3></th>
         <th class="auto-style1"><h3>Points</h3></th>
         <th class="auto-style1"><h3><button class="button3" onclick="deleteAll()">Delete All</button></h3></th>
-        <th id="totalPoints" class="auto-style1"><h3>Total Power: </h3></th>
+        <th id="totalPoints" class="auto-style1"><h3>Total Power: 
+        Total Points:</h3></th>
       </tr>
       <tr id="noDelete">
         <th class="auto-style1"><button class="button" onclick="addUnit()">Add Unit</button></th>
@@ -106,15 +134,16 @@ tr:nth-child(even) {
 <script scr="jquery-3.2.1.min"></script>
 <script>
 var z = parseInt(0);
+var zz = parseInt(0);
 var button_toggle_on = "<button class=\"button\" id=\"toggleme\" onclick=\"printable();\">Toggle Printable</button>";
-var button_toggle_off = "<button class=\"button\" id=\"divOne\" onclick=\"unhide();\">Toggle Printable</button>";
+var button_toggle_off = "<table id=\"divOne\" width=\"100%\">\n  <tr>\n    <th class=\"th\"><button class=\"button2\" onclick=\"unhide();\">Toggle Printable</button></th>\n  </tr>\n</table>";
 function printable(){
   document.getElementById("ad").outerHTML="<p id=\"ad\">";//hides the ad
   document.getElementById("divOne").outerHTML=button_toggle_off;//hides the input area
 }
 function unhide(){
   document.getElementById("ad").outerHTML="<iframe id=\"ad\" data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>";//unhides the ad
-  document.getElementById("divOne").outerHTML="<div id=\"divOne\"><table>\n      <tr>\n        <th><p>Unit name</p><textarea id=\"unitNameInput\"></textarea></th>\n        <th><p>Unit composition</p><textarea id=\"UnitCompositionInput\"></textarea></th>\n        <th><button class=\"button\" id=\"toggleme\" onclick=\"printable();\">Toggle Printable</button></th>\n      </tr>\n      <tr>\n        <th><p>Upgrades</p><textarea id=\"UpgradesInput\"></textarea></th>\n        <th><p>Power level</p><textarea id=\"PowerInput\"></textarea></th>\n        <th><p>Points</p><textarea id=\"PointsInput\"></textarea></th>\n    </tr>\n    </table></div>";//unhides the input area"  
+  document.getElementById("divOne").outerHTML="<div id=\"divOne\"><table>\n      <tr>\n        <th><p>Unit name</p><textarea id=\"unitNameInput\"></textarea></th>\n        <th><p>Unit composition</p><textarea id=\"UnitCompositionInput\"></textarea></th>\n        <th class=\"th\"><button class=\"button2\" id=\"toggleme\" onclick=\"printable();\">Toggle Printable</button></th>\n      </tr>\n      <tr>\n        <th><p>Upgrades</p><textarea id=\"UpgradesInput\"></textarea></th>\n        <th><p>Power level</p><textarea id=\"PowerInput\"></textarea></th>\n        <th><p>Points</p><textarea id=\"PointsInput\"></textarea></th>\n    </tr>\n    </table></div>";//unhides the input area"  
 }
 function addUnit(){
 
@@ -125,7 +154,7 @@ function addUnit(){
   var Power = document.getElementById("PowerInput").value;
 
   var table = document.getElementById("AddUnitHere");
-  var DeleteButton = '<button class="button3" onclick="deleteUnit(myFunction(this))">Delete</button>';
+  var DeleteButton = '<button class="button3" onclick="deleteUnit(this)">Delete</button>';
  
   var row = table.insertRow(0);
 
@@ -139,27 +168,34 @@ function addUnit(){
   cell1.innerHTML = unitName;
   cell2.innerHTML = UnitComposition;
   cell3.innerHTML = Upgrades;
-  cell4.outerHTML = "<td class=\"auto-style4\">"+Power+"<br></td>";
-  cell5.innerHTML = Points;
+  cell4.outerHTML = "<td class=\"auto-style4\">"+Power+"</td>";
+  cell5.outerHTML = "<td class=\"auto-style5\">"+Points+"</td>";
   cell6.outerHTML = DeleteButton;
   console.log(z);
   console.log(Power);
   z=z+parseInt(Power);
+  zz=zz+parseInt(Points);
 
   totalPoints = document.getElementById("totalPoints");
   allrows = document.getElementsByClassName("auto-style4");
   allrowslen = allrows.length;//get length of array allrows  i=0;
-  totalPoints.innerHTML = "Total Points: " + z; 
+  totalPoints.innerHTML = "Total Power: " + z +"\nTotal Points: "+zz; 
 }
-function deleteUnit(rowNumber){
+function deleteUnit(x){
+  rowNumber = x.rowIndex;
   if(rowNumber==null){
+    console.log("error");
     rowNumber=0;
   }
   console.log(rowNumber);
   var table = document.getElementById("AddUnitHere");
+  z = z - parseInt(document.getElementsByClassName("auto-style4")[rowNumber].innerHTML);
+  zz = zz - parseInt(document.getElementsByClassName("auto-style5")[rowNumber].innerHTML);
+  totalPoints.innerHTML = "Total Power: " + z +"\nTotal Points: "+zz; 
   var row = table.deleteRow(rowNumber);
 }
-function myFunction(x) {
+function getRowByClick(x) {
+  console.log(x.rowIndex);
   return x.rowIndex;
 }
 function getRow(id){
@@ -169,10 +205,10 @@ function getRow(id){
 function deleteAll(){
   contentsOfTable = "<table id=\"AddUnitHere\"></table>";
   document.getElementById("AddUnitHere").outerHTML = contentsOfTable;
-  z = 0
-  totalPoints.innerHTML = "Total Power: " + z; 
+  z = 0;
+  zz = 0;
+  totalPoints.innerHTML = "Total Power: " + z + "\nTotal Points: "+zz; 
 }
 </script>
   </body>
-  <iframe data-aa='586932' src='//acceptable.a-ads.com/586932' scrolling='no' style='border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
 </html>
