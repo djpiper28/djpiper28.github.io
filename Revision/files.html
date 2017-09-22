@@ -1,0 +1,111 @@
+<style>
+canvas {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:-1;
+}
+</style>
+<body>
+<head>
+<style type="text/css">
+.auto-style1 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.auto-style2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.auto-style3 {
+	margin-top: 3px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+p {
+	font-family: Arial, Helvetica, sans-serif;
+}
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+h4 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+button {
+	font-family: Arial, Helvetica, sans-serif;
+}
+tr:nth-child(even) {
+  
+}
+</style>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+function hideIframes(){
+  $(".iframe").hide();
+}</script>
+</head>
+<h2 class="auto-style1">Computing Revision</h2><h3 class="auto-style1"><a href="https://djpiper28.github.io/Revision/index.html"> Back</a></h3>
+<h3>Python Files</h3>
+
+<div><p>
+  <h4>Opening The File:</h4><p>
+  All files must be opened and assigned to a variable in python e.g:</p>
+   <div><p>f = open("users.txt", [file access method (see below) such as "w"])</p></div>
+  <h4>File Access Methods</h4><p>
+  All files must have an opening method, see this table for details</p>
+  <table>
+  <tr>
+    <th><h4 class="auto-style1">Opening method</h4></th>
+    <th><h4 class="auto-style1">What it does</h4></th>
+  </tr>
+  <tr>
+    <th><h4 class="auto-style1">w</h4></th>
+    <th><h4 class="auto-style1">Write mode for the files - rewrites all data when the write method is called</h4></th>
+  </tr>
+  <tr>
+    <th><h4 class="auto-style1">w+</h4></th>
+    <th><h4 class="auto-style1">Creates a new file</h4></th>
+  </tr>
+  <tr>
+    <th><h4 class="auto-style1">a</h4></th>
+    <th><h4 class="auto-style1">Append mode - adds data to the end of a file, does not add a new line</h4></th>
+  </tr>
+  <tr>
+    <th><h4 class="auto-style1">r</h4></th>
+    <th><h4 class="auto-style1">Reads the file, see below for usage</h4></th>
+  </tr>
+</table>
+  <h4>Writing to The File:</h4><p>
+  Use the method write(string) it only accepts stings, if you want the data to be added to a new line then add "\n" before your text
+  how the text is added depends on the opening method above, also in read mode this method won't work. e.g:</p>
+   <div><p>f = open("users.txt", "a")</p></div>
+   <div><p>f.write("\nText")</p></div>
+  <h4>Reading from The File:</h4><p>
+   <div><p>f = open("users.txt", "r")</p></div>
+   <div><p>for line in f:</p></div>
+   <div><p>&nbsp&nbsp&nbsp&nbspprint(line)</p></div>
+  <h4>Closing The File:</h4><p></p>
+   <div><p>f.close</p></div>
+  <h4>Notes</h4><p>
+    The variable f is the variable that the file is opened with so you can use any variable you want to use. 
+  </p>
+</p></div>
+
+<th><p><span class="auto-style2"><strong>Copyright</strong></span><span class="auto-style1"> (C) Danny Piper 2017. Danny is the owner of the github account and for all content here see it's license and readme.</span></p></th>
+<button onclick="hideIframes" id='adbuttonnasty'>An ad below is nasty</button>
+<p> 
+ </p><table  width="100%"><tr>
+<th><iframe class='iframe' data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe></th>
+</tr></table>
+
+</body>
