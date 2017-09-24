@@ -43,7 +43,7 @@ function randomColour(){
 		randomcolour = 'orange'
 	} 
 	return{
-		colour:randomcolour
+		randomcolour
 	};
 }
 function calculateMousePos(evt) {
@@ -82,6 +82,7 @@ function mouse(){
 }
 function drawEverything(){
 	//code here
+	draw(0,0,800,650,"white")
 }
 window.onload = function(){
 	console.log("Webpage loaded");
