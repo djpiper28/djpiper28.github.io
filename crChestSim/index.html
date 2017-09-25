@@ -285,36 +285,6 @@ var factor = 10;
 var chest_backup;
 console.log("Script loaded");
 function getNextCard(){
-	chest = chest_backup;
-	if(chest=="free"){
-		cards = 3 + arena;
-	}
-	if(chest=="silver"){
-		cards = 3 + arena;
-	}
-	if(chest=+"golden"){
-		cards = 3 * (arena + 10);
-	}
-	if(chest=+"epic"){
-		cards = 10 + arena;
-	}
-	if(chest=+"magical"){
-		cards = 21 + (11 * arena);
-	}
-	if(chest=+"superMagical"){
-		cards = 120 + (60 * arena);
-	}
-	if(chest=+"crown"){
-		cards = 14 + (7 * arena);
-	}
-	if(chest=+"clan"){
-		cards = 270;
-	}
-	if(chest=+"superMagical"){
-		cards = 45 + (25 * arena);
-	}
-	//arena
-	chest = chest_backup;
 	//chest
 	if(cardn>cards){
 		document.getElementById("open").outerHTML="<div id=\"open\"><button onclick=\"openchest()\" class=\"button\">Open Chest</button></div>";
@@ -407,12 +377,12 @@ function getNextCard(){
 			epicn = epicn + 1;
 			return "rare/"+getEpic(arena)
 		} else{
-			if(chance<=Math.floor(Math.random())){
+			if(chance<Math.floor(Math.random())){
 				return "rare/"+getEpic(arena)
 			}
 		}
 	} else{
-		if(chance<=Math.floor(Math.random())){
+		if(chance<Math.floor(Math.random())){
 			return "rare/"+getEpic(arena)
 		}
 	}
@@ -423,15 +393,15 @@ function getNextCard(){
 	if(chance>=100){
 		if(leg<Math.floor(chance/100)){
 			leg = leg + 1;
-			return "rare/"+getLegendary(arena)
+			return "legendary/"+getLegendary(arena)
 		} else{
-			if(chance<=Math.floor(Math.random())){
-				return "rare/"+getLegendary(arena)
+			if(chance<Math.floor(Math.random())){
+				return "legendary/"+getLegendary(arena)
 			}
 		}
 	} else{
-		if(chance<=Math.floor(Math.random())){
-			return "rare/"+getLegendary(arena)
+		if(chance<Math.floor(Math.random())){
+			return "legendary/"+getLegendary(arena)
 		}
 	}	
 	return "common/"+getCommon(arena)
@@ -481,34 +451,8 @@ function openchest(){
 function setChest(c){
 	chest = c;
 	chest_backup = chest;
+	console.log(chest);
 	document.getElementById("chest").outerHTML = "<img id=\"chest\" src=\"https://djpiper28.github.io/crChestSim/chest/"+chest+".png\" class=\"center\" alt=\"chest\" width=\"140\" height=\"154\" valign=\"center\" align=\"middle\"><img/>";
-	if(chest=="free"){
-		cards = 3 + arena;
-	}
-	if(chest=="silver"){
-		cards = 3 + arena;
-	}
-	if(chest=+"golden"){
-		cards = 3 * arena + 10;
-	}
-	if(chest=+"epic"){
-		cards = 10 + arena;
-	}
-	if(chest=+"magical"){
-		cards = 21 + 11 * arena;
-	}
-	if(chest=+"superMagical"){
-		cards = 120 + 60 * arena;
-	}
-	if(chest=+"crown"){
-		cards = 14 + 7 * arena;
-	}
-	if(chest=+"clan"){
-		cards = 270;
-	}
-	if(chest=+"superMagical"){
-		cards = 45 + 25 * arena;
-	}
 }
 
 function setArena(a){
