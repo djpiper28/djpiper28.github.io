@@ -63,6 +63,7 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    valign: center;
 }
 
 h4{
@@ -73,6 +74,7 @@ td, th {
     border: 0px solid #dddddd;
     text-align: left;
     padding: 8px;
+    valign: center;
 }
 p {
 	font-family: Arial, Helvetica, sans-serif;
@@ -215,8 +217,8 @@ tr:nth-child(even) {
   </div>
 </div></tr></table>
 
-<table><tr>
-<th><img id="chest" src="https://djpiper28.github.io/crChestSim/chest/free.png" alt="chest" width="120" height="134"  align="middle"><img/></th>
+<table valign="center" width="100%"><tr>
+<th valign="center"><img id="chest" src="https://djpiper28.github.io/crChestSim/chest/free.png" alt="chest" width="120" height="134" valign="center" align="middle"><img/></th>
 </tr></table>
 
 </head>
@@ -468,7 +470,7 @@ function mouse(){
 	console.log('mouse')
 }
 function getChest(){
-	document.getElementById("chest").outerHTML = "<img id=\"chest\" src=\"https://djpiper28.github.io/crChestSim/chest/"+chest+".png\" alt=\"chest\" width=\"120\" height=\"134\" align=\"middle\"><img/>";
+	document.getElementById("chest").outerHTML = "<img id=\"chest\" src=\"https://djpiper28.github.io/crChestSim/chest/"+chest+".png\" alt=\"chest\" width=\"120\" height=\"134\" valign=\"center\" align=\"middle\"><img/>";
 }
 window.onload = function(){
 	console.log("Webpage loaded");
