@@ -1,8 +1,94 @@
+<!DOCTYPE html>
+<style>
+.bg{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:-1;
+}
+.dropbtn {
+	width: 100%;
+    background-color: rgba(0, 100, 255, 1);;
+    color: rgba(0, 0, 255, 0)
+    padding: 20px;
+    font-size: 20px;
+    cursor: pointer;
+
+    margin: auto;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 100, 255, 1);;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: rgba(0, 100, 255, 1);
+}
+.auto-style1 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.auto-style2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.auto-style3 {
+	margin-top: 3px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+h4{
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+td, th {
+    border: 0px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+p {
+	font-family: Arial, Helvetica, sans-serif;
+}
+button {
+	font-family: Arial, Helvetica, sans-serif;
+}
+tr:nth-child(even) {
+  
+}
+</style>
 <body><div>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://www.w3schools.com/lib/w3.js"></script>
-<img id="background" scr="https://djpiper28.github.io/crChestSim/background.png" width="0" height="0"><img/>
+<img id="background" src="https://djpiper28.github.io/crChestSim/background.png" alt="background" width="2048" height="1152" class="bg"><img/>
 
 <img id="Archers" scr="https://djpiper28.github.io/crChestSim/common/Archers.png" width="0" height="0"><img/>
 <img id="Arrows" scr="https://djpiper28.github.io/crChestSim/common/Arrows.png" width="0" height="0"><img/>
@@ -83,81 +169,7 @@
 <img id="Princess" scr="https://djpiper28.github.io/crChestSim/legendary/Princess.png" width="0" height="0"><img/>
 <img id="Sparky" scr="https://djpiper28.github.io/crChestSim/legendary/Sparky.png" width="0" height="0"><img/>
 <img id="The Log" scr="https://djpiper28.github.io/crChestSim/legendary/The Log.png" width="0" height="0"><img/>
-<style>
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-}
-.auto-style1 {
-	font-family: Arial, Helvetica, sans-serif;
-}
-.auto-style2 {
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: bold;
-}
-.auto-style3 {
-	margin-top: 3px;
-}
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-h4{
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-p {
-	font-family: Arial, Helvetica, sans-serif;
-}
-button {
-	font-family: Arial, Helvetica, sans-serif;
-}
-tr:nth-child(even) {
-  
-}
-</style>
 </head>
 <body>
 <table><th><tr><div class="dropdown">
@@ -193,9 +205,10 @@ tr:nth-child(even) {
   </div>
 </div></tr></table>
 
-<div><table><tr>
-<th><canvas id='gameCanvas' width='800' height='650'>Outdated browser</canvas></th>
-</tr></table></div>
+<table><tr>
+<th><img id="chest" src="https://djpiper28.github.io/crChestSim/chest/free.png" alt="background" width="120" height="134" class="bg"><img/></th>
+</tr></table>
+
 </head>
 <script>
 var x;
@@ -213,7 +226,7 @@ var epic = ["Baby Dragon","Balloon","Bowler","Cannon Cart","Clone","Dark Prince"
 var legendary = ["Bandit","Electro Wizard","Graveyard","Ice Wizard","Inferno Dragon","Lava Hound","Lumberjack","Mega Knight","Miner","Night Witch","Princess","Sparky","The Log"
 ];
 
-var chest = "None";
+var chest = "free";
 
 var arena = 1;
 
@@ -437,65 +450,6 @@ function getLegendary(){
 	return legendary[Math.floor(Math.random()*max)];
 }
 
-//
-function Image(id, x, y){	
-	id = document.getElementById(id);
-	canvasContext.drawImage(id, x, y);
-}
-function randomColour(){
-	x = Math.floor((Math.random() * 10) + 0);
-	if(x==0){
-		randomcolour = 'green'
-	} else if(x==1){
-		randomcolour = 'red'
-	} else if(x==3){
-		randomcolour = 'white'
-	} else if(x==4){
-		randomcolour = 'yellow'
-	} else if(x==5){
-		randomcolour = 'pink'
-	} else if(x==6){
-		randomcolour = 'blue'
-	} else if(x==7){
-		randomcolour = 'orange'
-	} else if(x==8){
-		randomcolour = 'purple'
-	} else if(x==9){
-		randomcolour = 'brown'
-	} else if(x==10){
-		randomcolour = 'orange'
-	} 
-	return{
-		randomcolour
-	};
-}
-function calculateMousePos(evt) {
-	rect = canvas.getBoundingClientRect();
-	root = document.documentElement;
-	mouseX = evt.clientX - rect.left - root.scrollLeft;
-	mouseY = evt.clientY - rect.top - root.scrollTop;
-	return {
-		x:mouseX,
-		y:mouseY
-	};
-}
-function circle(x,y,radius,colour){
-	var tau = Math.PI*2;
-	canvasContext.fillStyle = colour;
-	canvasContext.beginPath();
-	canvasContext.arc(x,y,radius,0,tau,true)
-	canvasContext.fill();
-}
-function text(textt,sizefont,x,y,colour){
-	canvasContext.fillStyle = colour;
-	canvasContext.textAlign  = 'centre';
-	canvasContext.font = sizefont;
-	canvasContext.fillText(textt,x,y);
-}
-function draw(x,y,width,height,colour){
-	canvasContext.fillStyle = colour;
-	canvasContext.fillRect(x,y,width,height);
-}
 function input(){
 	var x = event.keyCode;
 	console.log('space was pressed',x);
@@ -503,24 +457,13 @@ function input(){
 function mouse(){
 	console.log('mouse')
 }
-function drawEverything(){
-	//code here
-	draw(0,0,800,650,"black");
-	Image("background", 0, 0);
+function getChest(){
+	document.getElementById("chest").outerHTML="<img id=\"chest\" src=\"https://djpiper28.github.io/crChestSim/chest/"+chest+"\" alt=\"background\" width=\"120\" height=\"134\" class=\"bg\"><img/>"
 }
 window.onload = function(){
 	console.log("Webpage loaded");
-	canvas = document.getElementById('gameCanvas');
 	document.addEventListener('keydown', input);
-	canvas.addEventListener("mousedown", mouse, false);
-	canvasContext= canvas.getContext("2d");
-	canvas.addEventListener('mousemove',
-	function(evt) {
-				drawEverything();
-				var mousePos = calculateMousePos(evt);
-				x = mousePos.y;
-				y = mousePos.x;
-		});
-	//setInterval(drawEverything,1000/FPS);
+	document.addEventListener("mousedown", mouse, false);
+	setInterval(getChest(), 10);
 }
 </script></div></body>
