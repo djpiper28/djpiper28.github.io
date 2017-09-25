@@ -231,15 +231,16 @@ tr:nth-child(even) {
     <button class="dropbtn" onclick="setChest('giant')">Giant Chest</button>
     <button class="dropbtn" onclick="setChest('magical')">Magical Chest</button>
     <button class="dropbtn" onclick="setChest('superMagical')">Super Magical Chest</button>
-    <button class="dropbtn" onclick="setChest('legendary')">Legendary Chest</button>
-    <button class="dropbtn" onclick="setChest('draft')">Draft</button>
+    <button class="dropbtn" onclick="setChest('epic')">Epic Chest (WIP)</button>
+    <button class="dropbtn" onclick="setChest('legendary')">Legendary Chest (WIP)</button>
+    <button class="dropbtn" onclick="setChest('draft')">Draft (WIP)</button>
     <h4>Challenge/Tourney COMING SOON!</h4>
   </div>
 </div></tr></table>
 <div>
 <table>
 	<tr> 
-		<th"><div valign="right" width="120" height="134"><img id="chest" src="https://djpiper28.github.io/crChestSim/chest/free.png" alt="chest" class="center" width="120" height="134" valign="center" align="middle"><img/></div></th>
+		<th"><div valign="right" width="120" height="134"><img id="chest" src="https://djpiper28.github.io/crChestSim/chest/free.png" alt="chest" class="center" width="140" height="154" valign="center" align="middle"><img/></div></th>
 		<th><div id="card"></div></th>
 	</tr>
 	<tr>
@@ -265,21 +266,55 @@ var epic = ["Baby Dragon","Balloon","Bowler","Cannon Cart","Clone","Dark Prince"
 var legendary = ["Bandit","Electro Wizard","Graveyard","Ice Wizard","Inferno Dragon","Lava Hound","Lumberjack","Mega Knight","Miner","Night Witch","Princess","Sparky","The Log"
 ];
 
+var common_backup= ["Archers","Arrows","Barbarians","Bats","Bomber","Cannon","Elite Barbarians","Fire Spirits","GoblinGang","Goblins","Horde","Ice Spirit","Knight","Minions","Mortar","Royal Giant","Skeletons","SpearGoblins","Tesla","Zap"];
+var rare_backup = ["Barbarian Hut","Battle Ram","Bomb Tower","Dart Goblin","Elixir Pump","Fireball","Flying Machine","Furnace","Giant","Goblin Hut","Heal","Hog","Ice Golem","Inferno Tower","Mega Minion","Mini P.E.K.K.A","Musketeer","Rocket","Three Musketeers","Tombstone","Valkyrie","Wizard"];
+var epic_backup = ["Baby Dragon","Balloon","Bowler","Cannon Cart","Clone","Dark Prince","Executioner","Freeze","Giant Skeleton","Goblin Barrel","Golem","Guards","Lightning","Mirror","P.E.K.K.A","Poison","Prince","Rage","Skeleton Army","Tornado","Witch","X Bow"]
+var legendary_backup = ["Bandit","Electro Wizard","Graveyard","Ice Wizard","Inferno Dragon","Lava Hound","Lumberjack","Mega Knight","Miner","Night Witch","Princess","Sparky","The Log"
+];
+
 var chest = "free";
 
 var arena = 1;
 
-var rare = 0;
-var epic = 0;
+var raren = 0;
+var epicn = 0;
 var leg = 0;
 var cardn = 0;
 var cards = 10;
+var factor = 10;
 var chest_backup;
-
+console.log("Script loaded");
 function getNextCard(){
+	chest = chest_backup;
+	if(chest=="free"){
+		cards = 3 + arena;
+	}
+	if(chest=="silver"){
+		cards = 3 + arena;
+	}
+	if(chest=+"golden"){
+		cards = 3 * (arena + 10);
+	}
+	if(chest=+"epic"){
+		cards = 10 + arena;
+	}
+	if(chest=+"magical"){
+		cards = 21 + (11 * arena);
+	}
+	if(chest=+"superMagical"){
+		cards = 120 + (60 * arena);
+	}
+	if(chest=+"crown"){
+		cards = 14 + (7 * arena);
+	}
+	if(chest=+"clan"){
+		cards = 270;
+	}
+	if(chest=+"superMagical"){
+		cards = 45 + (25 * arena);
+	}
 	//arena
 	chest = chest_backup;
-	console.log("card");
 	//chest
 	if(cardn>cards){
 		document.getElementById("open").outerHTML="<div id=\"open\"><button onclick=\"openchest()\" class=\"button\">Open Chest</button></div>";
@@ -348,34 +383,57 @@ function getNextCard(){
 	        legendaries=0;
 	}
 
-	if(typeof getLegendaryCheck(chest, cards, commons, legendaries)!="number"){
-		if(getLegendaryCheck(chest, cards, commons, legendaries)==false){
-			return "legendary/"+getLegendary(arena)
-		}		
-	} else{
-		if(legendaries < getLegendaryCheck(chest, cards, commons, legendaries)/100){
-			leg = leg + 1;
-			return "legendary/"+getLegendary(arena)
+	chance = getRareCheck(chest, cards);
+	if(chance>=100){
+		if(raren<Math.floor(chance/100)){
+			raren = raren + 1;
+			return "rare/"+getRare(arena)
+		} else{
+			if(chance<=Math.floor(Math.random())){
+				return "rare/"+getRare(arena)
+			}
 		}
-	}
-
-	if(typeof getRareCheck(chest, cards)!="number"){
-		return "rare/"+getRare(arena)
-	}else{
-		if(getRareCheck(chest, cards)/100){
-			rare = rare + 1;
+	} else{
+		if(chance<=Math.floor(Math.random())){
 			return "rare/"+getRare(arena)
 		}
 	}
-	if(typeof getEpicCheck(chest, cards)!="number"){
-		return "epic/"+getEpic(arena)
-	}else{
-		if(getEpicCheck(chest, cards)/100){
-			epic = epic + 1;
-			return "epic/"+getEpic(arena)
+	
+
+
+	chance = getEpicCheck(chest, cards);
+	if(chance>=100){
+		if(epicn<Math.floor(chance/100)){
+			epicn = epicn + 1;
+			return "rare/"+getEpic(arena)
+		} else{
+			if(chance<=Math.floor(Math.random())){
+				return "rare/"+getEpic(arena)
+			}
+		}
+	} else{
+		if(chance<=Math.floor(Math.random())){
+			return "rare/"+getEpic(arena)
 		}
 	}
-	console.log("card found");
+	
+
+
+	chance = getLegendaryCheck(chest, cards, commons, legendaries);
+	if(chance>=100){
+		if(leg<Math.floor(chance/100)){
+			leg = leg + 1;
+			return "rare/"+getLegendary(arena)
+		} else{
+			if(chance<=Math.floor(Math.random())){
+				return "rare/"+getLegendary(arena)
+			}
+		}
+	} else{
+		if(chance<=Math.floor(Math.random())){
+			return "rare/"+getLegendary(arena)
+		}
+	}	
 	return "common/"+getCommon(arena)
 }
 
@@ -387,7 +445,10 @@ function nextcard(){
 
 function openchest(){
 	chest = chest_backup;
-	if(chest=="free" || chest=="silver"){
+	if(chest=="free"){
+		cards = 3 + arena;
+	}
+	if(chest=="silver"){
 		cards = 3 + arena;
 	}
 	if(chest=+"golden"){
@@ -420,7 +481,34 @@ function openchest(){
 function setChest(c){
 	chest = c;
 	chest_backup = chest;
-	document.getElementById("chest").outerHTML = "<img id=\"chest\" src=\"https://djpiper28.github.io/crChestSim/chest/"+chest+".png\" class=\"center\" alt=\"chest\" width=\"120\" height=\"134\" valign=\"center\" align=\"middle\"><img/>";
+	document.getElementById("chest").outerHTML = "<img id=\"chest\" src=\"https://djpiper28.github.io/crChestSim/chest/"+chest+".png\" class=\"center\" alt=\"chest\" width=\"140\" height=\"154\" valign=\"center\" align=\"middle\"><img/>";
+	if(chest=="free"){
+		cards = 3 + arena;
+	}
+	if(chest=="silver"){
+		cards = 3 + arena;
+	}
+	if(chest=+"golden"){
+		cards = 3 * arena + 10;
+	}
+	if(chest=+"epic"){
+		cards = 10 + arena;
+	}
+	if(chest=+"magical"){
+		cards = 21 + 11 * arena;
+	}
+	if(chest=+"superMagical"){
+		cards = 120 + 60 * arena;
+	}
+	if(chest=+"crown"){
+		cards = 14 + 7 * arena;
+	}
+	if(chest=+"clan"){
+		cards = 270;
+	}
+	if(chest=+"superMagical"){
+		cards = 45 + 25 * arena;
+	}
 }
 
 function setArena(a){
@@ -492,13 +580,7 @@ function getLegendaryCheck(chest, cards, commonUnlocked, legendaryUnlocked){
 	// guarenteed:confirmed
 	chance = cards / (legFactor * (commonUnlocked/legendaryUnlocked)) * 100;
 	x = Math.random*100;//a percent
-	if(x<=chance && chance<=100){
-		return true
-	}
-	return false
-	if(chance>100){
-		return chance
-	}
+	return chance
 
 }
 
@@ -516,7 +598,7 @@ function getRareCheck(chest, cards){
 	Magical : 5
 	Super magical : 5
 	Draft : 2*/
-
+	factor = 12
 	if(chest == "silver"){
 		factor = 12
 	}
@@ -554,12 +636,9 @@ function getRareCheck(chest, cards){
 
 	confirmed = Math.floor(cards / factor);
 	// guarenteed:confirmed
-	chance = cards / factor * 100;
+	chance = (cards / factor) * 100;
 	x = Math.random*100;//a percent
-	if(x<=chance){
-		return true
-	}
-	return false
+	return chance
 }
 
 function getEpicCheck(chest, cards){
@@ -576,7 +655,7 @@ function getEpicCheck(chest, cards){
 	Magical : 30
 	Super magical : 30
 	Draft : 10*/
-
+	factor = 12
 	if(chest == "silver"){
 		factor = 500
 	}
@@ -614,30 +693,34 @@ function getEpicCheck(chest, cards){
 
 	confirmed = cards / factor;
 	// guarenteed:confirmed
-	chance = cards / factor * 100;
+	chance = (cards / factor) * 100;
 	x = Math.random*100;//a percent
-	if(x<=chance){
-		return true
-	}
-	return false
+	return chance
 }
 
 function getCommon(arena){
+	common = common_backup;
 	max = common.length - 1 ;
 	return common[Math.floor(Math.random()*max)];
 }
 
 function getRare(arena){
+	console.log("rare");
+	rare = rare_backup;
 	max = rare.length - 1 ;
 	return rare[Math.floor(Math.random()*max)];
 }
 
 function getEpic(arena){
+	console.log("epic");
+	epic = epic_backup;
 	max = epic.length - 1 ;
 	return epic[Math.floor(Math.random()*max)];
 }
 
 function getLegendary(arena){
+	console.log("LEG!!!!!!");
+	legendary = legendary_backup;
 	max = legendary.length - 1 ;
 	return legendary[Math.floor(Math.random()*max)];
 }
