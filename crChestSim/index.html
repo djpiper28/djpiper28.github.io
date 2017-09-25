@@ -170,6 +170,16 @@ tr:nth-child(even) {
 <img id="Sparky" scr="https://djpiper28.github.io/crChestSim/legendary/Sparky.png" width="0" height="0"><img/>
 <img id="The Log" scr="https://djpiper28.github.io/crChestSim/legendary/The Log.png" width="0" height="0"><img/>
 
+<img src="https://djpiper28.github.io/crChestSim/chest/free.png" width="0" height="0"  align="middle">
+<img src="https://djpiper28.github.io/crChestSim/chest/silver.png" width="0" height="0"  align="middle">
+<img src="https://djpiper28.github.io/crChestSim/chest/golden.png" width="0" height="0"  align="middle">
+<img src="https://djpiper28.github.io/crChestSim/chest/epic.png" width="0" height="0"  align="middle">
+<img src="https://djpiper28.github.io/crChestSim/chest/giant.png" width="0" height="0"  align="middle">
+<img src="https://djpiper28.github.io/crChestSim/chest/magical.png" width="0" height="0"  align="middle">
+<img src="https://djpiper28.github.io/crChestSim/chest/superMagical.png" width="0" height="0"  align="middle">
+<img src="https://djpiper28.github.io/crChestSim/chest/legendary.png" width="0" height="0"  align="middle">
+<img src="https://djpiper28.github.io/crChestSim/chest/crown.png" width="0" height="0"  align="middle">
+
 </head>
 <body>
 <table><th><tr><div class="dropdown">
@@ -206,7 +216,7 @@ tr:nth-child(even) {
 </div></tr></table>
 
 <table><tr>
-<th><img id="chest" src="https://djpiper28.github.io/crChestSim/chest/free.png" alt="background" width="120" height="134" class="bg"><img/></th>
+<th><img id="chest" src="https://djpiper28.github.io/crChestSim/chest/free.png" alt="chest" width="120" height="134"  align="middle"><img/></th>
 </tr></table>
 
 </head>
@@ -458,13 +468,13 @@ function mouse(){
 	console.log('mouse')
 }
 function getChest(){
-	document.getElementById("chest").outerHTML="<img id=\"chest\" src=\"https://djpiper28.github.io/crChestSim/chest/"+chest+".png\" alt=\"background\" width=\"120\" height=\"134\" class=\"bg\"><img/>"
+	document.getElementById("chest").outerHTML = "<img id=\"chest\" src=\"https://djpiper28.github.io/crChestSim/chest/"+chest+".png\" alt=\"chest\" width=\"120\" height=\"134\" align=\"middle\"><img/>";
 }
 window.onload = function(){
 	console.log("Webpage loaded");
 	document.addEventListener('keydown', input);
 	document.addEventListener("mousedown", mouse, false);
-	setInterval(getChest(), 10);
+	setInterval(getChest(), 1000/60);
 }
 </script></div>
 <table  width="100%"><tr>
