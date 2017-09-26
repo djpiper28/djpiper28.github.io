@@ -231,8 +231,8 @@ tr:nth-child(even) {
     <button class="dropbtn" onclick="setChest('giant')">Giant Chest</button>
     <button class="dropbtn" onclick="setChest('magical')">Magical Chest</button>
     <button class="dropbtn" onclick="setChest('superMagical')">Super Magical Chest</button>
-    <button class="dropbtn" onclick="setChest('epic')">Epic Chest (WIP)</button>
-    <button class="dropbtn" onclick="setChest('legendary')">Legendary Chest (WIP)</button>
+    <button class="dropbtn" onclick="setChest('epic')">Epic Chest</button>
+    <button class="dropbtn" onclick="setChest('legendary')">Legendary Chest</button>
     <button class="dropbtn" onclick="setChest('draft')">Draft (WIP)</button>
     <h4>Challenge/Tourney COMING SOON!</h4>
   </div>
@@ -294,6 +294,20 @@ function getNextCard(){
 		leg = 0;
 		cardn = 0;
 	}
+	if(chest=="legendary"){
+		document.getElementById("open").outerHTML="<div id=\"open\"><button onclick=\"openchest()\" class=\"button\">Open Chest</button></div>";
+		document.getElementById("next").outerHTML="<div id=\"next\"></div>";
+		raren = 0;
+		epicn = 0;
+		leg = 0;
+		cardn = 0;
+		return "legendary/"+getLegendary(11)
+	}
+	if(chest=="epic"){
+		cardn = cardn + 1;
+		return "epic/"+getEpic(arena)
+	}
+
 	cardn = cardn + 1;
 	switch(arena) {
 	    case 1:
@@ -438,26 +452,32 @@ function openchest(){
 	if(chest=="silver"){
 		cards = 3 + arena;
 	}
-	if(chest=+"golden"){
+	if(chest=="golden"){
 		cards = 3 * arena + 10;
 	}
-	if(chest=+"epic"){
+	if(chest=="epic"){
 		cards = 10 + arena;
 	}
-	if(chest=+"magical"){
+	if(chest=="magical"){
 		cards = 21 + 11 * arena;
 	}
-	if(chest=+"superMagical"){
+	if(chest=="superMagical"){
 		cards = 120 + 60 * arena;
 	}
-	if(chest=+"crown"){
+	if(chest=="crown"){
 		cards = 14 + 7 * arena;
 	}
-	if(chest=+"clan"){
+	if(chest=="clan"){
 		cards = 270;
 	}
-	if(chest=+"superMagical"){
+	if(chest=="superMagical"){
 		cards = 45 + 25 * arena;
+	}
+	if(chest==NaN){
+		console.log("Error!");
+		alert("An error occured");
+		chest = chest_backup;
+		cards = 3 + arena;
 	}
 	cardn = 0;
 
@@ -541,6 +561,10 @@ function getLegendaryCheck(chest, cards, commonUnlocked, legendaryUnlocked){
 	if(chest == "draft"){
 		legFactor = 200
 	}
+	if(chest == "legendary"){
+		cards = 1;
+		return 100
+	}
 	confirmed = cards / (legFactor * (commonUnlocked/legendaryUnlocked));
 	// guarenteed:confirmed
 	chance = cards / (legFactor * (commonUnlocked/legendaryUnlocked)) * 100;
@@ -596,6 +620,9 @@ function getRareCheck(chest, cards){
 	}
 	if(chest == "draft"){
 		factor = 2
+	}
+	if(chest == "epic"){
+		return 0;
 	}
 
 
@@ -655,7 +682,9 @@ function getEpicCheck(chest, cards){
 	if(chest == "draft"){
 		factor = 10
 	}
-
+	if(chest == "epic"){
+		return 999999//guarentees only epics
+	}
 
 	confirmed = cards / factor;
 	// guarenteed:confirmed
@@ -706,10 +735,16 @@ window.onload = function(){
 	console.log("Webpage loaded");
 	document.addEventListener('keydown', input);
 	document.addEventListener("mousedown", mouse, false);
-	//setInterval(getChest, 300);
+	if(document.getElementById("ad")==null){
+		alert("PLEASE TURN YOUR AD BLOCK OFF TO HELP SUPPORT THE DEVELOPER!");
+		alert("PLEASE TURN YOUR AD BLOCK OFF TO HELP SUPPORT THE DEVELOPER!");
+		alert("PLEASE TURN YOUR AD BLOCK OFF TO HELP SUPPORT THE DEVELOPER!");
+		alert("PLEASE TURN YOUR AD BLOCK OFF TO HELP SUPPORT THE DEVELOPER!");
+		alert("PLEASE TURN YOUR AD BLOCK OFF TO HELP SUPPORT THE DEVELOPER!");
+	}
 }
 </script></div>
 <table  width="100%"><tr>
 	
-<th><iframe class='iframe' data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe></th>
+<th><iframe id="ad" class='iframe' data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe></th>
 </tr></table></body>
