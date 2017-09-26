@@ -15,9 +15,10 @@
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    display:block; /* change this from inline-block */
+    margin:0 auto; /* this will center  it */
 }
 .button {
     background-color: rgba(0, 100, 255, 1);
@@ -26,9 +27,11 @@
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    /*display: inline-block;*/
     font-size: 16px;
     cursor: pointer;
+    display:block; /* change this from inline-block */
+    margin:0 auto; /* this will center  it */
 }
 
 .dropdown {
@@ -75,7 +78,6 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    valign: center;
 }
 
 .centre {
@@ -89,6 +91,15 @@ table {
 h4{
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+.cardName{
+	font-family: Supercell-Magic, Arial, sans-serif;
+	color: white;
+	text-align: left;
+	display:block; /* change this from inline-block */
+    margin:0 auto; /* this will center  it */
+}
+
 
 td, th {
     border: 0px solid #dddddd;
@@ -122,7 +133,7 @@ tr:nth-child(even) {
 <img id="Fire Spirits" scr="https://djpiper28.github.io/crChestSim/common/Fire Spirits.png" alt="" width="1" height="1""><img/>
 <img id="GoblinGang" scr="https://djpiper28.github.io/crChestSim/common/GoblinGang.png" alt="" width="1" height="1""><img/>
 <img id="Goblins" scr="https://djpiper28.github.io/crChestSim/common/Goblins.png" alt="" width="1" height="1""><img/>
-<img id="Horde" scr="https://djpiper28.github.io/crChestSim/common/Horde.png" alt="" width="1" height="1""><img/>
+<img id="Horde" scr="https://djpiper28.github.io/crChestSim/common/Minion Horde.png" alt="" width="1" height="1""><img/>
 <img id="Ice Spirit" scr="https://djpiper28.github.io/crChestSim/common/Ice Spirit.png" alt="" width="1" height="1""><img/>
 <img id="Knight" scr="https://djpiper28.github.io/crChestSim/common/Knight.png" alt="" width="1" height="1""><img/>
 <img id="Minions" scr="https://djpiper28.github.io/crChestSim/common/Minions.png" alt="" width="1" height="1""><img/>
@@ -240,11 +251,12 @@ tr:nth-child(even) {
 <div>
 <table>
 	<tr> 
-		<th"><div valign="right" width="120" height="134"><img id="chest" src="https://djpiper28.github.io/crChestSim/chest/free.png" alt="chest" class="center" width="140" height="154" valign="center" align="middle"><img/></div></th>
+		<th"><div valign="right" width="180" height="194"><img id="chest" src="https://djpiper28.github.io/crChestSim/chest/free.png" alt="chest" class="center" width="140" height="154" valign="center" align="middle"><img/></div></th>
 		<th><div id="card"></div></th>
+		<th><div id="open"><button onclick="openchest()" class="button">Open Chest</button></div></th>
 	</tr>
 	<tr>
-		<th><div id="open"><button onclick="openchest()" class="button">Open Chest</button></div></th>
+		<th></th>
 		<th><div id="next"></div></th>
 	</tr>
 </table>
@@ -260,7 +272,7 @@ var mouseY;
 var FPS = 20;
 //
 
-var common = ["Archers","Arrows","Barbarians","Bats","Bomber","Cannon","Elite Barbarians","Fire Spirits","GoblinGang","Goblins","Horde","Ice Spirit","Knight","Minions","Mortar","Royal Giant","Skeletons","SpearGoblins","Tesla","Zap"];
+var common = ["Archers","Arrows","Barbarians","Bats","Bomber","Cannon","Elite Barbarians","Fire Spirits","GoblinGang","Goblins","Minion Horde","Ice Spirit","Knight","Minions","Mortar","Royal Giant","Skeletons","SpearGoblins","Tesla","Zap"];
 var rare = ["Barbarian Hut","Battle Ram","Bomb Tower","Dart Goblin","Elixir Pump","Fireball","Flying Machine","Furnace","Giant","Goblin Hut","Heal","Hog","Ice Golem","Inferno Tower","Mega Minion","Mini P.E.K.K.A","Musketeer","Rocket","Three Musketeers","Tombstone","Valkyrie","Wizard"];
 var epic = ["Baby Dragon","Balloon","Bowler","Cannon Cart","Clone","Dark Prince","Executioner","Freeze","Giant Skeleton","Goblin Barrel","Golem","Guards","Lightning","Mirror","P.E.K.K.A","Poison","Prince","Rage","Skeleton Army","Tornado","Witch","X Bow"]
 var legendary = ["Bandit","Electro Wizard","Graveyard","Ice Wizard","Inferno Dragon","Lava Hound","Lumberjack","Mega Knight","Miner","Night Witch","Princess","Sparky","The Log"
@@ -441,7 +453,7 @@ function getNextCard(){
 function nextcard(){
 	chest = chest_backup;
 	cardout = getNextCard();
-	document.getElementById("card").outerHTML = "<div id=\"card\"><img id=\"card\" src=\"https://djpiper28.github.io/crChestSim/"+cardout+".png\" class=\"center\" alt=\"\" width=\"90\" height=\"104\" valign=\"center\" align=\"middle\"><img/></div>";
+	document.getElementById("card").outerHTML = "<div id=\"card\"><img id=\"card\" src=\"https://djpiper28.github.io/crChestSim/"+cardout+".png\" class=\"center\" alt=\"\" width=\"90\" height=\"104\" valign=\"center\" align=\"middle\"><img/><h4 class=\"cardName\">"+cardout.split("/")[1]+"</h4></div>";
 }
 
 function openchest(){
@@ -493,7 +505,7 @@ function setChest(c){
 	chest = c;
 	chest_backup = chest;
 	console.log(chest);
-	document.getElementById("chest").outerHTML = "<img id=\"chest\" src=\"https://djpiper28.github.io/crChestSim/chest/"+chest+".png\" class=\"center\" alt=\"chest\" width=\"140\" height=\"154\" valign=\"center\" align=\"middle\"><img/>";
+	document.getElementById("chest").outerHTML = "<img id=\"chest\" src=\"https://djpiper28.github.io/crChestSim/chest/"+chest+".png\" class=\"center\" alt=\"chest\" width=\"180\" height=\"194\" valign=\"center\" align=\"middle\"><img/>";
 }
 
 function setArena(a){
