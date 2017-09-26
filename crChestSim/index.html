@@ -285,12 +285,20 @@ var FPS = 20;
 //
 
 var common = ["Archers","Arrows","Barbarians","Bats","Bomber","Cannon","Elite Barbarians","Fire Spirits","Goblin Gang","Goblins","Minion Horde","Ice Spirit","Knight","Minions","Mortar","Royal Giant","Skeletons","Spear Goblins","Tesla","Zap"];
+var commonarena = [1,1,1,8,1,3,7,5,9,1,4,8,1,2,3,7,2,1,4,5];
 var rare = ["Barbarian Hut","Battle Ram","Bomb Tower","Dart Goblin","Elixir Pump","Fireball","Flying Machine","Furnace","Giant","Goblin Hut","Heal","Hog","Ice Golem","Inferno Tower","Mega Minion","Mini P.E.K.K.A","Musketeer","Rocket","Three Musketeers","Tombstone","Valkyrie","Wizard"];
-var epic = ["Baby Dragon","Balloon","Bowler","Cannon Cart","Clone","Dark Prince","Executioner","Freeze","Giant Skeleton","Goblin Barrel","Golem","Guards","Lightning","Mirror","P.E.K.K.A","Poison","Prince","Rage","Skeleton Army","Tornado","Witch","X Bow"]
+var rarearena = [3,6,2,9,6,1,9,5,1,1,10,4,8,4,7,1,1,3,7,2,1,5];
+var epic = ["Baby Dragon","Balloon","Bowler","Cannon Cart","Clone","Dark Prince","Executioner","Freeze","Giant Skeleton","Goblin Barrel","Golem","Guards","Lightning","Mirror","P.E.K.K.A","Poison","Prince","Rage","Skeleton Army","Tornado","Witch","X Bow"];
+var epicarena = [1,2,8,10,8,7,9,4,2,1,6,7,15,4,5,1,3,1,6,1,3];
 var legendary = ["Bandit","Electro Wizard","Graveyard","Ice Wizard","Inferno Dragon","Lava Hound","Lumberjack","Mega Knight","Miner","Night Witch","Princess","Sparky","The Log"
 ];
+var legendaryarena = [9,7,5,5,4,4,8,10,6,8,7,6,6];
 
 var common_backup = ["Archers","Arrows","Barbarians","Bats","Bomber","Cannon","Elite Barbarians","Fire Spirits","Goblin Gang","Goblins","Minion Horde","Ice Spirit","Knight","Minions","Mortar","Royal Giant","Skeletons","Spear Goblins","Tesla","Zap"];
+var commonarena_backup = [1,1,1,8,1,3,7,5,9,1,4,8,1,2,3,7,2,1,4,5];
+var rarearena_backup = [3,6,2,9,6,1,9,5,1,1,10,4,8,4,7,1,1,3,7,2,1,5];
+var epicarena_backup = [1,2,8,10,8,7,9,4,2,1,6,7,15,4,5,1,3,1,6,1,3];
+var legendaryarena_backup = [9,7,5,5,4,4,8,10,6,8,7,6,6];
 var rare_backup = ["Barbarian Hut","Battle Ram","Bomb Tower","Dart Goblin","Elixir Pump","Fireball","Flying Machine","Furnace","Giant","Goblin Hut","Heal","Hog","Ice Golem","Inferno Tower","Mega Minion","Mini P.E.K.K.A","Musketeer","Rocket","Three Musketeers","Tombstone","Valkyrie","Wizard"];
 var epic_backup = ["Baby Dragon","Balloon","Bowler","Cannon Cart","Clone","Dark Prince","Executioner","Freeze","Giant Skeleton","Goblin Barrel","Golem","Guards","Lightning","Mirror","P.E.K.K.A","Poison","Prince","Rage","Skeleton Army","Tornado","Witch","X Bow"]
 var legendary_backup = ["Bandit","Electro Wizard","Graveyard","Ice Wizard","Inferno Dragon","Lava Hound","Lumberjack","Mega Knight","Miner","Night Witch","Princess","Sparky","The Log"
@@ -717,28 +725,56 @@ function getEpicCheck(chest, cards){
 	return chance
 }
 
-function getCommon(arena){
-	common = common_backup;
-	max = common.length - 1 ;
-	return common[Math.floor(Math.random()*max)];
+function getCommon(aa){
+	max = common.length - 1;
+	ran = Math.floor(Math.random()*max);
+	while(commonarena[ran]>arena) {
+		commonarena = commonarena_backup;
+		common = common_backup;
+		max = common.length - 1 ;
+		ran = Math.floor(Math.random()*max);
+		common[ran];
+	} 
+	return common[ran]
 }
 
 function getRare(arena){
-	rare = rare_backup;
-	max = rare.length - 1 ;
-	return rare[Math.floor(Math.random()*max)];
+	max = rare.length - 1;
+	ran = Math.floor(Math.random()*max);
+	while(rarearena[ran]>arena) {
+		rarearena = rarearena_backup;
+		rare = rare;
+		max = rare.length - 1 ;
+		ran = Math.floor(Math.random()*max);
+		rare[ran];
+	} 
+	return rare[ran]
 }
 
 function getEpic(arena){
-	epic = epic_backup;
-	max = epic.length - 1 ;
-	return epic[Math.floor(Math.random()*max)];
+	max = epic.length - 1;
+	ran = Math.floor(Math.random()*max);
+	while(epicarena[ran]>arena) {
+		epicarena = epicarena_backup;
+		epic = epic;
+		max = epic.length - 1 ;
+		ran = Math.floor(Math.random()*max);
+		epic[ran];
+	} 
+	return epic[ran]
 }
 
 function getLegendary(arena){
-	legendary = legendary_backup;
-	max = legendary.length - 1 ;
-	return legendary[Math.floor(Math.random()*max)];
+	max = legendary.length - 1;
+	ran = Math.floor(Math.random()*max);
+	while(legendaryarena[ran]>arena) {
+		legendaryarena = legendaryarena_backup;
+		legendary = legendary;
+		max = legendary.length - 1 ;
+		ran = Math.floor(Math.random()*max);
+		legendary[ran];
+	} 
+	return legendary[ran]
 }
 
 function input(){
