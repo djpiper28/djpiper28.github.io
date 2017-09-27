@@ -473,13 +473,13 @@ function openchest(){
 	//
 	chest = chest_backup;
 	if(chest=="free"){
-		cards = 3 + arena;
+		cards = 5 + arena;
 	}
 	if(chest=="silver"){
-		cards = 3 + arena;
+		cards = 2 + arena;
 	}
 	if(chest=="golden"){
-		cards = 3 * arena + 10;
+		cards = 3 * arena + 8;
 	}
 	if(chest=="epic"){
 		cards = 10 + arena;
@@ -511,19 +511,35 @@ function openchest(){
 	cardn = 0;
 	chance = getRareCheck(chest, cards);
 	raret = Math.floor(chance/100);
-	if(Math.random()<=(Math.floor(chance/100)*100)-chance){
+	if(Math.random()*100<=(Math.floor(chance/100)*100)-chance){
 		raret = raret + 1;
 	}
+	if(Math.floor(chance/100)==0){
+		if(Math.random()*100<=chance){
+			raret = raret + 1;
+		}
+	} 
 	chance = getEpicCheck(chest, cards);
 	epict = Math.floor(chance/100);
-	if(Math.random()<=(Math.floor(chance/100)*100)-chance){
+	if(Math.random()*100<=(Math.floor(chance/100)*100)-chance){
 		epict = epict + 1;
 	}
+	if(Math.floor(chance/100)==0){
+		if(Math.random()*100<=chance){
+			epict = epict + 1;
+		}
+	}  
 	chance = getLegendaryCheck(chest, cards, commons, legendaries);
 	legt = Math.floor(chance/100);
-	if(Math.random()<=(Math.floor(chance/100)*100)-chance){
+	if(Math.random()*100<=(Math.floor(chance/100)*100)-chance){
 		legt = legt + 1;
-	}
+	} 
+	if(Math.floor(chance/100)==0){
+		if(Math.random()*100<=chance){
+			legt = legt + 1;
+		}
+	} 
+	
 	commont = cards - (raret - epict - legt);
 	raren = 0;
 	epicn = 0;
