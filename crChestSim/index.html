@@ -313,6 +313,13 @@ var cards = 10;
 var factor = 10;
 var chest_backup = chest;
 console.log("Script loaded");
+function randomm(){
+	num = Math.randomm()
+	while(num<0.1){
+		num = Math.randomm()
+	}
+	return num
+}
 function getNextCard(){
 	//chest
 	chest = chest_backup
@@ -360,25 +367,25 @@ function getNextCard(){
 	}
 	multiple = 0;
 	if(leg<legt){
-		multiple = Math.ceil((legt - leg)*0.75);
+		multiple = Math.ceil((legt - leg)*randomm());
 		legt = legt - multiple;
 		cardn = cardn + multiple;
 		return "legendary/"+getLegendary(arena)
 	}
 	if(epicn<epict){
-		multiple = Math.ceil((epict - epicn)*0.75);
+		multiple = Math.ceil((epict - epicn)*randomm());
 		epict = epict - multiple;
 		cardn = cardn + multiple;
 		return "epic/"+getEpic(arena)
 	}
 	if(raren<raret){
-		multiple = Math.ceil((raret - raren)*0.75);
+		multiple = Math.ceil((raret - raren)*randomm());
 		raret = raret - multiple;
 		cardn = cardn + multiple;
 		return "rare/"+getRare(arena)
 	}	
 	if(commonn<commont){
-		multiple = Math.ceil((commont - commonn)*0.75);
+		multiple = Math.ceil((commont - commonn)*randomm());
 		commont = commont - multiple;
 		cardn = cardn + multiple;
 		return "common/"+getCommon(arena)
