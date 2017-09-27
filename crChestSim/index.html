@@ -326,6 +326,14 @@ function getNextCard(){
 		epicn = 0;
 		leg = 0;
 		cardn = 0;
+		out = [];
+		i = 0;
+		while(i < cardUnlocked.length){
+			out[length] = "<img id=\"card\" src=\"https://djpiper28.github.io/crChestSim/"+cardUnlocked[i]+".png\" class=\"center\" alt=\"\" width=\"90\" height=\"104\" valign=\"center\" align=\"middle\"><img/><h4 class=\"cardName\">"+cardUnlocked[i].split("/")[1]+" X "+cardNumbers[i]+"</h4>";
+
+			i = i + 1;
+		}
+		document.getElementById("card").outerHTML = "<div id=\"card\">"+out.join("")+"</div>";
 	}
 	if(chest=="legendary"){
 		document.getElementById("open").outerHTML="<div id=\"open\"><button onclick=\"openchest()\" class=\"button\">Open Chest</button></div>";
