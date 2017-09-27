@@ -350,6 +350,7 @@ function getNextCard(){
 			i = i + 1;
 		}
 		document.getElementById("card").outerHTML = "<div id=\"card\">"+out.join("")+"</div>";
+		return "/"
 	}
 	if(chest=="legendary"){
 		document.getElementById("open").outerHTML="<div id=\"open\"><button onclick=\"openchest()\" class=\"button\">Open Chest</button></div>";
@@ -362,10 +363,13 @@ function getNextCard(){
 		return "legendary/"+getLegendary(11)
 	}
 	if(chest=="epic"){
-		multiple = Math.ceil((cards - cardn)*0.75);
+		if(cardn>=cards){
+			return "/"
+		}
+		multiple = Math.ceil((cards - cardn)*randomm());
 		cardn = cardn + multiple;
 		if(multiple==0){
-			document.getElementById("open").outerHTML="<div id=\"open\"><button onclick=\"openchest()\" class=\"button\">Open Chest</button></div>";
+		 	document.getElementById("open").outerHTML="<div id=\"open\"><button onclick=\"openchest()\" class=\"button\">Open Chest</button></div>";
 			document.getElementById("next").outerHTML="<div id=\"next\"><button class=\"button_inactive\">Next Card</button></div>";
 			raren = 0;
 			epicn = 0;
@@ -497,7 +501,7 @@ function openchest(){
 		cards = 3 * arena + 8;
 	}
 	if(chest=="epic"){
-		cards = 10 + arena;
+		cards = 11 + arena;
 	}
 	if(chest=="magical"){
 		cards = 21 + 11 * arena;
