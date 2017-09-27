@@ -247,7 +247,7 @@ tr:nth-child(even) {
   <div class="dropdown-content">
     <button class="dropbtn" onclick="setChest('free')">Free Chest</button>
     <button class="dropbtn" onclick="setChest('crown')">Crown Chest</button>
-    <button class="dropbtn" onclick="setChest('clan')">Clan Chest</button>
+    <button class="dropbtn" onclick="setChest('clan')">Clan Chest (Tier 10)</button>
     <button class="dropbtn" onclick="setChest('silver')">Silver Chest</button>
     <button class="dropbtn" onclick="setChest('golden')">Golden Chest</button>
     <button class="dropbtn" onclick="setChest('giant')">Giant Chest</button>
@@ -256,7 +256,7 @@ tr:nth-child(even) {
     <button class="dropbtn" onclick="setChest('epic')">Epic Chest</button>
     <button class="dropbtn" onclick="setChest('legendary')">Legendary Chest</button>
     <button class="dropbtn" onclick="setChest('draft')">Draft (WIP)</button>
-    <h4>Challenge/Tourney COMING SOON!</h4>
+    <button class="dropbtn">Challenge/Tourney COMING SOON!</button>
   </div>
 </div></tr>
 <tr><div><button class="button"><a href="https://djpiper28.github.io/index.html">Home</a></button></tr></div></table>
@@ -318,7 +318,8 @@ var chest_backup = chest;
 console.log("Script loaded");
 function getNextCard(){
 	//chest
-	if(cardn>cards){
+	chest = chest_backup
+	if(cardn>=cards){
 		document.getElementById("open").outerHTML="<div id=\"open\"><button onclick=\"openchest()\" class=\"button\">Open Chest</button></div>";
 		document.getElementById("next").outerHTML="<div id=\"next\"></div>";
 		raren = 0;
@@ -333,13 +334,71 @@ function getNextCard(){
 		epicn = 0;
 		leg = 0;
 		cardn = 0;
+		multiple = 1;
 		return "legendary/"+getLegendary(11)
 	}
 	if(chest=="epic"){
-		cardn = cardn + 1;
+		multiple = Math.ceil((cards - cardn)*0.75);
+		cardn = cardn + multiple;
+		if(multiple==0){
+			document.getElementById("open").outerHTML="<div id=\"open\"><button onclick=\"openchest()\" class=\"button\">Open Chest</button></div>";
+			document.getElementById("next").outerHTML="<div id=\"next\"></div>";
+			raren = 0;
+			epicn = 0;
+			leg = 0;
+			cardn = 0;
+			multiple = "";
+			return "/"
+		} else{
+			return "epic/"+getEpic(arena)
+		}
+	}
+	multiple = 0;
+	if(leg<legt){
+		multiple = Math.ceil((legt - leg)*0.75);
+		legt = legt - multiple;
+		cardn = cardn + multiple;
+		return "legendary/"+getLegendary(arena)
+	}
+	if(epicn<epict){
+		multiple = Math.ceil((epict - epicn)*0.75);
+		epict = epict - multiple;
+		cardn = cardn + multiple;
 		return "epic/"+getEpic(arena)
 	}
+	if(raren<raret){
+		multiple = Math.ceil((raret - raren)*0.75);
+		raret = raret - multiple;
+		cardn = cardn + multiple;
+		return "rare/"+getRare(arena)
+	}	
+	if(commonn<commont){
+		multiple = Math.ceil((commont - commonn)*0.75);
+		commont = commont - multiple;
+		cardn = cardn + multiple;
+		return "common/"+getCommon(arena)
+	}
+	multiple = 1;
+	cardn = cardn + multiple;
+	return "common/"+getCommon();
+}
 
+function nextcard(){
+	chest = chest_backup;
+	cardout = getNextCard();
+	if(cardout=="/"){
+		console.log("NO")
+	} else{
+		document.getElementById("card").outerHTML = "<div id=\"card\"><img id=\"card\" src=\"https://djpiper28.github.io/crChestSim/"+cardout+".png\" class=\"center\" alt=\"\" width=\"90\" height=\"104\" valign=\"center\" align=\"middle\"><img/><h4 class=\"cardName\">"+cardout.split("/")[1]+" X "+multiple+"</h4></div>";
+		cardUnlocked[cardUnlocked.length]=cardout;
+		cardNumbers[cardNumbers.length]=multiple;
+	}
+}
+
+function openchest(){
+	cardUnlocked=[];
+	cardNumbers=[];
+	commonn = 0;
 	cardn = cardn + 1;
 	switch(arena) {
 	    case 1:
@@ -402,81 +461,7 @@ function getNextCard(){
 	        legendaries=0;
 	}
 
-	chance = getRareCheck(chest, cards);
-	if(chance>=100){
-		if(raren<Math.floor(chance/100)){
-			raren = raren + 1;
-			return "rare/"+getRare(arena)
-		} else{
-			if(Math.floor(Math.random()*100)<=(Math.floor(chance/100)*100)-chance*-1){
-				raren=999;
-				if(raren<999){
-					return "rare/"+getRare(arena)
-				}
-			}
-		}
-	} else{
-		if(Math.floor(Math.random()*100)<=chance){
-			raren = 999;
-			if(raren<999){
-				return "rare/"+getRare(arena)
-			}			
-		}
-	}
-	console.log(chance+"rare")
-	
-
-
-	chance = getEpicCheck(chest, cards);
-	if(chance>=100){
-		if(epicn<Math.floor(chance/100)){
-			epicn = epicn + 1;
-			return "epic/"+getEpic(arena)
-		} else{
-			if(Math.floor(Math.random()*100)<=(Math.floor(chance/100)*100)-chance*-1){
-				epicn=999;
-				if(epicn<999){
-					return "epic/"+getEpic(arena)
-				}
-			}
-		}
-	} else{
-		if(Math.floor(Math.random()*100)<=chance){
-			epicn=999;
-			if(epicn<999){
-				return "epic/"+getEpic(arena)
-			}
-		}
-	}
-	console.log(chance+"epic")
-
-
-	chance = getLegendaryCheck(chest, cards, commons, legendaries);
-	if(chance>=100){
-		if(leg<Math.floor(chance/100)){
-			leg = leg + 1;
-			return "legendary/"+getLegendary(arena)
-		} else{
-			if(Math.floor(Math.random()*100)<=(Math.floor(chance/100)*100)-chance*-1){
-				return "legendary/"+getLegendary(arena)
-			}
-		}
-	} else{
-		if(Math.floor(Math.random()*100)<=chance){
-			return "legendary/"+getLegendary(arena)
-		}
-	}
-	console.log(chance+"leg")	
-	return "common/"+getCommon(arena)
-}
-
-function nextcard(){
-	chest = chest_backup;
-	cardout = getNextCard();
-	document.getElementById("card").outerHTML = "<div id=\"card\"><img id=\"card\" src=\"https://djpiper28.github.io/crChestSim/"+cardout+".png\" class=\"center\" alt=\"\" width=\"90\" height=\"104\" valign=\"center\" align=\"middle\"><img/><h4 class=\"cardName\">"+cardout.split("/")[1]+"</h4></div>";
-}
-
-function openchest(){
+	//
 	chest = chest_backup;
 	if(chest=="free"){
 		cards = 3 + arena;
@@ -505,6 +490,9 @@ function openchest(){
 	if(chest=="superMagical"){
 		cards = 45 + 25 * arena;
 	}
+	if(chest=="giant"){
+		cards = 49 + 21 * arena
+	}
 	if(chest==NaN){
 		console.log("Error!");
 		alert("An error occured");
@@ -512,10 +500,26 @@ function openchest(){
 		cards = 3 + arena;
 	}
 	cardn = 0;
-
+	chance = getRareCheck(chest, cards);
+	raret = Math.floor(chance/100);
+	if(Math.random()<=(Math.floor(chance/100)*100)-chance){
+		raret = raret + 1;
+	}
+	chance = getEpicCheck(chest, cards);
+	epict = Math.floor(chance/100);
+	if(Math.random()<=(Math.floor(chance/100)*100)-chance){
+		epict = epict + 1;
+	}
+	chance = getLegendaryCheck(chest, cards, commons, legendaries);
+	legt = Math.floor(chance/100);
+	if(Math.random()<=(Math.floor(chance/100)*100)-chance){
+		legt = legt + 1;
+	}
+	commont = cards - (raret - epict - legt);
 	raren = 0;
 	epicn = 0;
 	leg = 0;
+
 	document.getElementById("next").outerHTML = "<div id=\"next\"><button  onclick=\"nextcard()\" class=\"button\">Next Card</button></div>";
 	document.getElementById("open").outerHTML = "<div id=\"open\"></div>";
 	nextcard();
