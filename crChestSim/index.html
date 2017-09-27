@@ -29,7 +29,19 @@
     text-decoration: none;
     font-size: 16px;
     cursor: pointer;
-    display:block; /* change this from inline-block */
+    display: inline-block; /* change this from inline-block */
+    margin:0 50%; /* this will center  it */
+}
+.button_inactive{
+	background-color: rgba(0, 100, 255, 1);
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block; /* change this from inline-block */
     margin:0 50%; /* this will center  it */
 }
 div{
@@ -264,9 +276,9 @@ tr:nth-child(even) {
 </div></tr></table>
 <div>
 <table>
-	<tr> 
+	<tr> <td>
 		<th"><div valign="right" width="180" height="194"><img id="chest" src="https://djpiper28.github.io/crChestSim/chest/free.png" alt="chest" class="center" width="140" height="154" valign="center" align="middle"><img/></div></th>
-		<th><div id="card"></div></th>		
+		<th><div id="card"></div></th>	</td>	
 	</tr>
 </table>
 </div>
@@ -325,7 +337,7 @@ function getNextCard(){
 	chest = chest_backup
 	if(cardn>=cards){
 		document.getElementById("open").outerHTML="<div id=\"open\"><button onclick=\"openchest()\" class=\"button\">Open Chest</button></div>";
-		document.getElementById("next").outerHTML="<div id=\"next\"></div>";
+		document.getElementById("next").outerHTML="<div id=\"next\"><button class=\"button_inactive\">Next Card</button></div>";
 		raren = 0;
 		epicn = 0;
 		leg = 0;
@@ -341,7 +353,7 @@ function getNextCard(){
 	}
 	if(chest=="legendary"){
 		document.getElementById("open").outerHTML="<div id=\"open\"><button onclick=\"openchest()\" class=\"button\">Open Chest</button></div>";
-		document.getElementById("next").outerHTML="<div id=\"next\"></div>";
+		document.getElementById("next").outerHTML="<div id=\"next\"><button class=\"button_inactive\">Next Card</button></div>";
 		raren = 0;
 		epicn = 0;
 		leg = 0;
@@ -354,7 +366,7 @@ function getNextCard(){
 		cardn = cardn + multiple;
 		if(multiple==0){
 			document.getElementById("open").outerHTML="<div id=\"open\"><button onclick=\"openchest()\" class=\"button\">Open Chest</button></div>";
-			document.getElementById("next").outerHTML="<div id=\"next\"></div>";
+			document.getElementById("next").outerHTML="<div id=\"next\"><button class=\"button_inactive\">Next Card</button></div>";
 			raren = 0;
 			epicn = 0;
 			leg = 0;
@@ -548,8 +560,8 @@ function openchest(){
 	epicn = 0;
 	leg = 0;
 
-	document.getElementById("next").outerHTML = "<div id=\"next\"><button  onclick=\"nextcard()\" class=\"button\">Next Card</button></div>";
-	document.getElementById("open").outerHTML = "<div id=\"open\"></div>";
+	document.getElementById("next").outerHTML = "<div id=\"next\"><button onclick=\"nextcard()\" class=\"button\">Next Card</button></div>";
+	document.getElementById("open").outerHTML = "<div id=\"open\"><button class=\"button_inactive\">Open Chest</button></div>";
 	nextcard();
 }
 
@@ -839,10 +851,11 @@ window.onload = function(){
 <table  width="100%"><tr>
 	
 <th><iframe id="ad" class='iframe' data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe></th>
-<th><div id="next"></div>
+<th><td><div id="next"><button class="button_inactive">Next Card</button></div>
 <div id="open"><button onclick="openchest()" class="button">Open Chest</button></div>
-<div><button class="button"><a href="https://djpiper28.github.io/index.html">Home</a></button></div>
-<p class="white">This website was made by djpiper28 and is not affiliated with Supercell. Clash Royale, related cards, graphics and names are owned by Supercell.</p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div><button class="button"><a href="https://djpiper28.github.io/index.html">Home</a></button></div></td>
+</th><th><tr><p class="white">This website was made by djpiper28 and is not affiliated with Supercell. Clash Royale, related cards, graphics and names are owned by Supercell.</p></tr><tr>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
      data-ad-layout="in-article"
@@ -851,6 +864,6 @@ window.onload = function(){
      data-ad-slot="7809002918"></ins>
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
-</script></th>
+</script></tr></th>
 </tr></table></body>
 </th"></tr></table></div></th></table></body></div></body></div>
