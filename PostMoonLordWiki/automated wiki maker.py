@@ -1,7 +1,10 @@
 import os
+import subprocess
+
 
 #Folder with the source code in
 rootFolder = "C:/Users/dp/Documents/My Games/Terraria/ModLoader/Mod Sources/PostMoonLord"
+rootFolder_ = "C:\\Users\\dp\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\PostMoonLord"
 #Folders with modded content
 folders = ["Buffs","Items","Mounts","NPCs","Projectiles","Tiles","Walls",]
 #Wiki Home Page
@@ -24,9 +27,16 @@ out = []
 
 for item in items:
 
+
+
 	print(item)
 	itemFolder = item.split("|")[1]
 	itemFile = item.split("|")[0]
+
+	cmd = "echo F| xcopy "+rootFolder_+"\\"+itemFolder+"\\"+itemFile.split(".")[0]+".png C:\\Users\\dp\\Desktop\\djpiper28.github.io\\djpiper28.github.io\\PostMoonLordWiki\\"+itemFile.split(".")[0]+".png"
+
+	subprocess.call(cmd, shell=True)
+	print("Copied File "+itemFile.split(".")[0]+".png"+"\nfrom  "+rootFolder+"/"+itemFolder+"/"+itemFile.split(".")[0]+".png  to C:/Users/dp/Desktop/djpiper28.github.io/djpiper28.github.io/PostMoonLordWiki/"+itemFile.split(".")[0]+".png")
 
 	f = open((rootFolder+"/"+itemFolder+"/"+itemFile),"r")
 	
@@ -82,8 +92,9 @@ for item in items:
 		if "npc.boss" in line:
 			itemDetails.append("NPC is Boss: "+line.split("=")[1]+"\n")
 
-
-	out.append("<p>"+"\n--".join(itemDetails)+"</p>\n")
+	image = "\n<img scr=\"https://djpiper28.github.io/PostMoonLordWiki/"+itemFile.split(".")[0]+".png"+"\"alt=\"Item image\" width=\"100\" height=\"100\"><img/>\n"
+	#Cute images
+	out.append("<p>"+"\n--".join(itemDetails)+"</p>\n"+image)
 
 print("\n\n\n\n")
 print("\n".join(out))
