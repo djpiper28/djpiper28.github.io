@@ -69,15 +69,21 @@ for item in items:
 		
 		if "Main.tileSpelunker" in line:
 			itemDetails.append("Tile is an Ore: "+line.split("=")[1]+"\n")
+
 		if "npc.damage" in line:
 			itemDetails.append("NPC Damage: "+line.split("=")[1]+"\n")
+
 		if "npc.lifeMax" in line:
 			itemDetails.append("NPC Life: "+line.split("=")[1]+"\n")
+
 		if "defense" in line:
 			itemDetails.append("Defense: "+line.split("=")[1]+"\n")
+
 		if "npc.boss" in line:
 			itemDetails.append("NPC is Boss: "+line.split("=")[1]+"\n")
-		out.append("<p>"+"\n--".join(itemDetails)+"</p>\n")
+
+
+	out.append("<p>"+"\n--".join(itemDetails)+"</p>\n")
 
 print("\n\n\n\n")
 print("\n".join(out))
@@ -86,12 +92,9 @@ print(items)
 
 i = 0
 
-for data in out:
+while(i<len(out)):
 
-	if(i>=39):
-		break
-
-	d = staticTitle + data
+	d = staticTitle + out[i]
 
 	print(i)
 
