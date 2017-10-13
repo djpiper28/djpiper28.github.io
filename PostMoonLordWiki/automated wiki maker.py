@@ -106,7 +106,7 @@ for item in items:
 	fileName = item.split("|")[0]
 	fileName = fileName.split(".")[0]
 
-	indexData.append("<a href=\"www.djpiper28.github.io/"+(fileName+".html")+"\">"+fileName+"</a>\n")
+	indexData.append("<a href=\"www.djpiper28.github.io/PostMoonLordWiki"+(fileName+".html")+"\">"+fileName+"</a>\n")
 
 print("Creating Index")
 f = open("index.html", "w+")
