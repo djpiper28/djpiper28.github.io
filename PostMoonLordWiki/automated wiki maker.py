@@ -27,16 +27,14 @@ out = []
 
 for item in items:
 
-
-
 	print(item)
 	itemFolder = item.split("|")[1]
 	itemFile = item.split("|")[0]
 
-	cmd = "echo F| xcopy "+rootFolder_+"\\"+itemFolder+"\\"+itemFile.split(".")[0]+".png C:\\Users\\dp\\Desktop\\djpiper28.github.io\\djpiper28.github.io\\PostMoonLordWiki\\"+itemFile.split(".")[0]+".png"
+	cmd = "echo F| xcopy \""+rootFolder_+"\\"+itemFolder+"\\"+itemFile.split(".")[0]+".png\" \"C:\\Users\\dp\\Desktop\\djpiper28.github.io\\djpiper28.github.io\\PostMoonLordWiki\\"+itemFile.split(".")[0]+".png*\""
 
 	subprocess.call(cmd, shell=True)
-	print("Copied File "+itemFile.split(".")[0]+".png"+"\nfrom  "+rootFolder+"/"+itemFolder+"/"+itemFile.split(".")[0]+".png  to C:/Users/dp/Desktop/djpiper28.github.io/djpiper28.github.io/PostMoonLordWiki/"+itemFile.split(".")[0]+".png")
+	#print("Copied File "+itemFile.split(".")[0]+".png"+"\nfrom  "+rootFolder+"/"+itemFolder+"/"+itemFile.split(".")[0]+".png  to C:/Users/dp/Desktop/djpiper28.github.io/djpiper28.github.io/PostMoonLordWiki/"+itemFile.split(".")[0]+".png")
 
 	f = open((rootFolder+"/"+itemFolder+"/"+itemFile),"r")
 	
