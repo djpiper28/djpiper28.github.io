@@ -43,56 +43,56 @@ for item in items:
 	for line in f:
 
 		if "DisplayName.SetDefault" in line:
-			itemDetails.append("Name: "+line.split("\"")[1]+"\n")
+			itemDetails.append("<p>Name: "+line.split("\"")[1]+"\n</p>")
 		
 		if "Tooltip.SetDefault" in line:
-			itemDetails.append("Item Description: "+line.split("\"")[1]+"\n")
+			itemDetails.append("<p>Item Description: "+line.split("\"")[1]+"\n</p>")
 		
 		if "item.damage" in line:
-			itemDetails.append("Item Damage: "+line.split("=")[1]+"\n")
+			itemDetails.append("<p>Item Damage: "+line.split("=")[1]+"\n</p>")
 		
 		if "mod.ProjectileType" in line:
-			itemDetails.append("Item Projectile: "+line.split("\"")[1]+"\n")
+			itemDetails.append("<p>Item Projectile: "+line.split("\"")[1]+"\n</p>")
 		
 		if "item.lifeRegen" in line:
-			itemDetails.append("Item Life Regen: "+line.split("=")[1]+"\n")
+			itemDetails.append("<p>Item Life Regen: "+line.split("=")[1]+"\n</p>")
 		
 		if "item.useTime" in line:
-			itemDetails.append("Item Use Time: "+line.split("=")[1]+"\n")
+			itemDetails.append("<p>Item Use Time: "+line.split("=")[1]+"\n</p>")
 	
 		if "item.knockBack" in line:
-			itemDetails.append("Item Knockback: "+line.split("=")[1]+"\n")
+			itemDetails.append("<p>Item Knockback: "+line.split("=")[1]+"\n</p>")
 	
 		if "item.autoReuse" in line:
-			itemDetails.append("Item Auto Swing: "+line.split("=")[1]+"\n")
+			itemDetails.append("<p>Item Auto Swing: "+line.split("=")[1]+"\n</p>")
 	
 		if "item.value" in line:
-			itemDetails.append("Item Value: "+line.split("=")[1]+"\n")
+			itemDetails.append("<p>Item Value: "+line.split("=")[1]+"\n</p>")
 		
 		if "item.rare" in line:
-			itemDetails.append("Item Rarity: "+line.split("=")[1]+"\n")
+			itemDetails.append("<p>Item Rarity: "+line.split("=")[1]+"\n</p>")
 		
 		if "name.SetDefault" in line:
-			itemDetails.append("Name: "+line.split("\"")[1]+"\n")
+			itemDetails.append("<p>Name: "+line.split("\"")[1]+"\n</p>")
 		
 		if "Main.tileSpelunker" in line:
-			itemDetails.append("Tile is an Ore: "+line.split("=")[1]+"\n")
+			itemDetails.append("<p>Tile is an Ore: "+line.split("=")[1]+"\n</p>")
 
 		if "npc.damage" in line:
-			itemDetails.append("NPC Damage: "+line.split("=")[1]+"\n")
+			itemDetails.append("<p>NPC Damage: "+line.split("=")[1]+"\n</p>")
 
 		if "npc.lifeMax" in line:
-			itemDetails.append("NPC Life: "+line.split("=")[1]+"\n")
+			itemDetails.append("<p>NPC Life: "+line.split("=")[1]+"\n</p>")
 
 		if "defense" in line:
-			itemDetails.append("Defense: "+line.split("=")[1]+"\n")
+			itemDetails.append("<p>Defense: "+line.split("=")[1]+"\n</p>")
 
 		if "npc.boss" in line:
 			itemDetails.append("NPC is Boss: "+line.split("=")[1]+"\n")
-
-	image = "\n<img id=\"image\" scr=\"https://djpiper28.github.io/PostMoonLordWiki/"+itemFile.split(".")[0]+".png"+"\"alt=\"Item image\" width=\"auto\" height=\"auto\"><img/>\n"
+	#<img id="background" src="https://djpiper28.github.io/crChestSim/background.png" alt="background" width="2048" height="1152" class="bg"><img/>
+	image = "\n<style>.auto{\nwidth: auto;\nheight: auto;\n}</style>\n<img id=\"image\" scr=\"https://djpiper28.github.io/PostMoonLordWiki/"+itemFile.split(".")[0]+".png"+"\"alt=\"Item image\" class=\"auto\"><img/>\n"
 	#Cute images
-	out.append("<title>WIKI:"+itemFile.split(".")[0]+"</title><p>"+"\n--".join(itemDetails)+"</p>\n"+image)
+	out.append("\n<style>.centre{\nmargin: 20%;\n}</style>\n<title>WIKI:"+itemFile.split(".")[0]+"</title>\n<div class=\"centre\">"+"\n--".join(itemDetails)+"</div>\n"+image)
 
 print("\n\n\n\n")
 print("\n".join(out))
