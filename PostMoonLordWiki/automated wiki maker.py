@@ -92,7 +92,7 @@ for item in items:
 
 	image = "\n<img id=\"image\" scr=\"https://djpiper28.github.io/PostMoonLordWiki/"+itemFile.split(".")[0]+".png"+"\"alt=\"Item image\" width=\"auto\" height=\"auto\"><img/>\n"
 	#Cute images
-	out.append("<titele>WIKI:"+itemFile.split(".")[0]+"</title><p>"+"\n--".join(itemDetails)+"</p>\n"+image)
+	out.append("<title>WIKI:"+itemFile.split(".")[0]+"</title><p>"+"\n--".join(itemDetails)+"</p>\n"+image)
 
 print("\n\n\n\n")
 print("\n".join(out))
