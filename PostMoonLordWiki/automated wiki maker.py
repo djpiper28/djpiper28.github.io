@@ -94,7 +94,10 @@ for item in items:
 			itemDetails.append("<p>NPC Life: "+line.split("=")[1]+"\n</p>")
 
 		if "defense" in line:
-			itemDetails.append("<p>Defense: "+line.split("=")[1]+"\n</p>")
+			try:
+				itemDetails.append("<p>Defense: "+line.split("=")[1]+"\n</p>")
+			except:
+				print(line+"\n\nWas faulty")
 
 		if "npc.boss" in line:
 			itemDetails.append("<p>NPC is Boss: "+line.split("=")[1]+"\n</p>")
