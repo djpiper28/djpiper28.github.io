@@ -6,7 +6,7 @@ ad = "\n<iframe id=\"ad\" class='iframe' data-aa='535860' src='//ad.a-ads.com/53
 rootFolder = "C:/Users/dp/Documents/My Games/Terraria/ModLoader/Mod Sources/PostMoonLord"
 rootFolder_ = "C:\\Users\\dp\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\PostMoonLord"
 #Folders with modded content
-folders = ["Buffs","Items","Mounts","NPCs","Projectiles","Tiles","Walls",]
+folders = ["Buffs","Items","Mounts","NPCs","Projectiles","Tiles","Walls","Items/Armour","NPCs/thepossessed","NPCs/mobs"]
 #Wiki Home Page
 homepage = "https://djpiper28.github.io/PostMoonLordWiki/index.html"
 Description_tmp = []
