@@ -44,7 +44,7 @@ print("Creating download link.")
 filetocopy = "C:\\Users\\dp\\Documents\\My Games\\Terraria\\ModLoader\\Mods\\PostMoonLord.tmod"
 copyto = rootFolder_+"\\PostMoonLord.tmod*"
 
-cmd = "xcopy \""+filetocopy+"\" \"C:\\Users\\dp\\Desktop\\djpiper28.github.io\\djpiper28.github.io\\PostMoonLordWiki\\PostMoonLord.tmod*\""
+cmd = "xcopy \""+filetocopy+"\" \"C:\\Users\\dp\\Desktop\\djpiper28.github.io\\djpiper28.github.io\\PostMoonLordWiki\\PostMoonLord.tmod\""
 
 subprocess.call(cmd, shell=True)
 
