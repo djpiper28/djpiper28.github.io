@@ -97,7 +97,29 @@ for item in items:
 			itemDetails.append("<p>Defense: "+line.split("=")[1]+"\n</p>")
 
 		if "npc.boss" in line:
-			itemDetails.append("NPC is Boss: "+line.split("=")[1]+"\n")
+			itemDetails.append("<p>NPC is Boss: "+line.split("=")[1]+"\n</p>")
+
+		if "item.pick" in line:
+			itemDetails.append("<p>Pickaxe power: "+line.split("=")[1]+"\n</p>")
+
+		if "item.axe" in line:
+			itemDetails.append("<p>Axe power: "+line.split("=")[1]+"\n</p>")
+
+		if "item.hammer" in line:
+			itemDetails.append("<p>Hammer power: "+line.split("=")[1]+"\n</p>")
+
+		if "recipe.AddIngredient" in line:
+			if "null" in line:
+				itemDetails.append("<p>Recipe Ingredient: "+line.split(",")[1]+" x "+line.split(",")[2]+"\n</p>")
+			else:
+				itemDetails.append("<p>Recipe Ingredient: "+line.split("(")[1]+" x "+line.split(",")[1]+"\n</p>")
+
+		if "recipe.AddTile" in line:
+			if "null" in line:
+				itemDetails.append("<p>Crafted At: "+line.split(",")[1]+"\n</p>")
+			else:
+				itemDetails.append("<p>Crafted At: "+line.split("(")[1]+"\n</p>")
+
 	#<img id="background" src="https://djpiper28.github.io/crChestSim/background.png" alt="background" width="2048" height="1152" class="bg"><img/>
 	image = "\n<style>.auto{\nwidth: auto;\nheight: auto;\n}</style>\n<img id=\"image\" scr=\"https://djpiper28.github.io/PostMoonLordWiki/"+itemFile.split(".")[0]+".png"+"\"alt=\"Item image\" class=\"auto\"><img/>\n"
 	#Cute images
