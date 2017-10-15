@@ -18,6 +18,12 @@ for line in f:
 	Description_tmp.append("<p>"+line+"\n</p>\n")
 
 f.close
+
+f = open((rootFolder+"/build.txt"),"r")
+for line in f:
+	if "version" in line:
+		Description_tmp.append("<h3>WIKI VERSION: </h3><p>"+line+"\n</p>\n")
+
 Description = "\n".join(Description_tmp)
 
 style = """
