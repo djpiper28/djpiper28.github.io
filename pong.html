@@ -125,9 +125,6 @@ function ballreset(){
 	ballx = 600;
 	ballspeedx = 10;
 	ballspeedy = 10;
-}
-function dead(){
-	ballreset();
 	finalscore = score;
 	d = 1
 	score = 0;
@@ -155,6 +152,10 @@ function drawEverything(){
 	} if(bally>=paddleTwoY){
 		paddleTwoY = paddleTwoY + 15;
 	}
+	paddleTwoY=bally;
+}
+function dead(){
+	ballreset();
 
 	paddleTwoY = bally
 
