@@ -154,8 +154,7 @@ function drawEverything(){
 	} if(bally>=paddleTwoY){
 		paddleTwoY = paddleTwoY + 15;
 	}
-	paddleTwoY = bally;
-	draw(790,paddleTwoY+50,10,100,'white');
+	
 	text(score,'24px Hobo STD',200,50,'white');
 	draw(0,playery,10,100);
 	circle(ballx,bally,10,'white');
@@ -230,6 +229,8 @@ function drawEverything(){
 	} if(bally<=10){
 		bally = 10;
 	} 
+	paddleTwoY = bally;
+	draw(790,paddleTwoY+50,10,100,'white');
 } 
 function circle(x,y,radius,colour){
 	canvasContext.fillStyle = colour;
