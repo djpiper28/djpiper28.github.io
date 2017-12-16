@@ -165,6 +165,7 @@ tr:nth-child(even) {
     <button class="dropbtn" onclick="setArena(9)">Arena 9</button>
     <button class="dropbtn" onclick="setArena(10)">Arena 10</button>
     <button class="dropbtn" onclick="setArena(11)">Arena 11</button>
+    <button class="dropbtn" onclick="setArena(12)">Arena 12</button>
   </div>
 </div></tr>
 <tr><div class="dropdown">
@@ -181,7 +182,7 @@ tr:nth-child(even) {
     <button class="dropbtn" onclick="setChest('epic')">Epic Chest</button>
     <button class="dropbtn" onclick="setChest('legendary')">Legendary Chest</button>
     <button class="dropbtn" onclick="setChest('draft')">Draft (WIP)</button>
-    <button class="dropbtn">Challenge/Tourney COMING SOON!</button>
+    <button class="dropbtn">Challenge and royal chests are COMING SOON!</button>
   </div>
 </div></tr></table>
 <div>
@@ -205,21 +206,21 @@ var FPS = 20;
 
 var common = ["Archers","Arrows","Barbarians","Bats","Bomber","Cannon","Elite Barbarians","Fire Spirits","Goblin Gang","Goblins","Minion Horde","Ice Spirit","Knight","Minions","Mortar","Royal Giant","Skeletons","Spear Goblins","Tesla","Zap","Skeleton Barrel"];
 var commonarena = [1,1,1,8,1,3,7,5,9,1,4,8,1,2,3,7,2,1,4,5,6];
-var rare = ["Barbarian Hut","Battle Ram","Bomb Tower","Dart Goblin","Elixir Pump","Fireball","Flying Machine","Furnace","Giant","Goblin Hut","Heal","Hog","Ice Golem","Inferno Tower","Mega Minion","Mini P.E.K.K.A","Musketeer","Rocket","Three Musketeers","Tombstone","Valkyrie","Wizard"];
-var rarearena = [3,6,2,9,6,1,9,5,1,1,10,4,8,4,7,1,1,3,7,2,1,5];
-var epic = ["Baby Dragon","Balloon","Bowler","Cannon Cart","Clone","Dark Prince","Executioner","Freeze","Giant Skeleton","Goblin Barrel","Golem","Guards","Lightning","Mirror","P.E.K.K.A","Poison","Prince","Rage","Skeleton Army","Tornado","Witch","X Bow"];
-var epicarena = [1,2,8,10,8,7,9,4,2,1,6,7,15,4,5,1,3,1,6,1,3];
+var rare = ["Barbarian Hut","Battle Ram","Bomb Tower","Dart Goblin","Elixir Pump","Fireball","Flying Machine","Furnace","Giant","Goblin Hut","Heal","Hog","Ice Golem","Inferno Tower","Mega Minion","Mini P.E.K.K.A","Musketeer","Rocket","Three Musketeers","Tombstone","Valkyrie","Wizard","Zappies"];
+var rarearena = [3,6,2,9,6,1,9,5,1,1,10,4,8,4,7,1,1,3,7,2,1,5,11];
+var epic = ["Baby Dragon","Balloon","Bowler","Cannon Cart","Clone","Dark Prince","Executioner","Freeze","Giant Skeleton","Goblin Barrel","Golem","Guards","Lightning","Mirror","P.E.K.K.A","Poison","Prince","Rage","Skeleton Army","Tornado","Witch","X Bow","Hunter"];
+var epicarena = [1,2,8,10,8,7,9,4,2,1,6,7,15,4,5,1,3,1,6,1,3,9];
 var legendary = ["Bandit","Electro Wizard","Graveyard","Ice Wizard","Inferno Dragon","Lava Hound","Lumberjack","Mega Knight","Miner","Night Witch","Princess","Sparky","The Log"
 ];
 var legendaryarena = [9,7,5,5,4,4,8,10,6,8,7,6,6];
 
-var common_backup = ["Archers","Arrows","Barbarians","Bats","Bomber","Cannon","Elite Barbarians","Fire Spirits","Goblin Gang","Goblins","Minion Horde","Ice Spirit","Knight","Minions","Mortar","Royal Giant","Skeletons","Spear Goblins","Tesla","Zap"];
-var commonarena_backup = [1,1,1,8,1,3,7,5,9,1,4,8,1,2,3,7,2,1,4,5];
-var rarearena_backup = [3,6,2,9,6,1,9,5,1,1,10,4,8,4,7,1,1,3,7,2,1,5];
-var epicarena_backup = [1,2,8,10,8,7,9,4,2,1,6,7,15,4,5,1,3,1,6,1,3];
+var common_backup = ["Archers","Arrows","Barbarians","Bats","Bomber","Cannon","Elite Barbarians","Fire Spirits","Goblin Gang","Goblins","Minion Horde","Ice Spirit","Knight","Minions","Mortar","Royal Giant","Skeletons","Spear Goblins","Tesla","Zap","Skeleton Barrel"];
+var commonarena_backup = [1,1,1,8,1,3,7,5,9,1,4,8,1,2,3,7,2,1,4,5,6];
+var rarearena_backup = [3,6,2,9,6,1,9,5,1,1,10,4,8,4,7,1,1,3,7,2,1,5,11];
+var epicarena_backup = [1,2,8,10,8,7,9,4,2,1,6,7,15,4,5,1,3,1,6,1,3,9];
 var legendaryarena_backup = [9,7,5,5,4,4,8,10,6,8,7,6,6];
-var rare_backup = ["Barbarian Hut","Battle Ram","Bomb Tower","Dart Goblin","Elixir Pump","Fireball","Flying Machine","Furnace","Giant","Goblin Hut","Heal","Hog","Ice Golem","Inferno Tower","Mega Minion","Mini P.E.K.K.A","Musketeer","Rocket","Three Musketeers","Tombstone","Valkyrie","Wizard"];
-var epic_backup = ["Baby Dragon","Balloon","Bowler","Cannon Cart","Clone","Dark Prince","Executioner","Freeze","Giant Skeleton","Goblin Barrel","Golem","Guards","Lightning","Mirror","P.E.K.K.A","Poison","Prince","Rage","Skeleton Army","Tornado","Witch","X Bow"]
+var rare_backup = ["Barbarian Hut","Battle Ram","Bomb Tower","Dart Goblin","Elixir Pump","Fireball","Flying Machine","Furnace","Giant","Goblin Hut","Heal","Hog","Ice Golem","Inferno Tower","Mega Minion","Mini P.E.K.K.A","Musketeer","Rocket","Three Musketeers","Tombstone","Valkyrie","Wizard","Zappies"];
+var epic_backup = ["Baby Dragon","Balloon","Bowler","Cannon Cart","Clone","Dark Prince","Executioner","Freeze","Giant Skeleton","Goblin Barrel","Golem","Guards","Lightning","Mirror","P.E.K.K.A","Poison","Prince","Rage","Skeleton Army","Tornado","Witch","X Bow","Hunter"];
 var legendary_backup = ["Bandit","Electro Wizard","Graveyard","Ice Wizard","Inferno Dragon","Lava Hound","Lumberjack","Mega Knight","Miner","Night Witch","Princess","Sparky","The Log"
 ];
 
