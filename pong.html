@@ -149,7 +149,10 @@ function drawEverything(){
 		i = i + 1;
 	}//Lines in the centre
 	circle(ballx,bally,10,'white');//ball
-	paddleTwoY = bally;
+	if(ballx<100){
+		paddleTwoY = bally;
+	}
+
 	//draw(790,paddleTwoY+50,10,100,'white');
 	draw(790,bally,10,100,'white');
 	text(score,'24px Hobo STD',200,50,'white');
