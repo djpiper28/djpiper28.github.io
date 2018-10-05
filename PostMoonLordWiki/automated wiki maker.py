@@ -3,8 +3,8 @@ import subprocess
 
 ad = "\n<iframe id=\"ad\" class='iframe' data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>"
 #Folder with the source code in
-rootFolder = "C:/Users/dp/Documents/My Games/Terraria/ModLoader/Mod Sources/PostMoonLord"
-rootFolder_ = "C:\\Users\\dp\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\PostMoonLord"
+rootFolder = "C:/Users/djpip/Documents/My Games/Terraria/ModLoader/Mod Sources/PostMoonLord"
+rootFolder_ = "C:\\Users\\djpip\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\PostMoonLord"
 #Folders with modded content
 folders = ["Buffs","Items","Mounts","NPCs","Projectiles","Tiles","Walls","Items/Armour","NPCs/thepossessed","NPCs/mobs","NPCs/Cryptys","Items/croliumgreatblade"]
 #Wiki Home Page
@@ -37,10 +37,10 @@ staticTitle = style+"<h1>Terraria: The Desomation of Moon Lord Wiki</h1>\n<p>Thi
 
 print("Creating download link.")
 
-filetocopy = "C:\\Users\\dp\\Documents\\My Games\\Terraria\\ModLoader\\Mods\\PostMoonLord.tmod"
+filetocopy = "C:\\Users\\djpip\\Documents\\My Games\\Terraria\\ModLoader\\Mods\\PostMoonLord.tmod"
 copyto = rootFolder_+"\\PostMoonLord.tmod*"
 
-cmd = "xcopy \""+filetocopy+"\" \"C:\\Users\\dp\\Desktop\\djpiper28.github.io\\djpiper28.github.io\\PostMoonLordWiki\\PostMoonLord.tmod\""
+cmd = "xcopy \""+filetocopy+"\" \"C:\\Users\\djpip\\Desktop\\djpiper28.github.io\\djpiper28.github.io\\PostMoonLordWiki\\PostMoonLord.tmod\""
 
 subprocess.call(cmd, shell=True)
 
@@ -62,7 +62,7 @@ for item in items:
 	itemFolder = item.split("|")[1]
 	itemFile = item.split("|")[0]
 
-	cmd = "echo F| xcopy \""+rootFolder_+"\\"+itemFolder+"\\"+itemFile.split(".")[0]+".png\" \"C:\\Users\\dp\\Desktop\\djpiper28.github.io\\djpiper28.github.io\\PostMoonLordWiki\\"+itemFile.split(".")[0]+".png*\""
+	cmd = "echo F| xcopy \""+rootFolder_+"\\"+itemFolder+"\\"+itemFile.split(".")[0]+".png\" \"C:\\Users\\djpip\\Desktop\\djpiper28.github.io\\djpiper28.github.io\\PostMoonLordWiki\\"+itemFile.split(".")[0]+".png*\""
 
 	subprocess.call(cmd, shell=True)
 	#print("Copied File "+itemFile.split(".")[0]+".png"+"\nfrom  "+rootFolder+"/"+itemFolder+"/"+itemFile.split(".")[0]+".png  to C:/Users/dp/Desktop/djpiper28.github.io/djpiper28.github.io/PostMoonLordWiki/"+itemFile.split(".")[0]+".png")
@@ -72,76 +72,77 @@ for item in items:
 	itemDetails = []
 
 	for line in f:
+		try: 
+			if "DisplayName.SetDefault" in line:
+				itemDetails.append("<h3>Name: "+line.split("\"")[1]+"\n</h3>")
+                        
+			if "Tooltip.SetDefault" in line:
+				itemDetails.append("<p>Item Description: "+line.split("\"")[1]+"\n</p>")
+                        
+			if "item.damage" in line:
+				itemDetails.append("<p>Item Damage: "+line.split("=")[1]+"\n</p>")
+                        
+			if "mod.ProjectileType" in line:
+				itemDetails.append("<p>Item Projectile: "+line.split("\"")[1]+"\n</p>")
+                        
+			if "item.lifeRegen" in line:
+				itemDetails.append("<p>Item Life Regen: "+line.split("=")[1]+"\n</p>")
+                        
+			if "item.useTime" in line:
+				itemDetails.append("<p>Item Use Time: "+line.split("=")[1]+"\n</p>")
+                
+			if "item.knockBack" in line:
+				itemDetails.append("<p>Item Knockback: "+line.split("=")[1]+"\n</p>")
+                
+			if "item.autoReuse" in line:
+				itemDetails.append("<p>Item Auto Swing: "+line.split("=")[1]+"\n</p>")
+                
+			if "item.value" in line:
+				itemDetails.append("<p>Item Value: "+line.split("=")[1]+"\n</p>")
+                        
+			if "item.rare" in line:
+				itemDetails.append("<p>Item Rarity: "+line.split("=")[1]+"\n</p>")
+                                        
+			if "Main.tileSpelunker" in line:
+				itemDetails.append("<p>Tile is an Ore: "+line.split("=")[1]+"\n</p>")
 
-		if "DisplayName.SetDefault" in line:
-			itemDetails.append("<h3>Name: "+line.split("\"")[1]+"\n</h3>")
-		
-		if "Tooltip.SetDefault" in line:
-			itemDetails.append("<p>Item Description: "+line.split("\"")[1]+"\n</p>")
-		
-		if "item.damage" in line:
-			itemDetails.append("<p>Item Damage: "+line.split("=")[1]+"\n</p>")
-		
-		if "mod.ProjectileType" in line:
-			itemDetails.append("<p>Item Projectile: "+line.split("\"")[1]+"\n</p>")
-		
-		if "item.lifeRegen" in line:
-			itemDetails.append("<p>Item Life Regen: "+line.split("=")[1]+"\n</p>")
-		
-		if "item.useTime" in line:
-			itemDetails.append("<p>Item Use Time: "+line.split("=")[1]+"\n</p>")
-	
-		if "item.knockBack" in line:
-			itemDetails.append("<p>Item Knockback: "+line.split("=")[1]+"\n</p>")
-	
-		if "item.autoReuse" in line:
-			itemDetails.append("<p>Item Auto Swing: "+line.split("=")[1]+"\n</p>")
-	
-		if "item.value" in line:
-			itemDetails.append("<p>Item Value: "+line.split("=")[1]+"\n</p>")
-		
-		if "item.rare" in line:
-			itemDetails.append("<p>Item Rarity: "+line.split("=")[1]+"\n</p>")
+			if "npc.damage" in line:
+				itemDetails.append("<p>NPC Damage: "+line.split("=")[1]+"\n</p>")
+
+			if "npc.lifeMax" in line:
+				itemDetails.append("<p>NPC Life: "+line.split("=")[1]+"\n</p>")
+
+			if "defense" in line:
+				try:
+					itemDetails.append("<p>Defense: "+line.split("=")[1]+"\n</p>")
+				except:
+					print(line+"\n\nWas faulty")
+
+			if "npc.boss" in line:
+				itemDetails.append("<p>NPC is Boss: "+line.split("=")[1]+"\n</p>")
 				
-		if "Main.tileSpelunker" in line:
-			itemDetails.append("<p>Tile is an Ore: "+line.split("=")[1]+"\n</p>")
+			if "item.pick" in line:
+				itemDetails.append("<p>Pickaxe power: "+line.split("=")[1]+"\n</p>")
 
-		if "npc.damage" in line:
-			itemDetails.append("<p>NPC Damage: "+line.split("=")[1]+"\n</p>")
+			if "item.axe" in line:
+				itemDetails.append("<p>Axe power: "+line.split("=")[1]+"\n</p>")
 
-		if "npc.lifeMax" in line:
-			itemDetails.append("<p>NPC Life: "+line.split("=")[1]+"\n</p>")
+			if "item.hammer" in line:
+				itemDetails.append("<p>Hammer power: "+line.split("=")[1]+"\n</p>")
 
-		if "defense" in line:
-			try:
-				itemDetails.append("<p>Defense: "+line.split("=")[1]+"\n</p>")
-			except:
-				print(line+"\n\nWas faulty")
+			if "recipe.AddIngredient" in line:
+				if "null" in line:
+					itemDetails.append("<p>Recipe Ingredient: "+line.split(",")[1]+" x "+line.split(",")[2]+"\n</p>")
+				else:
+					itemDetails.append("<p>Recipe Ingredient: "+line.split("(")[1]+" x "+line.split(",")[1]+"\n</p>")
 
-		if "npc.boss" in line:
-			itemDetails.append("<p>NPC is Boss: "+line.split("=")[1]+"\n</p>")
-
-		if "item.pick" in line:
-			itemDetails.append("<p>Pickaxe power: "+line.split("=")[1]+"\n</p>")
-
-		if "item.axe" in line:
-			itemDetails.append("<p>Axe power: "+line.split("=")[1]+"\n</p>")
-
-		if "item.hammer" in line:
-			itemDetails.append("<p>Hammer power: "+line.split("=")[1]+"\n</p>")
-
-		if "recipe.AddIngredient" in line:
-			if "null" in line:
-				itemDetails.append("<p>Recipe Ingredient: "+line.split(",")[1]+" x "+line.split(",")[2]+"\n</p>")
+			if "recipe.AddTile" in line:
+				if "null" in line:
+					itemDetails.append("<p>Crafted At: "+line.split(",")[1]+"\n</p>")
 			else:
-				itemDetails.append("<p>Recipe Ingredient: "+line.split("(")[1]+" x "+line.split(",")[1]+"\n</p>")
-
-		if "recipe.AddTile" in line:
-			if "null" in line:
-				itemDetails.append("<p>Crafted At: "+line.split(",")[1]+"\n</p>")
-			else:
-				itemDetails.append("<p>Crafted At: "+line.split("(")[1]+"\n</p>")
-
+					itemDetails.append("<p>Crafted At: "+line.split("(")[1]+"\n</p>")
+		except:
+			print("something went wrong")
 	#<img id="background" src="https://djpiper28.github.io/crChestSim/background.png" alt="background" width="2048" height="1152" class="bg"><img/>
 	image = "\n<style>.auto{\nwidth: auto;\nheight: auto;\n}</style>\n<img id=\"image\" src=\"https://djpiper28.github.io/PostMoonLordWiki/"+itemFile.split(".")[0]+".png\" width=\"20%\" height=\"20%\" \"alt=\"Item image\" class=\"auto\"></img>\n"
 	out.append("\n<style>.centre{\nmargin: 20%;\n}</style>\n<title>WIKI:<div class='bg-blue text-white'>"+itemFile.split(".")[0]+image+"</title>\n<div class=\"centre\">"+"\n--".join(itemDetails)+"</div>\n"+ad+"</div>")

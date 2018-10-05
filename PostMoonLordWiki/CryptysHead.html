@@ -10,35 +10,56 @@
 <style>.centre{
 margin: 20%;
 }</style>
-<title>WIKI:<div class='bg-blue text-white'>SlimeInvader_boss
+<title>WIKI:<div class='bg-blue text-white'>CryptysHead
 <style>.auto{
 width: auto;
 height: auto;
 }</style>
-<img id="image" src="https://djpiper28.github.io/PostMoonLordWiki/SlimeInvader_boss.png" width="20%" height="20%" "alt="Item image" class="auto"></img>
+<img id="image" src="https://djpiper28.github.io/PostMoonLordWiki/CryptysHead.png" width="20%" height="20%" "alt="Item image" class="auto"></img>
 </title>
 <div class="centre"><p>Crafted At: )
 
 </p>
---<h3>Name: Angry Slime Invader
-</h3>
---<p>Crafted At: "Angry Slime Invader");
+--<p>NPC Life:  80000;
+
+</p>
+--<p>NPC Damage:  900;
+
+</p>
+--<p>Defense:  100;
+
+</p>
+--<p>Crafted At: 0, 2, 0, 0);
+
+</p>
+--<p>NPC is Boss:  true;
 
 </p>
 --<p>Crafted At: )
 
 </p>
---<p>NPC Damage:  300;
+--<h3>Name: Cryptys
+</h3>
+--<p>Crafted At: "Cryptys");
 
 </p>
---<p>Defense:  125;
+--<p>Crafted At: int hitDirection, double damage)
 
 </p>
---<p>NPC Life:  250000;
+--<p>NPC Life:  0; k < damage / npc.lifeMax * 100.0; k++)
 
 </p>
---<p>NPC is Boss:  true;
+--<p>Crafted At: int k = 0; k < damage / npc.lifeMax * 100.0; k++)
 
+</p>
+--<p>Crafted At: npc.position, npc.width, npc.height, 5, hitDirection, -1f, 0, default
+</p>
+--<p>Crafted At: Main.netMode != 1 && npc.life <= 0)
+
+</p>
+--<p>Crafted At: 0f, 
+</p>
+--<p>Crafted At: 
 </p>
 --<p>Crafted At: Player player, int damage, bool crit)
 
@@ -48,6 +69,10 @@ height: auto;
 --<p>Crafted At: BuffID.OnFire, 600, true);
 
 </p>
+--<p>Item Projectile: Laser
+</p>
+--<p>Crafted At: npc.Center.X, npc.Center.Y, delta.X, delta.Y, mod.ProjectileType
+</p>
 --<p>Crafted At: ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
 
 </p>
@@ -56,10 +81,7 @@ height: auto;
 --<p>Crafted At: npc.HitSound, npc.position);
 
 </p>
---<p>Crafted At: NPCSpawnInfo spawnInfo)
-
-</p>
---<p>Crafted At: NPC.downedMoonlord==false || Main.dayTime==false || Main.hardMode==false){
+--<p>Crafted At: byte hbPosition, ref float scale, ref Vector2 position)
 
 </p>
 --<p>Crafted At: )
@@ -68,6 +90,22 @@ height: auto;
 --<p>Crafted At: int k = 0; k < 
 </p>
 --<p>Crafted At: WorldGen.genRand.Next
+</p>
+--<p>Crafted At: Main.rand.Next
+</p>
+--<p>Crafted At: 
+</p>
+--<p>Crafted At: 
+</p>
+--<p>Crafted At: 
+</p>
+--<p>Crafted At: 
+</p>
+--<p>Crafted At: 
+</p>
+--<p>Crafted At: 
+</p>
+--<p>Crafted At: 
 </p>
 --<p>Crafted At: Main.expertMode){
 
@@ -83,19 +121,6 @@ height: auto;
 --<p>Crafted At: 
 </p>
 --<p>Crafted At: 
-</p>
---<p>Crafted At: 
-</p>
---<p>Crafted At: 
-</p>
---<p>Crafted At: 
-</p>
---<p>Crafted At: 
-</p>
---<p>Crafted At: 
-</p>
---<p>Crafted At: ref string headTexture, ref string bossHeadTexture)
-
 </p>
 --<p>Crafted At: int numPlayers, float bossLifeScale)
 
@@ -110,33 +135,8 @@ height: auto;
 </p>
 --<p>Crafted At: int)
 </p>
---<p>Crafted At: ){
-
-</p>
---<p>Crafted At: mod.NPCType
-</p>
 --<p>Crafted At: )
 
-</p>
---<p>Crafted At: spawned==0){
-
-</p>
---<p>Crafted At: 0f, 
-</p>
---<p>Crafted At: 
-</p>
---<p>Crafted At: 
-</p>
---<p>Crafted At: Main.expertMode){
-
-</p>
---<p>Crafted At: 0f, 
-</p>
---<p>Crafted At: 
-</p>
---<p>Crafted At: 
-</p>
---<p>Crafted At: 
 </p>
 --<p>Crafted At: npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
 
@@ -144,27 +144,12 @@ height: auto;
 --<p>Crafted At: true);
 
 </p>
---<p>Crafted At: guardiansAreAlive
-</p>
---<p>Crafted At: cooldown>=50){
+--<p>Crafted At: cooldown>=100){
 
 </p>
 --<p>Item Projectile: evilLaser
 </p>
 --<p>Crafted At: npc.position, target, mod.ProjectileType
-</p>
---<p>Crafted At: spawn>=1750){
-
-</p>
---<p>Crafted At: 0f, 
-</p>
---<p>Crafted At: 
-</p>
---<p>Crafted At: Vector2 position, Vector2 velocity, int Type, int Damage, float KnockBack, int Owner = 255, float ai0 = 0f, float ai1 = 0f)
-
-</p>
---<p>Crafted At: position.X, position.Y, velocity.X, velocity.Y, Type, Damage, KnockBack, Owner, ai0, ai1)];
-
 </p></div>
 
 <iframe id="ad" class='iframe' data-aa='535860' src='//ad.a-ads.com/535860?size=336x280' scrolling='no' style='width:336px; height:280px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe></div>
