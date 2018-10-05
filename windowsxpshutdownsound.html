@@ -1,0 +1,43 @@
+<html>
+<head>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div id="app">
+<button onclick="alertThineFoe()" class="bg-blue px-20 py-2" id="thing">Change Song Number from 0</button>
+<h3>Play Windows XP Shut Down Sound</h3>
+<button onclick="plybtn()" class="bg-green px-20 py-2" id="plybtn">Play</button>
+</div>
+<script>
+	//MANLY JS
+	var i = 0;
+	var playing = false;
+	var songs = ['windowsxp.mp3','a.mp3','b.mp3','c.mp3'];
+	var audio = new Audio('windowsxp.mp3');
+	function alertThineFoe(){
+		document.getElementById("thing").innerHTML="Song number"+i;
+		i++;
+		console.log("test");
+	}
+	function plybtn(){
+		changeSong();
+		if(playing){
+			audio.pause();
+			playing=false;
+			document.getElementById("plybtn").outerHTML="<button onclick=\"plybtn()\" class=\"bg-green px-20 py-2\" id=\"plybtn\">Play</button>";
+		} else{
+			audio.play();
+			playing=true;
+			document.getElementById("plybtn").outerHTML="<button onclick=\"plybtn()\" class=\"bg-red px-20 py-2\" id=\"plybtn\">Pause</button>";
+		}
+	}
+	function changeSong(){
+		if(songs[i]==null){
+			i=0;
+		}
+		audio = new Audio(songs[i]);
+	}
+</script>
+</body>
+</html>
