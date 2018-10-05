@@ -145,7 +145,7 @@ for item in items:
 			print("something went wrong")
 	#<img id="background" src="https://djpiper28.github.io/crChestSim/background.png" alt="background" width="2048" height="1152" class="bg"><img/>
 	image = "\n<style>.auto{\nwidth: auto;\nheight: auto;\n}</style>\n<img id=\"image\" src=\"https://djpiper28.github.io/PostMoonLordWiki/"+itemFile.split(".")[0]+".png\" width=\"20%\" height=\"20%\" \"alt=\"Item image\" class=\"auto\"></img>\n"
-	out.append("\n<style>.centre{\nmargin: 20%;\n}</style>\n<title>WIKI:<div class='bg-blue text-white'>"+itemFile.split(".")[0]+image+"</title>\n<div class=\"centre\">"+"\n--".join(itemDetails)+"</div>\n"+ad+"</div>")
+	out.append("\n<style>.centre{\nmargin: 20%;\n}</style>\n<title>WIKI:"+itemFile.split(".")[0]+"</title>\n<div class='bg-blue text-white text-center py-2 px-2'><div class=\"bg-dark-grey\">"+image+"\n--".join(itemDetails)+"</div>\n"+ad+"</div>")
 
 i = 0
 
