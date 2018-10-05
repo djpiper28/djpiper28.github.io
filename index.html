@@ -15,54 +15,59 @@
     <![endif]-->
 </head>
 <body>
-<div class="bg-blue"><div width="100%">
+<div class="bg-blue px-3 py-5"><div width="100%">
 	<div><h2 class="flex-initial text-grey-darker text-center bg-grey-light px-4 py-2 m-2">DJPIPER28.GITHUB.IO - INDEX</h2></div>
-	<button class="px-4 py-2 m-2 text-center" onClick="myGithub();">My Github Page
+	<button class="px-4 py-2 m-2 text-center bg-green" onClick="myGithub();">My Github Page</button>
+	<h2 class="text-white text-center">Useful Projects</h2>
+	<ul class="flex-initial text-grey-darker text-center bg-grey-light px-4 py-2 m-2">
+		<li><button class="px-4 py-2 m-2 text-center" onClick="binSorting();">Bin Sorting Algorithm Demo
 		</button>
-	<h3>Projects</h3>
-	<ul class="flex-initial text-grey-darker text-center bg-grey-light px-4 py-2 m-2"> 
-		<li><button class="px-4 py-2 m-2 text-center" onClick="chestOpener();">Clash Royale Chest Simulator
+		</li>	
+		<li><button class="px-4 py-2 m-2 text-center" onClick="cipherSolvervignere();">Cipher Solver (Vignere Only)
 		</button>
 		</li>
-		<li><button class="px-4 py-2 m-2 text-center" onClick="cipherSolver();">Cipher Solver
+		<li><button class="px-4 py-2 m-2 text-center" onClick="cipherSolverlegacy();">Cipher Solver (Legacy)
+		</button>
+		</li>		
+		<li><button class="px-4 py-2 m-2 text-center" onClick="snake();">Snake in Java (SE 9)
 		</button>
 		</li>
+		<li><button class="px-4 py-2 m-2 text-center" onClick="pong();">Pong in Java (SE 9)
+		</button>
+		</li>
+	</ul>	
+	<h2 class="text-white text-center">Random Projects</h2>
+	<ul class="flex-initial text-grey-darker text-center bg-grey-light px-4 py-2 m-2">
 		<li><button class="px-4 py-2 m-2 text-center" onClick="animatedText();">Animated Text Demo
 		</button>
 		</li>
-		<li><button class="px-4 py-2 m-2 text-center" onClick="postMoonLordModWiki();">Post Moon Lord Mod Wiki
+		<li><button class="px-4 py-2 m-2 text-center" onClick="postMoonLordModWiki();">My Terraria Mod's Wiki
+		</button>
+		</li>
+		<li><button class="px-4 py-2 m-2 text-center" onClick="chestOpener();">Clash Royale Chest Simulator
 		</button>
 		</li>
 	</ul>
-	<h3>Games</h3>
-	<ul class="flex-initial text-grey-darker text-center bg-grey-light px-4 py-2 m-2"> 
-		<li><button class="px-4 py-2 m-2 text-center" onClick="flappyBird();">Flappy Bird Clone
-		</button>
-		</li>
-		<li><button class="px-4 py-2 m-2 text-center" onClick="pong();">Pong Clone
-		</button>
-		</li>
-		<li><button class="px-4 py-2 m-2 text-center" onClick="tankTrouble();">Tank Trouble
-		</button>
-		</li>
-		<li><button class="px-4 py-2 m-2 text-center" onClick="ballCollecter();">Ball Collecter
-		</button>
-		</li>
-		<li><button class="px-4 py-2 m-2 text-center" onClick="runAndJump();">Run And Jump
-		</button>
-		</li>
-		<li><button class="px-4 py-2 m-2 text-center" onClick="coc();">Call of Corbyn
-		</button>
-		</li>
-	</ul>
+	<div id="unhide">
+	<button id="unhide" class="px-4 py-2 m-2 text-center bg-green" onClick="uunhide();">Other Things (show)</button>
+	</div>
 	<p>Made by Danny Piper</p>
 	</div>
 	</div>	
 </body>
 <script>
-	function cipherSolver(){
+	function uunhide(){
+		document.getElementById("unhide").innerHTML="<div id=\"unhide\"><button class=\"px-4 py-2 m-2 text-center bg-green\" onClick=\"hide();\">Other Things (hide)</button><ul class=\"flex-initial text-grey-darker text-center bg-grey-light px-4 py-2 m-2 \">li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"flappyBird();\">Flappy Bird Clone</button>			</li>			<li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"pong();\">Pong Clone</button></li><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"tankTrouble();\">Tank Trouble</button></li><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"ballCollecter();\">Ball Collecter</button></li><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"runAndJump();\">Run And Jump</button></li><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"coc();\">Call of Corbyn</button></li></ul></div>";		
+	}
+	function hide(){
+		document.getElementById("unhide").innerHTML="<div id=\"unhide\"><button class=\"px-4 py-2 m-2 text-center bg-green\" onClick=\"uunhide();\">Other Things (show)</button></div>";
+	}
+	function cipherSolverlegacy(){
 			window.open("https://github.com/djpiper28/Dp-Cypher-Solver")
 	}
+	function cipherSolvervignere(){
+			window.open("https://github.com/djpiper28/vignere-cipher-brute-force-program")
+	}	
 	function chestOpener(){
 			window.open("https://djpiper28.github.io/crChestSim/index.html");
 	}
@@ -92,6 +97,15 @@
 	}
 	function postMoonLordModWiki(){		
 			window.open("https://djpiper28.github.io/PostMoonLordWiki/index.html");
+	}
+	function snake(){
+			window.open("https://github.com/djpiper28/Snake-in-java");
+	}
+	function pong(){
+			window.open("https://github.com/djpiper28/Pong-in-Java");
+	}
+	function binSorting(){
+			window.open("https://github.com/djpiper28/Bin-Sort---First-Fit");
 	}
 </script>
 </html>
