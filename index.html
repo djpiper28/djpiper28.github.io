@@ -11,8 +11,9 @@
 <body>
 <div class="bg-blue px-3 py-5"><div width="100%">
 	<div><h2 class="rounded-full flex-initial text-grey-darker text-center bg-grey-light px-4 py-2 m-2">DJPIPER28.GITHUB.IO - INDEX</h2></div>
-	<button class="rounded-full px-4 py-2 m-2 text-center bg-green" onClick="myGithub();">My Github Page</button>
-	<div class="rounded-full bg-dark-blue"><h2 class="text-white text-center rounded-full bg-dark-blue">Useful Projects</h2></div>
+	<button class="rounded-full px-4 py-2 m-2 text-white text-center bg-green" onClick="myGithub();">My Github Page</button>
+	<div class="rounded-full bg-blue-dark py-2">
+	<h2 class="text-white text-center">Useful Projects</h2></div>
 	<ul class="rounded-lg flex-initial text-grey-darker text-center bg-grey-light px-4 py-2 m-2">
 		<li><button class="px-4 py-2 m-2 text-center" onClick="binSorting();">Bin Sorting Algorithm Demo
 		</button>
@@ -33,7 +34,8 @@
 		</button>
 		</li>
 	</ul>	
-	<div class="rounded-full bg-dark-blue"><h2 class="text-white text-center rounded-full bg-dark-blue">Random Projects</h2></div>
+	<div class="rounded-full bg-blue-dark">
+	<h2 class="text-white text-center rounded-full py-2">Random Projects</h2></div>
 	<ul class="rounded-lg flex-initial text-grey-darker text-center bg-grey-light px-4 py-2 m-2">
 		<li><button class="px-4 py-2 m-2 text-center" onClick="animatedText();">Animated Text Demo
 		</button>
@@ -46,7 +48,7 @@
 		</li>
 	</ul>
 	<div id="unhide">
-	<button id="unhide" class="rounded-full px-4 py-2 m-2 text-center bg-green" onClick="uunhide();">Other Things (show)</button>
+	<button id="unhide" class="rounded-full px-4 py-2 m-2 text-white text-center bg-green-dark" onClick="uunhide();">Other Things (show)</button>
 	</div>
 	<div class="rounded-full bg-dark-blue"><p class="text-white py-2 px-2">Made by Danny Piper</p></div>
 	</div>
@@ -54,10 +56,10 @@
 </body>
 <script>
 	function uunhide(){
-		document.getElementById("unhide").innerHTML="<div id=\"unhide\"><button class=\"rounded-full px-4 py-2 m-2 text-center bg-green\" onClick=\"hide();\">Other Things (hide)</button><ul class=\"rounded-lg flex-initial text-grey-darker text-center bg-grey-light px-4 py-2 m-2 \"><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"flappyBird();\">Flappy Bird Clone</button>			</li>			<li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"pong();\">Pong Clone</button></li><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"tankTrouble();\">Tank Trouble</button></li><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"ballCollecter();\">Ball Collecter</button></li><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"runAndJump();\">Run And Jump</button></li><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"coc();\">Call of Corbyn</button></li></ul></div>";		
+		document.getElementById("unhide").innerHTML="<div id=\"unhide\"><button class=\"rounded-full px-4 py-2 m-2 text-white text-center bg-green-dark\" onClick=\"hide();\">Other Things (hide)</button><div class=\"rounded-full bg-blue-dark\"><h2 class=\"text-white text-center rounded-full py-2\">Other Things</h2></div><ul class=\"rounded-lg flex-initial text-grey-darker text-center bg-grey-light px-4 py-2 m-2 \"><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"flappyBird();\">Flappy Bird Clone</button>			</li>			<li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"pong();\">Pong Clone</button></li><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"tankTrouble();\">Tank Trouble</button></li><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"ballCollecter();\">Ball Collecter</button></li><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"runAndJump();\">Run And Jump</button></li><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"coc();\">Call of Corbyn</button></li></ul></div>";		
 	}
 	function hide(){
-		document.getElementById("unhide").innerHTML="<div id=\"unhide\"><button class=\"rounded-full px-4 py-2 m-2 text-center bg-green\" onClick=\"uunhide();\">Other Things (show)</button></div>";
+		document.getElementById("unhide").innerHTML="<div id=\"unhide\"><button class=\"rounded-full px-4 py-2 m-2 text-white text-center bg-green-dark\" onClick=\"uunhide();\">Other Things (show)</button></div>";
 	}
 	function cipherSolverlegacy(){
 			window.open("https://github.com/djpiper28/Dp-Cypher-Solver")
